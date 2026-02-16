@@ -1,0 +1,7 @@
+<div class="container">
+  <a class="button-container" [routerLink]="rota" (click)="onClick($event)">
+    <ion-icon *ngIf="tipoIcone === 'ion'" [name]="icone"></ion-icon>
+    <img *ngIf="tipoIcone === 'img'" [src]="icone" alt="" />
+  </a>
+  <span>{{ texto }}</span>
+</div>

@@ -1,0 +1,61 @@
+<main>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2">
+        <select (change)="filtrar($event)">
+          <option selected disabled>Filtrar por...</option>
+          <option value="escola">Escola</option>
+        </select>
+      </ion-col>
+      <ion-col size="2">
+        <select>
+          <option selected disabled>Filtrar por...</option>
+          <option value="escola">Escola</option>
+        </select>
+      </ion-col>
+    </ion-row>
+    <ion-row class="header ion-hide-sm-down">
+      <ion-col>Rota</ion-col>
+      <ion-col>Escola</ion-col>
+      <ion-col>Turno</ion-col>
+      <ion-col>Van</ion-col>
+      <ion-col>Motorista</ion-col>
+      <ion-col>Status</ion-col>
+      <ion-col>Ações</ion-col>
+    </ion-row>
+    <ion-row
+      *ngFor="let rota of rotasFiltradas"
+      class="linha-rota ion-align-items-center"
+    >
+      <ion-col>
+        <strong>{{ rota.nome }}</strong>
+      </ion-col>
+      <ion-col>
+        <span class="etc">
+          {{ rota.escola.nome }}
+        </span>
+      </ion-col>
+      <ion-col>
+        {{ rota.turno }}
+      </ion-col>
+      <ion-col>
+        {{ rota.van.numero }}
+      </ion-col>
+      <ion-col>
+        {{ rota.motorista.nome }}
+      </ion-col>
+      <ion-col>
+        <ion-badge [ngClass]="rota.ativa ? 'ativa' : 'inativa'">
+          {{ rota.ativa ? "Ativa" : "Inativa" }}
+        </ion-badge>
+      </ion-col>
+      <ion-col>
+        <div class="acoes-container">
+          <ion-icon name="eye-outline"></ion-icon>
+          <ion-icon name="pencil-outline"></ion-icon>
+          <ion-icon name="trash-outline"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</main>

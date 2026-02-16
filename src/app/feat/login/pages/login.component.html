@@ -1,0 +1,99 @@
+<main>
+  <section *ngIf="ativo === 'cadastrar'">
+    <ion-icon
+      class="fechar"
+      (click)="fechar()"
+      name="close-circle-outline"
+    ></ion-icon>
+    <form [formGroup]="formUsuario" (submit)="validarFormulario()">
+      <div class="input-container-login">
+        <input type="text" placeholder="Nome" formControlName="nome" />
+      </div>
+      <input
+        type="text"
+        placeholder="Nome Fantasia"
+        formControlName="nomeFantasia"
+      />
+      <input
+        type="date"
+        placeholder="Data de nascimento"
+        formControlName="dataNascimento"
+      />
+      <input
+        type="string"
+        placeholder="CPF"
+        formControlName="cpf"
+        mask="000.000.000-00"
+      />
+      <input type="email" placeholder="E-mail" formControlName="email" />
+      <input
+        type="string"
+        placeholder="Telefone"
+        formControlName="telefone"
+        mask="(00) 0 0000-0000"
+      />
+      <div class="input-container-login">
+        <ion-icon
+          [name]="verSenhaCadastro === true ? 'eye-off-outline' : 'eye-outline'"
+          (click)="toggleSenhaCadastro()"
+        ></ion-icon>
+        <input
+          [type]="verSenhaCadastro === true ? 'text' : 'password'"
+          placeholder="Senha"
+          formControlName="senha"
+        />
+      </div>
+      <div class="input-container-login">
+        <ion-icon
+          [name]="
+            verConfirmarSenha === true ? 'eye-off-outline' : 'eye-outline'
+          "
+          (click)="toggleConfirmaSenha()"
+        ></ion-icon>
+        <input
+          [type]="verConfirmarSenha === true ? 'text' : 'password'"
+          placeholder="Confirmar senha"
+          formControlName="confirmacaoSenha"
+        />
+      </div>
+    </form>
+  </section>
+  <form id="login" [formGroup]="formLogin">
+    <input
+      type="text"
+      placeholder="E-mail"
+      formControlName="email"
+      [disabled]="ativo !== 'entrar'"
+    />
+    <div class="input-container-login">
+      <ion-icon [name]="icone" (click)="toggleSenha()"></ion-icon>
+      <input
+        [type]="verSenha ? 'text' : 'password'"
+        placeholder="Senha"
+        formControlName="senha"
+        [disabled]="ativo !== 'entrar'"
+      />
+    </div>
+    <div class="button-container">
+      <button
+        type="button"
+        (click)="verificarCadastrar()"
+        [class.ativo]="ativo === 'cadastrar'"
+      >
+        <span>Cadastre-se</span>
+      </button>
+      <button
+        type="button"
+        (click)="verificarEntrar()"
+        [class.ativo]="ativo === 'entrar'"
+      >
+        <span>Entrar</span>
+      </button>
+    </div>
+  </form>
+  <div class="carro-container">
+    <img id="rua" src="rua.png" alt="" />
+    <img id="van" src="van.png" alt="" />
+  </div>
+</main>
+<app-loading [loading]="loading"></app-loading>

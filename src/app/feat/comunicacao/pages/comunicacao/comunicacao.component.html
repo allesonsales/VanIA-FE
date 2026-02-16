@@ -1,0 +1,76 @@
+<app-header></app-header>
+<main>
+  <div class="pesquisa-container">
+    <input
+      type="search"
+      name="nomeAluno"
+      placeholder="Pesquisar aluno por nome..."
+      (input)="pesquisarAluno($event)"
+    />
+    <div class="resultados" *ngIf="mostrarResultados">
+      <div class="aluno" *ngFor="let aluno of alunosFiltrados">
+        <span (click)="selecionarAluno(aluno)"
+          >{{ aluno.aluno }} - {{ aluno.escola }}</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <span>Selecionar por grupo</span>
+    <div class="filtros">
+      <select name="filtro" id="filtro" (change)="filtrar($event)">
+        <option value="escola">Escola</option>
+        <option value="van">Van</option>
+      </select>
+      <select name="" id="" *ngIf="filtroAtivo !== ''">
+        <option *ngFor="let filtro of filtrosAtivos">{{ filtro }}</option>
+      </select>
+      <select name="" id="" *ngIf="filtroAtivo !== ''">
+        <option>Em dia</option>
+        <option>Atrasados</option>
+        <option>Pendentes</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="selecionados-topo-container">
+      <span>Alunos Selecionados</span>
+      <span *ngIf="alunosSelecionados.length === 0"
+        >Nenhum aluno selecionado</span
+      >
+      <span *ngIf="alunosSelecionados.length === 1">1 aluno selecionado</span>
+      <span *ngIf="alunosSelecionados.length > 1"
+        >{{ alunosSelecionados.length }} alunos selecionados</span
+      >
+    </div>
+    <div class="selecionados">
+      <div
+        class="aluno-selecionado"
+        *ngFor="let selecionado of alunosSelecionados"
+      >
+        <span>{{ selecionado.aluno }}</span>
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </div>
+    </div>
+
+    <div class="container">
+      <span> Titulo da mensagem: </span>
+      <input type="text" name="" id="" />
+    </div>
+
+    <div class="container">
+      <span>Mensagem:</span>
+      <textarea name="" id=""></textarea>
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="cancelar">
+      <span>Cancelar</span>
+    </button>
+    <button class="enviar">
+      <span>Enviar</span>
+    </button>
+  </div>
+</main>

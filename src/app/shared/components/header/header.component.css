@@ -1,0 +1,64 @@
+nav {
+  width: 100vw;
+  background-color: var(--amarelo);
+  padding: 1rem;
+  position: relative;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+ion-icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  left: -1rem;
+  background-color: var(--amarelo);
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin: 0;
+}
+
+.titulo {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.6;
+  cursor: default;
+  border-bottom: solid 1px var(--azul-marinho);
+}
+
+li {
+  color: var(--azul-marinho);
+  cursor: pointer;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--azul-marinho);
+  font-weight: 400;
+  opacity: 0.7;
+  transition: ease-in-out 0.2s;
+}
+
+a:hover {
+  opacity: 1;
+}

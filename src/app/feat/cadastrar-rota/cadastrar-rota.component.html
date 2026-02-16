@@ -1,0 +1,94 @@
+<app-header></app-header>
+<main>
+  <h2 class="titulo-cadastro">Cadastrar rota</h2>
+  <form [formGroup]="formRota" (submit)="validarFormulario()">
+    <div class="form-container">
+      <div class="input-container">
+        <label for="cep">CEP do Endereço de partida:</label>
+        <input
+          type="text"
+          formControlName="cep"
+          mask="00000-000"
+          (blur)="buscarEndereco()"
+        />
+      </div>
+      <div class="input-container">
+        <label for="rua">Rua de partida:</label>
+        <input type="text" formControlName="rua" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="numero">Número:</label>
+        <input type="number" formControlName="numero" />
+      </div>
+      <div class="input-container">
+        <label for="bairro">Bairro:</label>
+        <input type="text" formControlName="bairro" />
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="input-container">
+        <label for="bairro">Cidade:</label>
+        <input type="text" formControlName="cidade" />
+      </div>
+      <div class="input-container">
+        <label for="bairro">Estado:</label>
+        <input type="text" formControlName="estado" />
+      </div>
+    </div>
+    <div class="input-container">
+      <label for="van">Van:</label>
+      <select formControlName="vanId">
+        <option disabled selected>Selecione uma van</option>
+        <option *ngFor="let van of vans" [value]="van.id">
+          {{ van.modelo_van?.modelo }}
+        </option>
+      </select>
+    </div>
+    <div class="input-container">
+      <label for="motorista">Motorista:</label>
+      <select formControlName="motoristaId">
+        <option disabled selected>Selecione um motorista</option>
+        <option *ngFor="let motorista of motoristas" [value]="motorista.id">
+          {{ motorista.nome }}
+        </option>
+      </select>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="escola">Escola:</label>
+        <select formControlName="escolaId">
+          <option disabled selected>Selecione uma escola</option>
+          <option *ngFor="let escola of escolas" [value]="escola.id">
+            {{ escola.nome }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="horaInicioIda">Horário inical da ida:</label>
+        <input type="time" formControlName="horaInicioIda" />
+      </div>
+      <div class="input-container">
+        <label for="horaFimIda">Horário final da ida:</label>
+        <input type="time" formControlName="horaFimIda" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="horaInicioVolta">Horário inical da volta:</label>
+        <input type="time" formControlName="horaInicioVolta" />
+      </div>
+      <div class="input-container">
+        <label for="horaFimVolta">Horário final da volta:</label>
+        <input type="time" formControlName="horaFimVolta" />
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="botao-enviar-cadastro">Cadastrar</button>
+    </div>
+  </form>
+</main>

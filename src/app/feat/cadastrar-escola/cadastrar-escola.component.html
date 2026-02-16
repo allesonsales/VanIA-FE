@@ -1,0 +1,65 @@
+<app-header></app-header>
+<main>
+  <h2 class="titulo-cadastro">Cadastrar escola</h2>
+  <form [formGroup]="formEscola" (submit)="validarFormulario()">
+    <div class="form-container">
+      <div class="input-container">
+        <label for="">Tipo</label>
+        <select formControlName="tipo">
+          <option value="" disabled selected>Selecione o tipo</option>
+          <option *ngFor="let tipo of tiposEscola" [value]="tipo.id">
+            {{ tipo.tipo }}
+          </option>
+        </select>
+      </div>
+      <div class="input-container">
+        <label for="telefone">Telefone:</label>
+        <input type="text" formControlName="telefone" mask="(00) 0000-0000" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="nome">Nome da escola:</label>
+        <input type="text" formControlName="nome" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="cep">CEP:</label>
+        <input
+          type="text"
+          formControlName="cep"
+          mask="00000-000"
+          (blur)="buscarCep()"
+        />
+      </div>
+      <div class="input-container">
+        <label for="rua">Rua:</label>
+        <input type="text" formControlName="rua" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="numero">Número:</label>
+        <input type="number" formControlName="numero" />
+      </div>
+      <div class="input-container">
+        <label for="bairro">Bairro:</label>
+        <input type="text" formControlName="bairro" />
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="input-container">
+        <label for="bairro">Cidade:</label>
+        <input type="text" formControlName="cidade" />
+      </div>
+      <div class="input-container">
+        <label for="bairro">Estado:</label>
+        <input type="text" formControlName="estado" />
+      </div>
+    </div>
+    <button class="botao-enviar-cadastro">Cadastrar</button>
+  </form>
+</main>
+<app-loading [loading]="loading"></app-loading>

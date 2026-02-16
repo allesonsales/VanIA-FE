@@ -1,0 +1,114 @@
+main {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  gap: 2rem;
+}
+
+select,
+input,
+textarea {
+  border-radius: 15px;
+  min-height: 45px;
+  padding: 0.7rem;
+  border: var(--amarelo) solid 1px;
+  width: 100%;
+  color: var(--azul-marinho);
+  outline: var(--amarelo);
+}
+
+.pesquisa-container {
+  width: 100%;
+  min-height: 35px;
+  position: relative;
+}
+
+#pesquisa {
+  width: 100%;
+  min-height: 45px;
+  border: none;
+  outline: none;
+  border: var(--amarelo) solid 1px;
+}
+
+.resultados {
+  background-color: #fff;
+  padding: 1rem;
+  position: absolute;
+  left: 0;
+  box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.29);
+  border: var(--amarelo) solid 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.resultados .aluno {
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.filtros {
+  display: flex;
+  gap: 1rem;
+}
+
+.selecionados-topo-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.selecionados {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 15px;
+  padding: 0.7rem;
+  min-height: 50px;
+}
+
+.aluno-selecionado {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #d9d9d9;
+  color: var(--azul-marinho);
+  padding: 0.7rem;
+  border-radius: 15px;
+  max-width: fit-content;
+}
+
+.aluno-selecionado ion-icon {
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.button-container button {
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+}
+
+.cancelar {
+  background-color: var(--texto-vermelho);
+}
+
+.enviar {
+  background-color: var(--azul-marinho);
+  color: #fff;
+}

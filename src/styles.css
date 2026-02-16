@@ -1,1 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --amarelo: #ffe74c;
+  --amarelo-transparente: #fcf3b8;
+  --azul-marinho: #174770;
+  --texto-tabela: #616261;
+  --texto-verde: #2d6d08;
+  --texto-vermelho: #ff6c6c;
+  --sucesso: #30db74;
+  --error: #db3030;
+}
+
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  margin: 0 2rem;
+  margin-top: 2rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+  overflow-x: hidden;
+}
+
+form {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  background-color: #ffff;
+  box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: 15px;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  color: var(--azul-marinho);
+}
+
+label {
+  color: var(--azul-marinho);
+  font-size: 0.8rem;
+}
+
+input,
+select {
+  min-height: 30px;
+  border-radius: 7px;
+  border: solid 1px var(--amarelo);
+  color: var(--azul-marinho);
+  padding: 0.7rem;
+  width: 100%;
+}
+
+.titulo-cadastro {
+  font-weight: 300;
+  color: var(--azul-marinho);
+}
+
+.botao-enviar-cadastro {
+  background-color: var(--azul-marinho);
+  color: #fff;
+  cursor: pointer;
+  min-width: 100px;
+  padding: 0.7rem;
+  border-radius: 7px;
+}

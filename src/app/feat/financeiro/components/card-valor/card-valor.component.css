@@ -1,0 +1,33 @@
+.card-container {
+  display: flex;
+  border-radius: 15px;
+  min-width: 500px;
+}
+
+.card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+  width: 30%;
+}
+
+.card1 {
+  background-color: var(--amarelo);
+  color: var(--texto-verde);
+  border-radius: 15px 0 0 15px;
+}
+
+.card2 {
+  background-color: var(--amarelo);
+  opacity: 0.9;
+  color: var(--texto-vermelho);
+}
+
+.card3 {
+  background-color: var(--amarelo);
+  opacity: 0.8;
+  border-radius: 0 15px 15px 0;
+  color: var(--azul-marinho);
+}

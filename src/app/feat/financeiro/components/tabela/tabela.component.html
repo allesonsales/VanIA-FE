@@ -1,0 +1,95 @@
+<ion-grid>
+  <ion-row>
+    <ion-searchbar
+      placeholder="Pesquisar aluno..."
+      (ionInput)="pesquisarAluno($event)"
+    ></ion-searchbar>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-select
+        aria-label="filtro"
+        placeholder="Filtrar por..."
+        (ionChange)="trocarFiltroAtivo($event)"
+      >
+        <ion-select-option value="escola">Escola</ion-select-option>
+        <ion-select-option value="status">Status</ion-select-option>
+        <ion-select-option value="van">Van</ion-select-option>
+      </ion-select>
+    </ion-col>
+    <ion-col>
+      <ion-select
+        aria-label="fruit"
+        placeholder="Filtrar por..."
+        [disabled]="!filtroAtivo"
+        (ionChange)="filtrar($event)"
+      >
+        <ion-select-option
+          *ngFor="let valor of valoresFiltro"
+          [value]="valor"
+          >{{ valor }}</ion-select-option
+        >
+      </ion-select></ion-col
+    >
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-checkbox></ion-checkbox>
+    </ion-col>
+    <ion-col>Aluno</ion-col>
+    <ion-col>Responsável</ion-col>
+    <ion-col>Escola</ion-col>
+    <ion-col>Vencimento</ion-col>
+    <ion-col>Valor</ion-col>
+    <ion-col>Status</ion-col>
+    <ion-col>Ações</ion-col>
+  </ion-row>
+  <ion-row *ngFor="let aluno of alunosFiltrados">
+    <ion-col>
+      <ion-checkbox></ion-checkbox>
+    </ion-col>
+    <ion-col>
+      <span class="etc">
+        {{ aluno.aluno }}
+      </span>
+    </ion-col>
+    <ion-col>
+      <span class="etc">
+        {{ aluno.responsavel }}
+      </span>
+    </ion-col>
+    <ion-col>
+      <span class="etc">
+        {{ aluno.escola }}
+      </span>
+    </ion-col>
+    <ion-col>
+      <span class="etc">
+        {{ aluno.vencimento }}
+      </span>
+    </ion-col>
+    <ion-col>{{ aluno.valor }}</ion-col>
+    <ion-col>
+      <div
+        [class]="
+          aluno.status.toLowerCase() === 'em dia'
+            ? 'em-dia'
+            : aluno.status.toLocaleLowerCase() === 'em atraso'
+            ? 'em-atraso'
+            : aluno.status.toLowerCase() === 'pendente'
+            ? 'pendente'
+            : 'cancelado'
+        "
+      >
+        {{ aluno.status }}
+      </div></ion-col
+    >
+    <ion-col>
+      <div class="acoes-container">
+        <ion-icon name="eye-outline"></ion-icon>
+        <ion-icon name="pencil-outline"></ion-icon>
+        <ion-icon name="trash-outline"></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

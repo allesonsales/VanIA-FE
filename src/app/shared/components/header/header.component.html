@@ -1,0 +1,47 @@
+<nav>
+  <ion-icon
+    [name]="menuAberto ? 'close' : 'reorder-three-outline'"
+    (click)="toggleMenu()"
+  ></ion-icon>
+  <div class="menu" *ngIf="menuAberto">
+    <ul>
+      <li>
+        <a href="/dashboard"> Home </a>
+      </li>
+    </ul>
+    <ul>
+      <li class="titulo">Cadastro</li>
+      <li>
+        <a href="/cadastrar-aluno">Cadastrar aluno</a>
+      </li>
+      <li>
+        <a href="/cadastrar-escola">Cadastrar escola</a>
+      </li>
+      <li>
+        <a href="/cadastrar-motorista">Cadastrar motorista</a>
+      </li>
+      <li>
+        <a href="/cadastrar-van">Cadastrar van</a>
+      </li>
+      <li>
+        <a href="/cadastrar-rota">Cadastrar rota</a>
+      </li>
+    </ul>
+    <ul>
+      <li class="titulo">Comunicação</li>
+      <li>Mensagens enviadas</li>
+      <li>Histórico de notificações</li>
+    </ul>
+    <ul>
+      <li class="titulo">Configurações</li>
+      <li>Perfil</li>
+      <li>Alterar Senha</li>
+      <li>Excluir conta</li>
+    </ul>
+    <ul>
+      <li class="titulo">Sessão</li>
+      <li>Ajuda</li>
+      <li>Sair</li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,76 @@
+<app-header></app-header>
+<main>
+  <h2 class="titulo-cadastro">Cadastrar Van</h2>
+  <form [formGroup]="formVan" (submit)="validarFormulario()">
+    <div class="form-container">
+      <div class="input-container">
+        <label for="marca">Marca</label>
+        <select formControlName="marcaId">
+          <option value="" disabled selected>Selecione a marca</option>
+          <option *ngFor="let marca of marcas" [value]="marca.id">
+            {{ marca.marca }}
+          </option>
+        </select>
+      </div>
+      <div class="input-container">
+        <label for="">Modelo</label>
+        <select formControlName="modelo">
+          <option value="" disabled selected>Selecione o modelo</option>
+          <option *ngFor="let modelo of modelos" value="{{ modelo.id }}">
+            {{ modelo.modelo }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="lugares">Lugares:</label>
+        <input
+          type="number"
+          name="lugares"
+          formControlName="lugares"
+          placeholder="N de lugares"
+        />
+      </div>
+      <div class="input-container">
+        <label for="ano">Ano:</label>
+        <select formControlName="ano" name="ano">
+          <option [value]="ano" *ngFor="let ano of anos">{{ ano }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="placa">Placa</label>
+        <input
+          id="placa"
+          type="text"
+          formControlName="placa"
+          name="placa"
+          mask="AAA-0A00"
+        />
+      </div>
+      <div class="input-container">
+        <label for="identificacao">Número da van:</label>
+        <input
+          type="number"
+          placeholder="Número escrito na van, ou número criado"
+          formControlName="numero"
+        />
+      </div>
+      <div class="input-container">
+        <label for="identificacao">Renavam:</label>
+        <input
+          type="number"
+          placeholder="Número de renavam"
+          formControlName="renavam"
+          mask="00000000000"
+        />
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="botao-enviar-cadastro">Enviar</button>
+    </div>
+  </form>
+</main>
+<app-loading [loading]="loading"></app-loading>

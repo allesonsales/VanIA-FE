@@ -1,0 +1,64 @@
+<app-header></app-header>
+<main>
+  <h2 class="titulo-cadastro">Cadastrar motorista</h2>
+  <form [formGroup]="formMotorista" (submit)="validarFormulario()">
+    <div class="input-container">
+      <label for="">Nome:</label>
+      <input type="text" formControlName="nome" />
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="">Data nascimento:</label>
+        <input type="date" formControlName="dataNascimento" />
+      </div>
+      <div class="input-container">
+        <label for="telefone">Telefone:</label>
+        <input
+          type="text"
+          formControlName="telefone"
+          mask="(00) 0 0000-0000"
+          placeholder="(11) 9 0000-0000"
+        />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="">CPF:</label>
+        <input type="text" formControlName="cpf" mask="000.000.000-00" />
+      </div>
+      <div class="input-container">
+        <label for="">CNH:</label>
+        <input type="text" formControlName="cnh" mask="00000000000" />
+      </div>
+      <div class="input-container">
+        <label for="validade">Validade da CNH:</label>
+        <input type="date" formControlName="dataValidadeCnh" />
+      </div>
+    </div>
+    <div class="input-container">
+      <label for="tipoSanguineo">Tipo Sanguíneo:</label>
+      <select name="tipoSanguineo" formControlName="tipoSanguineo">
+        <option value="a+">A+</option>
+        <option value="a-">A-</option>
+        <option value="b+">B+</option>
+        <option value="b-">B-</option>
+        <option value="ab+">AB+</option>
+        <option value="ab-">AB-</option>
+        <option value="o+">O+</option>
+        <option value="o-">O-</option>
+      </select>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="email">E-mail:</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="O motorista utilizará este e-mail para acessar o sistema..."
+        />
+      </div>
+    </div>
+    <button class="botao-enviar-cadastro">Cadastrar</button>
+  </form>
+</main>
+<app-loading [loading]="loading"></app-loading>

@@ -1,0 +1,26 @@
+.novo-responsavel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-top: solid 1px var(--azul-marinho);
+  padding: 1rem 0;
+}
+
+.adicionar-responsavel {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.adicionar-responsavel button {
+  cursor: pointer;
+  font-size: 0.8rem;
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  color: var(--azul-marinho);
+}
+
+.button-container button {
+}

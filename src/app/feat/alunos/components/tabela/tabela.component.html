@@ -1,0 +1,76 @@
+<ion-grid>
+  <ion-row>
+    <ion-searchbar placeholder="Pesquisar aluno..."></ion-searchbar>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-select
+        aria-label="filtro"
+        placeholder="Filtrar por..."
+        (ionChange)="trocarFiltroAtivo($event)"
+      >
+        <ion-select-option value="escola">Escola</ion-select-option>
+        <ion-select-option value="status">Status</ion-select-option>
+        <ion-select-option value="van">Van</ion-select-option>
+      </ion-select>
+    </ion-col>
+    <ion-col>
+      <ion-select
+        aria-label="fruit"
+        placeholder="Filtrar por..."
+        [disabled]="!filtroAtivo"
+        (ionChange)="filtrar($event)"
+      >
+        <ion-select-option
+          *ngFor="let valor of valoresFiltro"
+          [value]="valor"
+          >{{ valor }}</ion-select-option
+        >
+      </ion-select></ion-col
+    >
+  </ion-row>
+  <ion-row>
+    <ion-col>Aluno</ion-col>
+    <ion-col>Responsável</ion-col>
+    <ion-col>Escola</ion-col>
+    <ion-col>Endereço</ion-col>
+    <ion-col>Van</ion-col>
+    <ion-col>Status</ion-col>
+    <ion-col>Ações</ion-col>
+  </ion-row>
+  <ion-row *ngFor="let aluno of alunosFiltrados">
+    <ion-col>
+      <span class="etc">
+        {{ aluno.nome }}
+      </span>
+    </ion-col>
+    <ion-col>
+      <span class="etc">
+        {{ aluno.responsaveis }}
+      </span>
+    </ion-col>
+    <ion-col>
+      <span class="etc">
+        {{ aluno.rota.escola.nome }}
+      </span>
+    </ion-col>
+    <ion-col>
+      <span class="etc">
+        {{ aluno.endereco.rua }} - {{ aluno.endereco.bairro }}
+      </span>
+    </ion-col>
+    <ion-col>{{ aluno.rota.van.numero }}</ion-col>
+    <ion-col>
+      <div [class]="aluno.status === 1 ? 'ativo' : 'inativo'">
+        {{ aluno.status }}
+      </div></ion-col
+    >
+    <ion-col>
+      <div class="acoes-container">
+        <ion-icon name="eye-outline"></ion-icon>
+        <ion-icon name="pencil-outline"></ion-icon>
+        <ion-icon name="trash-outline"></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

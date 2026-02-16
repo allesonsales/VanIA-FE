@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+import { HeaderComponent } from '../../../../shared/components/header/header.component';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
+
+@Component({
+  selector: 'app-dashboard',
+  imports: [HeaderComponent, ButtonComponent],
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css',
+})
+export class DashboardComponent {}

@@ -1,0 +1,25 @@
+<app-header></app-header>
+<main>
+  <app-calendario label="Selecionar Mês"> </app-calendario>
+  <div class="topo-container">
+    <app-card-valor></app-card-valor>
+    <div class="button-container">
+      <app-button
+        tipoIcone="ion"
+        icone="checkmark-circle-outline"
+        texto="Confirmar pagamento"
+      ></app-button>
+      <app-button
+        tipoIcone="ion"
+        icone="chatbox-ellipses-outline"
+        texto="Notificar responsáveis selecionados"
+      ></app-button>
+      <app-button
+        tipoIcone="ion"
+        icone="calendar-number-outline"
+        texto="Notificar todos atrasados"
+      ></app-button>
+    </div>
+  </div>
+  <app-tabela></app-tabela>
+</main>

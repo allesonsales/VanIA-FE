@@ -1,0 +1,10 @@
+<div
+  *ngIf="mensagem$ | async as flash"
+  class="flash-message"
+  [ngClass]="flash.tipo"
+  @flashAnimation
+>
+  <span>
+    {{ flash.mensagem }}
+  </span>
+</div>

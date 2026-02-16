@@ -1,0 +1,10 @@
+<form>
+  <input
+    type="month"
+    name="mesSelecionado"
+    [min]="min"
+    id="mesSelecionado"
+    [(ngModel)]="mesSelecionado"
+    (ngModelChange)="selecionarMes($event)"
+  />
+</form>

@@ -1,0 +1,61 @@
+<main>
+  <ion-grid>
+    <ion-row>
+      <ion-searchbar
+        placeholder="Pesquisar escola..."
+        (ionInput)="pesquisarEscola($event)"
+      ></ion-searchbar>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2">
+        <select (change)="filtrar($event)">
+          <option selected disabled>Filtrar por...</option>
+          <option value="1">Creche</option>
+          <option value="2">Municipal</option>
+          <option value="3">Estadual</option>
+          <option value="4">Particular</option>
+          <option value="5">Faculdade</option>
+        </select>
+      </ion-col>
+    </ion-row>
+    <ion-row class="header ion-hide-sm-down">
+      <ion-col>Escola</ion-col>
+      <ion-col>Telefone</ion-col>
+      <ion-col>Tipo</ion-col>
+      <ion-col>Endereço</ion-col>
+      <ion-col>Status</ion-col>
+      <ion-col>Ações</ion-col>
+    </ion-row>
+    <ion-row
+      *ngFor="let escola of escolasFiltradas"
+      class="linha-rota ion-align-items-center"
+    >
+      <ion-col>
+        <strong>{{ escola.nome }}</strong>
+      </ion-col>
+      <ion-col>
+        <span>
+          {{ escola.telefone }}
+        </span>
+      </ion-col>
+      <ion-col>
+        {{ escola.tipo }}
+      </ion-col>
+      <ion-col>
+        {{ escola.endereco.rua }} - {{ escola.endereco.bairro }}
+      </ion-col>
+      <ion-col>
+        <ion-badge [ngClass]="escola.status ? 'ativa' : 'inativa'">
+          {{ escola.status ? "Ativa" : "Inativa" }}
+        </ion-badge>
+      </ion-col>
+      <ion-col>
+        <div class="acoes-container">
+          <ion-icon name="eye-outline"></ion-icon>
+          <ion-icon name="pencil-outline"></ion-icon>
+          <ion-icon name="trash-outline"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</main>
