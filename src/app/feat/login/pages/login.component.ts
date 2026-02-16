@@ -20,6 +20,7 @@ import { FlashMessageService } from '../../../service/flash-message.service';
 import { NgxMaskDirective } from 'ngx-mask';
 import verificarIdade from '../../../shared/utils/verificarIdade';
 import { LoadingComponent } from '../../../shared/components/loading/loading.component';
+import { ModalPrimeiroAcessoComponent } from '../component/modal-primeiro-acesso/modal-primeiro-acesso.component';
 
 @Component({
   standalone: true,
@@ -30,6 +31,7 @@ import { LoadingComponent } from '../../../shared/components/loading/loading.com
     ReactiveFormsModule,
     NgxMaskDirective,
     LoadingComponent,
+    ModalPrimeiroAcessoComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
@@ -42,6 +44,8 @@ export class LoginComponent implements OnInit {
     private usuarioService: UsuarioService,
     private flashMessage: FlashMessageService,
   ) {}
+
+  modalPrimeiroAcesso = false;
 
   verSenha = false;
   verSenhaCadastro = false;
@@ -68,6 +72,8 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       senha: ['', Validators.required],
     });
+
+    document.title = 'VanIA | Seu assistente de transporte escolar';
   }
 
   fechar() {
@@ -161,17 +167,23 @@ export class LoginComponent implements OnInit {
       next: (res) => {
         this.loading = false;
         this.flashMessage.show(`Cadastro realizado com sucesso!`, `success`);
+        this.router.navigate(['/dashboard']);
       },
-      error(err) {
+      error: (err) => {
+        this.loading = false;
+        this.flashMessage.show(err.error.message, err.error.status);
         console.error(err);
       },
     });
   }
 
   validarLogin() {
+    this.loading = true;
+
     if (this.formLogin.invalid) {
       this.formUsuario.markAllAsTouched();
       this.flashMessage.show('Preencha todos os campos obrigatórios', 'error');
+      this.loading = false;
       return;
     }
 
@@ -182,12 +194,37 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         this.flashMessage.show(res.message, res.status);
         this.router.navigate(['/dashboard']);
+        this.verificarTipoUsuario();
       },
       error: (err) => {
+        this.loading = false;
         this.flashMessage.show(err.error.message, err.error.status);
         console.error(err);
       },
     });
+  }
+
+  verificarTipoUsuario() {
+    this.usuarioService.buscarUsuario().subscribe({
+      next: (res: any) => {
+        console.log(res);
+        if (res.tipo === 1) {
+          this.router.navigate(['/dashboard']);
+        } else if (res.tipo === 2) {
+          this.router.navigate(['/motorista']);
+        } else if (res.tipo === 3) {
+          this.router.navigate(['/responsavel']);
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  abrirModalPrimeiroAcesso() {
+    console.log('clicou');
+    this.modalPrimeiroAcesso = true;
   }
 
   entrar() {

@@ -20,6 +20,8 @@ import { VanService } from '../../service/van.service';
 import { MotoristaService } from '../../service/motorista.service';
 import { EscolaService } from '../../service/escola.service';
 import { CommonModule } from '@angular/common';
+import { LoadingComponent } from '../../shared/components/loading/loading.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-rota',
@@ -28,11 +30,19 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     NgxMaskDirective,
     CommonModule,
+    LoadingComponent,
   ],
   templateUrl: './cadastrar-rota.component.html',
   styleUrl: './cadastrar-rota.component.css',
 })
 export class CadastrarRotaComponent implements OnInit {
+  formRota!: FormGroup;
+  loading = false;
+  endereco: EnderecoViaCep | null = null;
+  motoristas: Motorista[] = [];
+  vans: Van[] = [];
+  escolas: Escola[] = [];
+
   constructor(
     private fb: FormBuilder,
     private flashMessage: FlashMessageService,
@@ -40,14 +50,8 @@ export class CadastrarRotaComponent implements OnInit {
     private motoristaService: MotoristaService,
     private escolaService: EscolaService,
     private rotaService: RotaService,
+    private router: Router,
   ) {}
-
-  formRota!: FormGroup;
-  loading = false;
-  endereco: EnderecoViaCep | null = null;
-  motoristas: Motorista[] = [];
-  vans: Van[] = [];
-  escolas: Escola[] = [];
 
   ngOnInit(): void {
     this.formRota = this.fb.group({
@@ -65,6 +69,8 @@ export class CadastrarRotaComponent implements OnInit {
       cidade: ['', Validators.required],
       estado: ['', Validators.required],
     });
+
+    document.title = 'VanIA | Cadastrar rota';
 
     this.vanService.buscarVans().subscribe({
       next: (res: any) => {
@@ -98,12 +104,17 @@ export class CadastrarRotaComponent implements OnInit {
   }
 
   async buscarEndereco() {
+    this.loading = true;
     let cepDigitado = this.formRota.get('cep')?.value;
     this.endereco = await buscarCep(cepDigitado);
 
-    if (this.endereco == null) return;
+    if (this.endereco == null) {
+      this.loading = false;
+      return;
+    }
 
     if (this.endereco) {
+      this.loading = false;
       this.formRota.get('rua')?.setValue(this.endereco.logradouro);
       this.formRota.get('bairro')?.setValue(this.endereco.bairro);
       this.formRota.get('cidade')?.setValue(this.endereco.localidade);
@@ -112,6 +123,7 @@ export class CadastrarRotaComponent implements OnInit {
   }
 
   async validarFormulario() {
+    this.loading = true;
     const horaInicioIda = this.formRota.get('horaInicioIda')?.value;
     const horaFimIda = this.formRota.get('horaFimIda')?.value;
     const horaInicioVolta = this.formRota.get('horaInicioVolta')?.value;
@@ -123,6 +135,7 @@ export class CadastrarRotaComponent implements OnInit {
     const estado = this.formRota.get('estado')?.value;
 
     if (this.formRota.invalid) {
+      this.loading = false;
       this.flashMessage.show('Preencha todos os campos!', 'error');
       return;
     }
@@ -137,6 +150,7 @@ export class CadastrarRotaComponent implements OnInit {
     );
 
     if (validarHorarioIda.valido === false) {
+      this.loading = false;
       this.flashMessage.show(
         'O horário de início da ida deve ser menor que o horário final.',
         'error',
@@ -145,6 +159,7 @@ export class CadastrarRotaComponent implements OnInit {
     }
 
     if (validarHorarioVolta.valido == false) {
+      this.loading = false;
       this.flashMessage.show(
         'O horário de início da volta deve ser menor que o horário final.',
         'error',
@@ -152,16 +167,20 @@ export class CadastrarRotaComponent implements OnInit {
       return;
     }
 
-    console.log(validarHorarioIda);
-    console.log(validarHorarioVolta);
-
     const payload = this.formRota.value;
+
+    console.log(payload);
 
     this.rotaService.cadastrarRotas(payload).subscribe({
       next: (res: any) => {
+        console.log(res);
+        this.loading = false;
         this.flashMessage.show(res.message, res.status);
+        this.router.navigate(['/rotas']);
       },
       error: (err) => {
+        console.log(err);
+        this.loading = false;
         this.flashMessage.show(err.error.message, err.error.status);
       },
     });

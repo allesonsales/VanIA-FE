@@ -1,0 +1,42 @@
+.modal {
+  min-width: 30vw;
+  padding: 2rem;
+}
+
+.modal form {
+  width: 100%;
+  overflow-y: hidden;
+  position: relative;
+  padding: 2rem;
+}
+
+.modal form #fechar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 2rem;
+  color: var(--azul-marinho);
+  cursor: pointer;
+}
+
+.modal form .input-container input {
+  background-color: var(--amarelo);
+  color: var(--azul-marinho);
+}
+
+.modal button {
+  border: none;
+  background-color: var(--azul-marinho);
+  color: var(--amarelo);
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.input-primeiro-acesso {
+  background-color: var(--amarelo);
+  color: var(--azul-marinho);
+}
+
+button {
+  cursor: pointer;
+}

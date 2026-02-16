@@ -6,7 +6,8 @@ export interface Escola {
   nome: string;
   telefone: string;
   status: number;
-  endereco: Endereco;
+  statusLabel: string;
+  endereco?: Endereco;
 }
 
 export interface TipoEscola {

@@ -1,0 +1,53 @@
+<div class="modal-background" *ngIf="abrirModal">
+  <div class="modal">
+    <form *ngIf="primeiroAcesso" [formGroup]="primeiroAcesso">
+      <ion-icon
+        id="fechar"
+        name="close-circle-outline"
+        (click)="fecharModal()"
+      ></ion-icon>
+      <div class="input-container-login">
+        <input
+          class="input-primeiro-acesso"
+          type="email"
+          placeholder="E-mail"
+          formControlName="email"
+        />
+      </div>
+      <div class="input-container-login" *ngIf="cadastrarSenha">
+        <ion-icon
+          [name]="verSenha === true ? 'eye-off-outline' : 'eye-outline'"
+          (click)="toggleVerSenha()"
+        ></ion-icon>
+        <input
+          class="input-primeiro-acesso"
+          placeholder="Senha"
+          [type]="verSenha ? 'text' : 'password'"
+          formControlName="senha"
+        />
+      </div>
+      <div class="input-container-login" *ngIf="cadastrarSenha">
+        <ion-icon
+          [name]="verSenha === true ? 'eye-off-outline' : 'eye-outline'"
+          (click)="toggleConfirmarSenha()"
+        ></ion-icon>
+        <input
+          class="input-primeiro-acesso"
+          placeholder="Confirmar senha"
+          [type]="verConfirmarSenha ? 'text' : 'password'"
+          formControlName="senha"
+        />
+      </div>
+      <button type="button" *ngIf="!cadastrarSenha" (click)="verificarEmail()">
+        Buscar
+      </button>
+      <button
+        type="button"
+        *ngIf="cadastrarSenha"
+        (click)="enviarSenhaCadastro()"
+      >
+        Salvar
+      </button>
+    </form>
+  </div>
+</div>

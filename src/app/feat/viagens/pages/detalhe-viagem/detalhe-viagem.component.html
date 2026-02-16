@@ -1,0 +1,31 @@
+<app-header> </app-header>
+<main>
+  <section id="viagem">
+    <header class="cabecalho">
+      <img src="/icones/viagens.png" alt="Ícone Viagem" />
+      <div class="dados">
+        <h1 class="titulo">
+          {{ viagem?.rota?.nome }}
+        </h1>
+        <small>{{ viagem?.data | date: "dd/MM/yy" }}</small>
+      </div>
+    </header>
+
+    <section class="dados-container">
+      <ul>
+        <li *ngFor="let aluno of viagem?.alunos" class="aluno">
+          <img src="/icones/aluno.png" alt="" />
+          <div class="aluno-presenca">
+            <span>{{ aluno.nome }}</span>
+            <ion-icon
+              [ngClass]="aluno.presenca ? 'presente' : 'faltou'"
+              [name]="
+                aluno.presenca ? 'checkmark-done-outline' : 'close-outline'
+              "
+            ></ion-icon>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </section>
+</main>

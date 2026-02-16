@@ -25,12 +25,34 @@ export class EscolaService {
     });
   }
 
+  buscarEscola(id: any) {
+    console.log('Chamou o service');
+    return this.httpClient.get(`${environment.apiUrl}${this.endPoint}/${id}`, {
+      withCredentials: true,
+    });
+  }
+
   buscarTipos() {
     return this.httpClient.get<TipoEscola[]>(
       `${environment.apiUrl}${this.endPoint}/tipos`,
       {
         withCredentials: true,
       },
+    );
+  }
+
+  atualizarEscola(payload: any, id: number) {
+    return this.httpClient.put(
+      `${environment.apiUrl}${this.endPoint}/${id}`,
+      payload,
+      { withCredentials: true },
+    );
+  }
+
+  deletarEscola(id: any) {
+    return this.httpClient.delete(
+      `${environment.apiUrl}${this.endPoint}/${id}`,
+      { withCredentials: true },
     );
   }
 }

@@ -1,2 +1,49 @@
 <app-header></app-header>
-<p>detalhe-van works!</p>
+<main>
+  <section id="van">
+    <img src="/van.png" alt="" />
+    <div class="titulo">
+      <ul>
+        <li id="numero-titulo">
+          <span>{{ van?.numero }}</span>
+        </li>
+
+        <li>
+          <span id="modelo"> {{ van?.modelo_van?.modelo }}</span>
+        </li>
+      </ul>
+    </div>
+    <ul class="dados-container">
+      <li>
+        <strong>Placa:</strong> <span> {{ van?.placa | placa }}</span>
+      </li>
+      <li>
+        <strong>Renavam:</strong> <span> {{ van?.renavam }}</span>
+      </li>
+      <li>
+        <strong>Total de alunos:</strong>
+        <span> {{ totalAlunos }}</span>
+      </li>
+      <li>
+        <strong>Total de rotas:</strong>
+        <span> {{ totalAlunos }}</span>
+      </li>
+      <div class="acoes-container">
+        <ion-icon name="pencil" (click)="abrirModalEdicao()"></ion-icon>
+        <ion-icon name="trash" (click)="abrirModalDeletar()"></ion-icon>
+      </div>
+    </ul>
+  </section>
+</main>
+<app-editar-van
+  [van]="van"
+  [abrirModal]="abrirEditar"
+  (fecharModal)="fecharModalEdicao()"
+></app-editar-van>
+<app-modal-delete
+  [textoEntrada]="`Tem certeza que deseja excluir a van n ${van?.id}?`"
+  [abrirModal]="abrirDeletar"
+  (confirmar)="deletarVan()"
+  (fechar)="fecharModal()"
+></app-modal-delete>
+<app-loading [loading]="loading"></app-loading>

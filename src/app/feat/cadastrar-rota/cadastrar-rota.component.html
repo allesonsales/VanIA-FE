@@ -51,7 +51,10 @@
       <label for="motorista">Motorista:</label>
       <select formControlName="motoristaId">
         <option disabled selected>Selecione um motorista</option>
-        <option *ngFor="let motorista of motoristas" [value]="motorista.id">
+        <option
+          *ngFor="let motorista of motoristas"
+          [value]="motorista.usuario_motorista_id"
+        >
           {{ motorista.nome }}
         </option>
       </select>
@@ -92,3 +95,4 @@
     </div>
   </form>
 </main>
+<app-loading [loading]="loading"></app-loading>

@@ -2,16 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { Rota } from '../../../../../types/Rotas';
-
-export interface AlunoFinanceiro {
-  id: number;
-  aluno: string;
-  responsavel: string;
-  escola: string;
-  vencimento: string;
-  valor: string;
-  status: string;
-}
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabela',
@@ -23,6 +14,8 @@ export interface AlunoFinanceiro {
 export class TabelaComponent implements OnChanges {
   @Input() rotas!: Rota[];
   rotasFiltradas: Rota[] = [];
+
+  constructor(private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.rotas) return;
@@ -43,7 +36,11 @@ export class TabelaComponent implements OnChanges {
 
     const valor = event.detail.value;
     this.rotasFiltradas = this.rotas.filter(
-      (rota) => (rota as any)[this.filtroAtivo] === valor
+      (rota) => (rota as any)[this.filtroAtivo] === valor,
     );
+  }
+
+  consultarRota(id: number) {
+    this.router.navigate([`/rotas/${id}`]);
   }
 }

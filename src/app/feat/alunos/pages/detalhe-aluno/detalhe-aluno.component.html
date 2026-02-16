@@ -1,0 +1,119 @@
+<app-header> </app-header>
+<main>
+  <section id="aluno">
+    <header class="cabecalho">
+      <img src="/icones/aluno.png" alt="Ícone Motorista" />
+
+      <h1 class="titulo">
+        {{ aluno?.nome }}
+      </h1>
+    </header>
+
+    <section class="dados-container">
+      <ul class="horario">
+        <li>
+          <small>Data de nascimento</small>
+          <span>{{ aluno?.data_nascimento | date: "dd/MM/yy" }}</span>
+        </li>
+        <li>
+          <small>RG</small>
+          <span>{{ aluno?.rg }}</span>
+        </li>
+        <li *ngIf="aluno?.tipo_sanguineo !== ''">
+          <small>Tipo sanguineo</small>
+          <span>{{ aluno?.tipo_sanguineo }}</span>
+        </li>
+      </ul>
+
+      <ul class="horario">
+        <li>
+          <small>Escola</small>
+          <span>{{ aluno?.escola?.nome }}</span>
+        </li>
+        <li>
+          <small>Telefone escola</small>
+          <span>{{ aluno?.escola?.telefone | telefone }}</span>
+        </li>
+      </ul>
+
+      <ul class="horario">
+        <li>
+          <small>Rota</small>
+          <span>{{ aluno?.rota?.nome }}</span>
+        </li>
+        <li>
+          <small>Van</small>
+          <span
+            >{{ aluno?.rota?.van?.numero }} -
+            {{ aluno?.rota?.van?.modelo }}</span
+          >
+        </li>
+      </ul>
+      <ul class="horario">
+        <li>
+          <small>Responsável</small>
+          <span>{{ aluno?.responsavel?.nome }}</span>
+        </li>
+        <li>
+          <small>Telefone responsável</small>
+          <span>{{ aluno?.responsavel?.telefone | telefone }}</span>
+        </li>
+      </ul>
+      <ul class="horario">
+        <li>
+          <small>Responsável</small>
+          <span>{{ aluno?.responsavel?.nome }}</span>
+        </li>
+        <li>
+          <small>Telefone responsável</small>
+          <span>{{ aluno?.responsavel?.telefone | telefone }}</span>
+        </li>
+      </ul>
+
+      <footer class="acoes-container">
+        <button type="button" (click)="baixarContarto()">
+          <ion-icon name="arrow-down-circle-outline"></ion-icon>
+        </button>
+        <button
+          type="button"
+          aria-label="Ligar para o motorista"
+          (click)="mensagemResponsavel()"
+        >
+          <ion-icon name="chatbubble"></ion-icon>
+        </button>
+        <button
+          type="button"
+          aria-label="Ver histórico pagamento"
+          (click)="verPagamentos()"
+        >
+          <ion-icon name="cash-outline"></ion-icon>
+        </button>
+        <button
+          type="button"
+          aria-label="Editar motorista"
+          (click)="abrirModalEditar()"
+        >
+          <ion-icon name="pencil"></ion-icon>
+        </button>
+        <button
+          type="button"
+          aria-label="Excluir motorista"
+          (click)="abrirModalDeletar()"
+        >
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </footer>
+    </section>
+  </section>
+</main>
+<app-editar-aluno
+  [aluno]="aluno"
+  [abrirModal]="abrirEditar"
+  (fecharModal)="fecharModalEditar()"
+></app-editar-aluno>
+<app-modal-delete
+  [abrirModal]="abrirDeletar"
+  (fechar)="fecharModalDeletar()"
+  (confirmar)="excluirAluno()"
+  textoEntrada="Tem certeza que deseja excluir o aluno?"
+></app-modal-delete>

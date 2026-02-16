@@ -66,9 +66,12 @@ export class CadastrarAlunoComponent implements OnInit {
       cidade: ['', Validators.required],
       estado: ['', Validators.required],
       valorMensalidade: ['', Validators.required],
+      inicioContrato: ['', Validators.required],
       tempoContrato: ['', Validators.required],
       diaVencimento: ['', Validators.required],
     });
+
+    document.title = 'VanIA | Cadastrar aluno';
 
     this.escolaService.buscarEscolas().subscribe({
       next: (res: any) => {
@@ -80,8 +83,6 @@ export class CadastrarAlunoComponent implements OnInit {
     });
   }
 
-  selecionarEscola(escolaId: number) {}
-
   async validarEndereco() {
     const cep = this.formAluno.get('cep')?.value;
     if (!cep || cep == '' || cep.length < 8) return;
@@ -90,12 +91,18 @@ export class CadastrarAlunoComponent implements OnInit {
 
     const endereco = await buscarCep(cep);
 
-    this.loading = false;
+    if (endereco === null) {
+      this.loading = false;
+      return;
+    }
 
-    this.formAluno.get('rua')?.setValue(endereco.logradouro);
-    this.formAluno.get('bairro')?.setValue(endereco.bairro);
-    this.formAluno.get('cidade')?.setValue(endereco.localidade);
-    this.formAluno.get('estado')?.setValue(endereco.uf);
+    if (endereco) {
+      this.loading = false;
+      this.formAluno.get('rua')?.setValue(endereco.logradouro);
+      this.formAluno.get('bairro')?.setValue(endereco.bairro);
+      this.formAluno.get('cidade')?.setValue(endereco.localidade);
+      this.formAluno.get('estado')?.setValue(endereco.uf);
+    }
   }
 
   buscarRotas() {
@@ -164,20 +171,11 @@ export class CadastrarAlunoComponent implements OnInit {
       return;
     }
 
-    if (this.formAluno.invalid) {
-      this.loading = false;
-      this.formAluno.markAllAsTouched();
-      this.flashMessage.show(
-        'Preencha os campos obrigatórios do formulário!',
-        'error',
-      );
-      return;
-    }
-
     this.alunoService.cadastrarAluno(payload).subscribe({
       next: (res: any) => {
         this.loading = false;
         this.flashMessage.show(res.message, res.status);
+        this.formAluno.reset();
       },
       error: (err) => {
         this.loading = false;

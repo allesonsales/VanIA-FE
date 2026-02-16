@@ -1,0 +1,66 @@
+<main>
+  <ion-grid>
+    <ion-row class="filtros">
+      <ion-col size="2">
+        <select (change)="trocarFiltroAtivo($event)">
+          <option disabled selected>Filtrar por...</option>
+          <option value="escola">Escola</option>
+        </select>
+      </ion-col>
+      <ion-col size="2">
+        <select (change)="filtrar($event)">
+          <!-- valores -->
+        </select>
+      </ion-col>
+      <ion-col size="2">
+        <input type="date" name="dia" id="dia" />
+      </ion-col>
+      <ion-icon name="trash-outline" (click)="limparFiltros()"></ion-icon>
+    </ion-row>
+    <ion-row class="titulo-tabela">
+      <ion-col>Rota</ion-col>
+      <ion-col>Data</ion-col>
+      <ion-col>Van</ion-col>
+      <ion-col>Horário Inicio</ion-col>
+      <ion-col>Horário Término</ion-col>
+      <ion-col>Motorista</ion-col>
+    </ion-row>
+    <div *ngIf="viagensFiltradas.length > 0">
+      <ion-row
+        *ngFor="let viagem of viagensFiltradas"
+        class="linha-rota ion-align-items-center"
+        id="ativas"
+        (click)="consultarViagem(viagem.id)"
+      >
+        <ion-col>
+          <span class="etc">
+            {{ viagem.rota?.nome }}
+          </span>
+        </ion-col>
+        <ion-col>
+          <span>{{ viagem.data | date: "dd/MM/yy" }}</span>
+        </ion-col>
+        <ion-col>
+          <span
+            >{{ viagem?.rota?.van?.numero }} -
+            {{ viagem?.rota?.van?.modelo }}</span
+          >
+        </ion-col>
+        <ion-col>
+          <span>{{ viagem?.hora_inicio }}</span>
+        </ion-col>
+        <ion-col>
+          <span>{{ viagem?.hora_fim }}</span>
+        </ion-col>
+        <ion-col>
+          <span>{{ viagem?.rota?.motorista?.nome }}</span>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div *ngIf="viagensFiltradas.length < 1">
+      <ion-row id="lista-vazia">
+        <strong>Nenhuma viagem realizada...</strong>
+      </ion-row>
+    </div>
+  </ion-grid>
+</main>

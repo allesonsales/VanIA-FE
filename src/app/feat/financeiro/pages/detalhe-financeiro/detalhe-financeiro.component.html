@@ -1,0 +1,127 @@
+<app-header> </app-header>
+<main>
+  <section id="financeiro">
+    <header class="cabecalho">
+      <img src="/icones/aluno.png" alt="Ícone Aluno" />
+
+      <div class="titulo-label">
+        <h1 class="titulo">
+          {{ aluno.nome }}
+        </h1>
+        <small>{{ aluno.escola }}</small>
+      </div>
+      <div class="calendario">
+        <app-calendario
+          [mesSelecionado]="mesSelecionado"
+          (valueChange)="aoSelecionarMes($event)"
+        ></app-calendario>
+        <button (click)="limparFiltro()">Ver todos</button>
+      </div>
+    </header>
+    <div class="responsavel">
+      <h3>{{ responsavel.nome }}</h3>
+      <div class="dados-responsavel">
+        <div class="titulo-label">
+          <small>CPF</small>
+          <span>{{ responsavel.cpf }}</span>
+        </div>
+        <div class="titulo-label">
+          <small>Telefone</small>
+          <span>{{ responsavel.telefone }}</span>
+        </div>
+        <div class="titulo-label">
+          <small>E-mail</small>
+          <span>{{ responsavel.email }}</span>
+        </div>
+        <div class="titulo-label">
+          <small>Data vencimento</small>
+          <span>{{ pagamentosBase[0].vencimento | date: "dd" }}</span>
+        </div>
+        <div class="titulo-label">
+          <small>Valor mensalidade</small>
+          <span>{{ pagamentosBase[0].valor | currency: "BRL" }}</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="dados-container">
+      <ion-grid class="pagamentos">
+        <ion-row class="titulo-tabela">
+          <ion-col>Data vencimento</ion-col>
+          <ion-col>Valor</ion-col>
+          <ion-col>Status</ion-col>
+          <ion-col>Pago em</ion-col>
+          <ion-col>Ações</ion-col>
+        </ion-row>
+        <div class="pagamentos" *ngIf="pagamentos.length > 0">
+          <ion-row id="ativas" *ngFor="let pagamento of pagamentos">
+            <ion-col>{{ pagamento.vencimento | date: "dd/MM/yy" }}</ion-col>
+            <ion-col>{{ pagamento.valor | currency: "BRL" }}</ion-col>
+            <ion-col [ngClass]="pagamento.statusLabel.classe">{{
+              pagamento.statusLabel.label
+            }}</ion-col>
+            <ion-col>{{ pagamento.pago_em | date: "dd/MM/yy" }}</ion-col>
+            <ion-col>
+              <div class="acoes-container">
+                <ion-icon
+                  class="confirmar-pagamento"
+                  *ngIf="pagamento.status !== 2"
+                  name="thumbs-up-outline"
+                  (click)="confirmarPagamento(pagamento.id)"
+                ></ion-icon>
+                <ion-icon
+                  class="remover-pagamento"
+                  *ngIf="pagamento.status !== 1 && pagamento.status !== 3"
+                  name="thumbs-down-outline"
+                  (click)="removerPagamento(pagamento.id)"
+                ></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row *ngIf="pagamentos.length < 1" id="lista-vazia"
+          ><span>Nenhum pagamento encontrado...</span></ion-row
+        >
+      </ion-grid>
+
+      <footer>
+        <div class="legenda-container">
+          <div class="acoes-container">
+            <div class="botao-container">
+              <ion-icon
+                class="confirmar-pagamento"
+                name="thumbs-up-outline"
+              ></ion-icon>
+              <small>Confirmar pagamento</small>
+            </div>
+            <div class="botao-container">
+              <ion-icon
+                class="remover-pagamento"
+                name="thumbs-down-outline"
+              ></ion-icon>
+              <small>Remover pagamento</small>
+            </div>
+          </div>
+        </div>
+        <div class="status-atrasos-container"></div>
+        <div class="acoes-container">
+          <button
+            type="button"
+            aria-label="Ligar para o motorista"
+            (click)="mensagemResponsavel()"
+          >
+            <ion-icon name="chatbubbles"></ion-icon>
+          </button>
+          <button
+            type="button"
+            aria-label="Excluir motorista"
+            (click)="abrirModalDeletar()"
+          >
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </div>
+      </footer>
+    </section>
+  </section>
+</main>
+<app-loading [loading]="loading"></app-loading>

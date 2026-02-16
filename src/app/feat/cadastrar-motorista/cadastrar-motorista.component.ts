@@ -15,6 +15,7 @@ import { flash } from 'ionicons/icons';
 import { MotoristaService } from '../../service/motorista.service';
 import verificarValidadeCnh from '../../shared/utils/verificarValidadeCnh';
 import { LoadingComponent } from '../../shared/components/loading/loading.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-motorista',
@@ -34,13 +35,14 @@ export class CadastrarMotoristaComponent implements OnInit {
     private fb: FormBuilder,
     private flashMessage: FlashMessageService,
     private motoristaService: MotoristaService,
+    private router: Router,
   ) {}
 
   formMotorista!: FormGroup;
   loading = false;
 
   ngOnInit(): void {
-    document.title = 'Cadastrar Motorista';
+    document.title = 'VanIA | Cadastrar motorista';
 
     this.formMotorista = this.fb.group({
       nome: ['', Validators.required],
@@ -98,6 +100,7 @@ export class CadastrarMotoristaComponent implements OnInit {
         console.log(res);
         this.flashMessage.show(res.message, res.status);
         this.formMotorista.reset();
+        this.router.navigate(['/motoristas']);
         this.loading = false;
       },
       error: (err) => {

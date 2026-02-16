@@ -4,7 +4,7 @@
   <form [formGroup]="formVan" (submit)="validarFormulario()">
     <div class="form-container">
       <div class="input-container">
-        <label for="marca">Marca</label>
+        <label for="marcaId">Marca</label>
         <select formControlName="marcaId">
           <option value="" disabled selected>Selecione a marca</option>
           <option *ngFor="let marca of marcas" [value]="marca.id">
@@ -13,7 +13,7 @@
         </select>
       </div>
       <div class="input-container">
-        <label for="">Modelo</label>
+        <label for="modelo">Modelo</label>
         <select formControlName="modelo">
           <option value="" disabled selected>Selecione o modelo</option>
           <option *ngFor="let modelo of modelos" value="{{ modelo.id }}">

@@ -1,6 +1,6 @@
 <main>
   <ion-grid>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col size="2">
         <select (change)="filtrar($event)">
           <option selected disabled>Filtrar por...</option>
@@ -13,49 +13,50 @@
           <option value="escola">Escola</option>
         </select>
       </ion-col>
-    </ion-row>
-    <ion-row class="header ion-hide-sm-down">
-      <ion-col>Número</ion-col>
+    </ion-row> -->
+    <ion-row class="titulo-tabela">
+      <ion-col>Número - Alvará</ion-col>
+      <ion-col>Modelo</ion-col>
       <ion-col>Placa</ion-col>
       <ion-col>Renavam</ion-col>
-      <ion-col>Modelo</ion-col>
       <ion-col>Lugares</ion-col>
       <ion-col>Status</ion-col>
-      <ion-col>Ações</ion-col>
     </ion-row>
-    <ion-row
-      *ngFor="let van of vanFiltradas"
-      class="linha-rota ion-align-items-center"
-    >
-      <ion-col>
-        <strong>{{ van.numero }}</strong>
-      </ion-col>
-      <ion-col>
-        <span>
-          {{ van.placa }}
-        </span>
-      </ion-col>
-      <ion-col>
-        {{ van.renavam }}
-      </ion-col>
-      <ion-col>
-        {{ van.modelo_van?.modelo }}
-      </ion-col>
-      <ion-col>
-        {{ van.lugares }}
-      </ion-col>
-      <ion-col>
-        <ion-badge [ngClass]="van.status ? 'ativa' : 'inativa'">
-          {{ van.status ? "Ativa" : "Inativa" }}
-        </ion-badge>
-      </ion-col>
-      <ion-col>
-        <div class="acoes-container">
-          <ion-icon name="eye" (click)="verVan(van.id)"></ion-icon>
-          <ion-icon name="pencil"></ion-icon>
-          <ion-icon name="trash" (click)="deletarVan(van.id)"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
+    <div *ngIf="vanFiltradas.length > 0">
+      <ion-row
+        *ngFor="let van of vanFiltradas"
+        class="linha-rota ion-align-items-center"
+        (click)="consultarVan(van.id)"
+        id="ativas"
+      >
+        <ion-col>
+          <strong>{{ van.numero }}</strong>
+        </ion-col>
+        <ion-col>
+          {{ van.modelo_van?.modelo }}
+        </ion-col>
+        <ion-col>
+          <span>
+            {{ van.placa | placa }}
+          </span>
+        </ion-col>
+        <ion-col>
+          {{ van.renavam }}
+        </ion-col>
+        <ion-col>
+          {{ van.lugares }}
+        </ion-col>
+        <ion-col>
+          <ion-badge [ngClass]="van.status ? 'ativa' : 'inativa'">
+            {{ van.status ? "Ativa" : "Inativa" }}
+          </ion-badge>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div *ngIf="vanFiltradas.length < 1">
+      <ion-row id="lista-vazia">
+        <strong>Nenhuma van encontrada...</strong></ion-row
+      >
+    </div>
   </ion-grid>
 </main>

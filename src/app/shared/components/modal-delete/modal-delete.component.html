@@ -1,0 +1,9 @@
+<div class="modal-background" *ngIf="abrirModal">
+  <div class="modal-container">
+    <span>{{ textoEntrada }}</span>
+    <div class="botao-container">
+      <button class="sim" (click)="confirmarAcao()">Sim</button>
+      <button class="nao" (click)="fecharModal()">Não</button>
+    </div>
+  </div>
+</div>

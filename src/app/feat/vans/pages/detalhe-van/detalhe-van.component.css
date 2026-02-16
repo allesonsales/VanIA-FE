@@ -1,0 +1,61 @@
+#van {
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  border-radius: 15px;
+  min-width: 150px;
+  max-width: 300px;
+  padding: 1rem;
+  color: var(--azul-marinho);
+  box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.2);
+}
+
+#van img {
+  width: 100%;
+  transform: translateY(-25%);
+}
+
+#van .titulo ul,
+#van .dados-container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#van .titulo ul #numero-titulo {
+  font-size: 4rem;
+  border: solid 1px var(--azul-marinho);
+  text-align: center;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#van .titulo ul #modelo {
+  font-size: 1.5rem;
+}
+
+#van .dados-container {
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+.acoes-container {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.acoes-container ion-icon {
+  cursor: pointer;
+}

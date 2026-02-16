@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 
@@ -8,4 +8,8 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {}
+export class DashboardComponent implements OnInit {
+  ngOnInit(): void {
+    document.title = 'VanIA- Seu meio de transporte!';
+  }
+}

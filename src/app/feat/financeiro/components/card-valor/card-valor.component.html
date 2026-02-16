@@ -1,14 +1,14 @@
 <div class="card-container">
   <div class="card card1">
     <span>Valor recebido</span>
-    <strong>R$ 400,00</strong>
+    <strong>{{ recebido | currency: "BRL" : "symbol" : "1.2-2" }}</strong>
   </div>
   <div class="card card2">
     <span>Valor atrasado</span>
-    <strong>R$ 200,00</strong>
+    <strong>{{ atrasado | currency: "BRL" : "symbol" : "1.2-2" }}</strong>
   </div>
   <div class="card card3">
     <span>Estimativa</span>
-    <strong>R$ 600,00</strong>
+    <strong>{{ estimativa | currency: "BRL" : "symbol" : "1.2-2" }}</strong>
   </div>
 </div>

@@ -1,8 +1,11 @@
 <ion-grid>
   <ion-row>
-    <ion-searchbar placeholder="Pesquisar aluno..."></ion-searchbar>
+    <ion-searchbar
+      placeholder="Pesquisar aluno..."
+      (ionInput)="pesquisarAluno($event)"
+    ></ion-searchbar>
   </ion-row>
-  <ion-row>
+  <ion-row class="filtros">
     <ion-col>
       <ion-select
         aria-label="filtro"
@@ -14,7 +17,7 @@
         <ion-select-option value="van">Van</ion-select-option>
       </ion-select>
     </ion-col>
-    <ion-col>
+    <ion-col class="filtros">
       <ion-select
         aria-label="fruit"
         placeholder="Filtrar por..."
@@ -23,54 +26,51 @@
       >
         <ion-select-option
           *ngFor="let valor of valoresFiltro"
-          [value]="valor"
-          >{{ valor }}</ion-select-option
+          [value]="valor.value"
+          >{{ valor.label }}</ion-select-option
         >
-      </ion-select></ion-col
-    >
+      </ion-select>
+      <ion-icon name="trash-outline" (click)="limparFiltros()"></ion-icon>
+    </ion-col>
   </ion-row>
-  <ion-row>
+  <ion-row class="titulo-tabela">
     <ion-col>Aluno</ion-col>
     <ion-col>Responsável</ion-col>
     <ion-col>Escola</ion-col>
     <ion-col>Endereço</ion-col>
     <ion-col>Van</ion-col>
     <ion-col>Status</ion-col>
-    <ion-col>Ações</ion-col>
   </ion-row>
-  <ion-row *ngFor="let aluno of alunosFiltrados">
+  <ion-row
+    *ngFor="let aluno of alunosFiltrados"
+    (click)="consultarAluno(aluno.id)"
+    id="ativas"
+  >
     <ion-col>
       <span class="etc">
-        {{ aluno.nome }}
+        {{ aluno?.nome }}
       </span>
     </ion-col>
     <ion-col>
       <span class="etc">
-        {{ aluno.responsaveis }}
+        {{ aluno?.responsavel?.nome }}
       </span>
     </ion-col>
     <ion-col>
       <span class="etc">
-        {{ aluno.rota.escola.nome }}
+        {{ aluno?.escola?.nome }}
       </span>
     </ion-col>
     <ion-col>
       <span class="etc">
-        {{ aluno.endereco.rua }} - {{ aluno.endereco.bairro }}
+        {{ aluno?.endereco?.rua }} - {{ aluno?.endereco?.bairro }}
       </span>
     </ion-col>
-    <ion-col>{{ aluno.rota.van.numero }}</ion-col>
+    <ion-col>{{ aluno?.van?.numero }} - {{ aluno?.van?.modelo }}</ion-col>
     <ion-col>
       <div [class]="aluno.status === 1 ? 'ativo' : 'inativo'">
-        {{ aluno.status }}
+        {{ aluno?.statusLabel?.label }}
       </div></ion-col
     >
-    <ion-col>
-      <div class="acoes-container">
-        <ion-icon name="eye-outline"></ion-icon>
-        <ion-icon name="pencil-outline"></ion-icon>
-        <ion-icon name="trash-outline"></ion-icon>
-      </div>
-    </ion-col>
   </ion-row>
 </ion-grid>

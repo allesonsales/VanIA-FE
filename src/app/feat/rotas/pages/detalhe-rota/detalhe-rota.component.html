@@ -1,0 +1,90 @@
+<app-header></app-header>
+
+<main>
+  <section id="rota">
+    <header class="cabecalho">
+      <img src="/icones/rotas.png" alt="Ícone de rota" />
+
+      <h1 class="titulo">
+        {{ rota?.nome }}
+      </h1>
+    </header>
+
+    <section class="dados-container">
+      <ul class="horario">
+        <li>
+          <small>Escola</small>
+          <span>{{ rota?.escola?.nome }}</span>
+        </li>
+      </ul>
+
+      <ul class="horario">
+        <li>
+          <small>Hora início (ida)</small>
+          <span>{{ rota?.hora_inicio_ida }}</span>
+        </li>
+        <li>
+          <small>Hora fim (ida)</small>
+          <span>{{ rota?.hora_fim_ida }}</span>
+        </li>
+      </ul>
+
+      <ul class="horario">
+        <li>
+          <small>Hora início (volta)</small>
+          <span>{{ rota?.hora_inicio_volta }}</span>
+        </li>
+        <li>
+          <small>Hora fim (volta)</small>
+          <span>{{ rota?.hora_fim_volta }}</span>
+        </li>
+      </ul>
+
+      <ul class="horario">
+        <li>
+          <ion-icon name="speedometer-outline"></ion-icon>
+          <small>Motorista</small>
+          <span>{{ rota?.motorista?.nome }}</span>
+        </li>
+      </ul>
+
+      <ul class="horario">
+        <li>
+          <ion-icon name="bus"></ion-icon>
+          <small>Van</small>
+          <span>{{ rota?.van?.numero }} - {{ rota?.van?.modelo }}</span>
+        </li>
+      </ul>
+      <footer class="acoes-container" aria-label="Ações da escola">
+        <button
+          type="button"
+          aria-label="Editar escola"
+          (click)="abrirModalEdicao()"
+        >
+          <ion-icon name="pencil"></ion-icon>
+        </button>
+
+        <button
+          type="button"
+          aria-label="Excluir escola"
+          (click)="abrirModalDeletar()"
+        >
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </footer>
+    </section>
+  </section>
+</main>
+
+<app-loading [loading]="loading"></app-loading>
+<app-editar-rota
+  [abrirModal]="abrirEdicao"
+  (fechar)="fecharModalEdicao()"
+  [rota]="rota"
+></app-editar-rota>
+<app-modal-delete
+  [abrirModal]="abrirDeletar"
+  textoEntrada="Tem certeza que deseja excluir esta rota?"
+  (fechar)="fecharModalDeletar()"
+  (confirmar)="deletarRota()"
+></app-modal-delete>

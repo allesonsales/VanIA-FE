@@ -1,4 +1,5 @@
 nav {
+  display: flex;
   width: 100vw;
   background-color: var(--amarelo);
   padding: 1rem;
@@ -7,6 +8,7 @@ nav {
   left: 0;
   box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.2);
   z-index: 100;
+  color: var(--azul-marinho);
 }
 
 ion-icon {
@@ -20,6 +22,7 @@ ion-icon {
   left: -1rem;
   background-color: var(--amarelo);
   min-height: fit-content;
+  top: 3rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -61,4 +64,21 @@ a {
 
 a:hover {
   opacity: 1;
+}
+
+.icones-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0 0 0 2rem;
+}
+
+.icones-container img {
+  max-height: 30px;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.icones-container img:hover {
+  transform: scale(1.1);
 }

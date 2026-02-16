@@ -56,24 +56,6 @@ input {
   width: 100%;
 }
 
-.input-container-login {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.input-container-login ion-icon {
-  position: absolute;
-  right: 1rem;
-  cursor: pointer;
-  transition: ease-in-out 0.2s;
-}
-
-.input-container-login ion-icon:hover {
-  transform: scale(1.1);
-}
-
 .button-container {
   width: 100%;
   display: flex;
@@ -116,6 +98,12 @@ input {
   width: 450px;
   translate: 2% 50%;
   z-index: 0;
+}
+
+#primeiro-acesso {
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--azul-marinho);
 }
 
 @keyframes slide {

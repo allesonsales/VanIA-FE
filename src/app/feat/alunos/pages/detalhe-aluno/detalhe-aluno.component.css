@@ -1,0 +1,66 @@
+#aluno {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  color: var(--azul-marinho);
+}
+
+#aluno .cabecalho img {
+  width: 60px;
+  height: auto;
+}
+
+#aluno .dados-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#aluno .dados-container .horario {
+  background-color: #f7f7f9;
+  border-radius: 12px;
+  padding: 0.75rem;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+#aluno .dados-container ul {
+  justify-content: center;
+  width: 100%;
+}
+
+#aluno .dados-container .horario:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+#aluno .dados-container ul li {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+#aluno .dados-container ul li small {
+  font-size: 0.75rem;
+  color: #7a7a7a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#aluno .dados-container ul li span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--azul-marinho);
+}
+
+#aluno .dados-container ion-icon {
+  font-size: 1.5rem;
+}

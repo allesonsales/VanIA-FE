@@ -15,6 +15,7 @@ import { ModeloVan } from '../../../types/ModeloVan';
 import { FlashMessageService } from '../../service/flash-message.service';
 import { NgxMaskDirective } from 'ngx-mask';
 import { LoadingComponent } from '../../shared/components/loading/loading.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-van',
@@ -40,6 +41,7 @@ export class CadastrarVanComponent implements OnInit {
     private fb: FormBuilder,
     private flashMessage: FlashMessageService,
     private vanService: VanService,
+    private router: Router,
   ) {
     const anoAtual = new Date().getFullYear();
 
@@ -60,6 +62,8 @@ export class CadastrarVanComponent implements OnInit {
         console.log(err);
       },
     });
+
+    document.title = 'VanIA | Cadastrar van';
 
     this.formVan = this.fb.group({
       numero: ['', Validators.required],
@@ -106,6 +110,7 @@ export class CadastrarVanComponent implements OnInit {
         this.flashMessage.show(res.message, res.status);
         this.formVan.reset();
         this.loading = false;
+        this.router.navigate(['/vans']);
       },
       error: (err) => {
         console.log(err);

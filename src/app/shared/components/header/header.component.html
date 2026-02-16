@@ -40,8 +40,32 @@
     </ul>
     <ul>
       <li class="titulo">Sessão</li>
-      <li>Ajuda</li>
-      <li>Sair</li>
+      <li>
+        <a href="/ajuda"> Ajuda </a>
+      </li>
+      <li (click)="sair()">Sair</li>
     </ul>
+  </div>
+  <div class="icones-container" *ngIf="!isHome">
+    <a href="/alunos">
+      <img src="/icones/aluno.png" alt="" />
+    </a>
+    <a href="/escolas">
+      <img src="/icones/escola.png" alt="" />
+    </a>
+    <a href="/motoristas">
+      <img src="/icones/motorista.png" alt="" />
+    </a>
+    <a href="/vans">
+      <img src="/icones/van.png" alt="" />
+    </a>
+    <a href="/rotas">
+      <img src="/icones/rotas.png" alt="" />
+    </a>
+    <a href="/financeiro">
+      <img src="/icones/financeiro.png" alt="" />
+    </a>
+    <img src="/icones/comunicacao.png" alt="" />
+    <img src="/icones/configuracao.png" alt="" />
   </div>
 </nav>

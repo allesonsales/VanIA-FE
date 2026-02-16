@@ -1,0 +1,33 @@
+<app-header></app-header>
+<main>
+  <section>
+    <div class="grid-dados">
+      <ul>
+        <li>
+          <img src="/icones/viagens.png" alt="" />
+          <small>Número de viagens realizadas</small>
+          <span>{{ quantidadeViagens }}</span>
+        </li>
+        <li>
+          <img src="/icones/rotas.png" alt="" />
+          <small>Número de rotas ativas</small>
+          <span>{{ quantidadeRotas }}</span>
+        </li>
+        <li>
+          <img src="/icones/aluno.png" alt="" />
+          <small>Número de alunos</small>
+          <span>{{ quantidadeAlunos }}</span>
+        </li>
+        <li>
+          <img src="/icones/van.png" id="van" alt="" />
+          <small>Última viagem realizada</small>
+          <span id="ultima-viagem">{{ ultimaViagem?.rota?.nome }}</span>
+        </li>
+      </ul>
+    </div>
+    <app-botao-viagem
+      texto="Iniciar Viagem"
+      (clicado)="irParaViagensDisponiveis()"
+    ></app-botao-viagem>
+  </section>
+</main>

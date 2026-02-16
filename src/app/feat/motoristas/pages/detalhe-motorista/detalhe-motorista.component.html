@@ -1,0 +1,72 @@
+<app-header> </app-header>
+<main>
+  <section id="motorista">
+    <header class="cabecalho">
+      <img src="/icones/motorista.png" alt="Ícone Motorista" />
+
+      <h1 class="titulo">
+        {{ motorista?.nome }}
+      </h1>
+    </header>
+
+    <section class="dados-container">
+      <ul>
+        <li class="horario">
+          <small>CNH</small>
+          <span>{{ motorista?.cnh }}</span>
+        </li>
+        <li class="horario">
+          <small>Data de validade da CNH</small>
+          <span>{{ motorista?.data_validade_cnh | date: "dd/MM/yyyy" }}</span>
+        </li>
+        <li class="horario">
+          <small>CPF</small>
+          <span>{{ motorista?.cpf }}</span>
+        </li>
+        <li class="horario">
+          <small>Total de rotas que esse motorista participa:</small>
+          <span>{{ motorista?.rotasAtivas }}</span>
+        </li>
+        <li *ngIf="motorista?.tipo_sanguineo != null" class="horario">
+          <small>Tipo sanguineo:</small>
+          <span>{{ motorista?.tipo_sanguineo }}</span>
+        </li>
+      </ul>
+
+      <footer class="acoes-container">
+        <button
+          type="button"
+          aria-label="Ligar para o motorista"
+          (click)="ligarParaMotorista()"
+        >
+          <ion-icon name="call"></ion-icon>
+        </button>
+        <button
+          type="button"
+          aria-label="Editar motorista"
+          (click)="abrirModalEditar()"
+        >
+          <ion-icon name="pencil"></ion-icon>
+        </button>
+        <button
+          type="button"
+          aria-label="Excluir motorista"
+          (click)="abrirModalDeletar()"
+        >
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </footer>
+    </section>
+  </section>
+</main>
+<app-editar-motorista
+  [motorista]="motorista"
+  [abrirModal]="abrirEditar"
+  (fecharModal)="fecharModalEditar()"
+></app-editar-motorista>
+<app-modal-delete
+  [abrirModal]="abrirDeletar"
+  (fechar)="fecharModalDeletar()"
+  (confirmar)="excluirMotorista()"
+  textoEntrada="Tem certeza que deseja excluir o motorista?"
+></app-modal-delete>

@@ -5,16 +5,15 @@
       (ionInput)="pesquisarAluno($event)"
     ></ion-searchbar>
   </ion-row>
-  <ion-row>
+  <ion-row class="filtros">
     <ion-col>
       <ion-select
         aria-label="filtro"
         placeholder="Filtrar por..."
         (ionChange)="trocarFiltroAtivo($event)"
       >
-        <ion-select-option value="escola">Escola</ion-select-option>
-        <ion-select-option value="status">Status</ion-select-option>
-        <ion-select-option value="van">Van</ion-select-option>
+        <ion-select-option value="Escola">Escola</ion-select-option>
+        <ion-select-option value="Status">Status</ion-select-option>
       </ion-select>
     </ion-col>
     <ion-col>
@@ -34,62 +33,58 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-checkbox></ion-checkbox>
+      <ion-checkbox class="col-check"></ion-checkbox>
     </ion-col>
-    <ion-col>Aluno</ion-col>
-    <ion-col>Responsável</ion-col>
-    <ion-col>Escola</ion-col>
-    <ion-col>Vencimento</ion-col>
-    <ion-col>Valor</ion-col>
-    <ion-col>Status</ion-col>
-    <ion-col>Ações</ion-col>
+    <ion-col class="titulo-tabela">Aluno</ion-col>
+    <ion-col class="titulo-tabela">Responsável</ion-col>
+    <ion-col class="titulo-tabela">Escola</ion-col>
+    <ion-col class="titulo-tabela">Vencimento</ion-col>
+    <ion-col class="titulo-tabela">Valor</ion-col>
+    <ion-col class="titulo-tabela">Status</ion-col>
   </ion-row>
-  <ion-row *ngFor="let aluno of alunosFiltrados">
-    <ion-col>
-      <ion-checkbox></ion-checkbox>
-    </ion-col>
-    <ion-col>
-      <span class="etc">
-        {{ aluno.aluno }}
-      </span>
-    </ion-col>
-    <ion-col>
-      <span class="etc">
-        {{ aluno.responsavel }}
-      </span>
-    </ion-col>
-    <ion-col>
-      <span class="etc">
-        {{ aluno.escola }}
-      </span>
-    </ion-col>
-    <ion-col>
-      <span class="etc">
-        {{ aluno.vencimento }}
-      </span>
-    </ion-col>
-    <ion-col>{{ aluno.valor }}</ion-col>
-    <ion-col>
-      <div
-        [class]="
-          aluno.status.toLowerCase() === 'em dia'
-            ? 'em-dia'
-            : aluno.status.toLocaleLowerCase() === 'em atraso'
-            ? 'em-atraso'
-            : aluno.status.toLowerCase() === 'pendente'
-            ? 'pendente'
-            : 'cancelado'
-        "
-      >
-        {{ aluno.status }}
-      </div></ion-col
+  <div></div>
+  <div *ngIf="pagamentosFiltrados.length > 0">
+    <ion-row
+      *ngFor="let pagamento of pagamentosFiltrados"
+      id="ativas"
+      (click)="consultarPagamento(pagamento.responsavel.id)"
     >
-    <ion-col>
-      <div class="acoes-container">
-        <ion-icon name="eye-outline"></ion-icon>
-        <ion-icon name="pencil-outline"></ion-icon>
-        <ion-icon name="trash-outline"></ion-icon>
-      </div>
-    </ion-col>
-  </ion-row>
+      <ion-col>
+        <ion-checkbox class="col-check"></ion-checkbox>
+      </ion-col>
+      <ion-col>
+        <span class="etc">
+          {{ pagamento.aluno.nome }}
+        </span>
+      </ion-col>
+      <ion-col>
+        <span class="etc">
+          {{ pagamento.responsavel.nome }}
+        </span>
+      </ion-col>
+      <ion-col>
+        <span class="etc">
+          {{ pagamento.aluno.escola.nome }}
+        </span>
+      </ion-col>
+      <ion-col>
+        <span class="etc">
+          {{ pagamento.vencimento | date: "dd/MM/yy" }}
+        </span>
+      </ion-col>
+      <ion-col>{{
+        pagamento.valor | currency: "BRL" : "symbol" : "1.2-2"
+      }}</ion-col>
+      <ion-col>
+        <div [ngClass]="pagamento.statusLabel.classe">
+          {{ pagamento.statusLabel.label }}
+        </div></ion-col
+      >
+    </ion-row>
+  </div>
+  <div *ngIf="pagamentosFiltrados.length < 1">
+    <ion-row id="lista-vazia">
+      <strong>Nenhum pagamento cadastrado...</strong>
+    </ion-row>
+  </div>
 </ion-grid>

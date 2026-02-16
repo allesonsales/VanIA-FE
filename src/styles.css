@@ -4,6 +4,7 @@
 
 * {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -94,4 +95,251 @@ select {
   min-width: 100px;
   padding: 0.7rem;
   border-radius: 7px;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10000;
+}
+
+.modal-background form {
+  max-height: 92vh;
+  overflow-y: scroll;
+  border-radius: 15px;
+}
+
+#detalhe-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cabecalho img {
+  width: 56px;
+  height: 56px;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: column;
+  color: var(--azul-marinho);
+}
+
+.dados-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dados-container ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.acoes-container {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.acoes-container ion-icon,
+.acoes-container button {
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 15px;
+  background-color: transparent;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+  border: none;
+  outline: none;
+  color: var(--azul-marinho);
+}
+
+.acoes-container ion-icon:hover {
+  background: #f3f4f6;
+  transform: scale(1.05);
+}
+
+#lista-vazia {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--azul-marinho);
+}
+
+ion-grid {
+  background-color: #ffffff;
+  border-radius: 25px;
+  min-width: 80vw;
+  max-width: 80vw;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.2);
+  color: var(--azul-marinho);
+}
+
+ion-row {
+  border-radius: 15px;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+#ativas {
+  cursor: pointer;
+}
+
+#ativas:hover {
+  background-color: var(--amarelo-transparente);
+}
+
+ion-col {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.col-check {
+  flex: 0 0 40px;
+  justify-content: center;
+  max-width: 50px;
+}
+
+.em-dia,
+.pago {
+  background-color: #58c817;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0.2rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+}
+
+.em-atraso {
+  background-color: #c84017;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0.2rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+}
+
+.pendente {
+  background-color: #ffe74c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--azul-marinho);
+  padding: 0.2rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+}
+
+.cancelado {
+  background-color: #616261;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0.2rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+}
+
+.etc {
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acoes-container {
+  display: flex;
+  gap: 1rem;
+  color: var(--azul-marinho);
+}
+
+ion-badge {
+  padding: 0.5rem;
+  border-radius: 15px;
+}
+
+.ativa {
+  background-color: #58c817;
+  width: 100%;
+}
+
+.inativa {
+  background-color: #616261;
+}
+
+ion-select {
+  background-color: #f5f5f5;
+  padding: 0.2rem;
+  color: var(--azul-marinho);
+}
+
+.titulo-tabela {
+  font-weight: 600;
+  color: var(--azul-marinho);
+}
+
+.input-container-login {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-container-login ion-icon {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.input-container-login ion-icon:hover {
+  transform: scale(1.1);
+}
+
+.filtros {
+  width: 50%;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filtros ion-icon {
+  cursor: pointer;
+  font-size: 2rem;
 }

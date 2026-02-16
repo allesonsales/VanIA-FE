@@ -1,0 +1,43 @@
+<app-header></app-header>
+<main>
+  <div class="grid-viagens">
+    <ul *ngIf="rotas.length < 1">
+      <li id="viagem-vazia">
+        <img src="/icones/van.png" alt="" />
+        <span
+          >Nenhuma viagem disponível para iniciar no momento, as viagens ficam
+          disponíveis uma hora antes do horário cadastrado para inicio...</span
+        >
+      </li>
+    </ul>
+    <ul *ngIf="rotas.length > 0">
+      <li *ngFor="let rota of rotas" (click)="iniciarRota(rota.id)">
+        <h3>{{ rota.nome }}</h3>
+        <div class="container">
+          <small>Partida:</small>
+          <span>{{ rota.endereco.rua }} - {{ rota?.endereco?.bairro }}</span>
+        </div>
+        <div class="horario">
+          <div class="container">
+            <small>Horário inicio ida:</small>
+            <span>{{ rota.hora_inicio_ida | hora }}</span>
+          </div>
+          <div class="container">
+            <small>Horário fim ida:</small>
+            <span>{{ rota.hora_fim_ida | hora }}</span>
+          </div>
+        </div>
+        <div class="horario">
+          <div class="container">
+            <small>Horário inicio volta:</small>
+            <span>{{ rota.hora_inicio_volta | hora }}</span>
+          </div>
+          <div class="container">
+            <small>Horário fim volta:</small>
+            <span>{{ rota.hora_fim_volta | hora }}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</main>

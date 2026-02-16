@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
-import { CardRotaComponent } from '../../components/card-rota/card-rota.component';
 import { CommonModule } from '@angular/common';
 import { TabelaComponent } from '../../components/tabela/tabela.component';
+import { Rota } from '../../../../../types/Rotas';
+import { RotaService } from '../../../../service/rota.service';
 
 @Component({
   selector: 'app-rotas',
@@ -10,53 +11,23 @@ import { TabelaComponent } from '../../components/tabela/tabela.component';
   templateUrl: './rotas.component.html',
   styleUrl: './rotas.component.css',
 })
-export class RotasComponent {
-  rotas = [
-    {
-      id: 1,
-      nome: 'Escola João Dias - Bairro Rio Cotia',
-      turno: 'MANHA',
-      ativa: 1,
+export class RotasComponent implements OnInit {
+  constructor(private rotaService: RotaService) {}
 
-      escola: {
-        id: 10,
-        tipo: 1,
-        nome: 'Escola Municipal João Dias',
-        telefone: '1140019000',
-        status: 1,
-        endereco: {
-          id: 5,
-          cep: '06700-000',
-          rua: 'Rua das Acácias',
-          bairro: 'Jardim Central',
-          cidade: 'Cotia',
-          estado: 'SP',
-        },
+  rotas: Rota[] = [];
+
+  ngOnInit(): void {
+    document.title = 'VanIA | Rotas';
+    this.rotaService.buscarRotas().subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.rotas = res;
       },
-
-      van: {
-        id: 3,
-        numero: 12,
-        placa: 'ABC-1234',
-        lugares: 15,
-        marca: 1,
-        modelo: 'Sprinter',
-        status: 1,
+      error: (err) => {
+        console.log(err);
       },
+    });
+  }
 
-      motorista: {
-        id: 7,
-        nome: 'Carlos Silva',
-        dataNascimento: '1985-06-12',
-        telefone: '11999990000',
-        cnh: '12345678900',
-        validadeCnh: '2028-05-10',
-      },
-
-      horario_inicio_ida: '06:30',
-      horario_fim_ida: '07:30',
-      horario_inicio_volta: '11:30',
-      horario_fim_volta: '12:30',
-    },
-  ];
+  consultarRota() {}
 }

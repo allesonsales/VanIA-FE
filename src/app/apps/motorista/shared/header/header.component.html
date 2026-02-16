@@ -1,0 +1,18 @@
+<nav>
+  <ion-icon
+    [name]="menuAberto ? 'close' : 'reorder-three-outline'"
+    (click)="toggleMenu()"
+  ></ion-icon>
+  <div class="menu" *ngIf="menuAberto">
+    <ul>
+      <li>
+        <a href="/motorista">
+          <img src="/icones/home.png" alt="" />
+        </a>
+      </li>
+      <li (click)="sair()">
+        <img src="/icones/sair.png" alt="" />
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,66 @@
+<div class="modal-background" *ngIf="abrirModal">
+  <form [formGroup]="formEscola" id="formVan" (submit)="atualizarEscola()">
+    <ion-icon name="close-circle-outline" (click)="fechar()"></ion-icon>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="nome">Nome:</label>
+        <input type="text" formControlName="nome" />
+      </div>
+    </div>
+    <div class="input-container">
+      <label for="telefone">Telefone:</label>
+      <input type="text" formControlName="telefone" mask="(00) 0 0000-0000" />
+    </div>
+    <div class="input-container">
+      <label for="telefone">Tipo:</label>
+      <select formControlName="tipo">
+        <option value="1">Creche</option>
+        <option value="2">Municipal</option>
+        <option value="3">Estadual</option>
+        <option value="4">Técnico</option>
+        <option value="5">Faculdade</option>
+      </select>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="cep">Cep:</label>
+        <input
+          type="text"
+          formControlName="cep"
+          mask="00000-000"
+          (blur)="consultarCep()"
+        />
+      </div>
+      <div class="input-container">
+        <label for="rua">Rua:</label>
+        <input type="text" formControlName="rua" />
+      </div>
+      <div class="input-container">
+        <label for="rua">Número:</label>
+        <input type="number" formControlName="numero" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="bairro">Bairro:</label>
+        <input type="text" formControlName="bairro" />
+      </div>
+      <div class="input-container">
+        <label for="bairro">Cidade:</label>
+        <input type="text" formControlName="cidade" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="estado">Estado:</label>
+        <input type="text" formControlName="estado" />
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="botao-enviar-cadastro" (click)="atualizarEscola()">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
+<app-loading [loading]="loading"></app-loading>

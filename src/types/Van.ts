@@ -8,6 +8,7 @@ export interface Van {
   modelo: string;
   modelo_van?: ModeloVan;
   status: number;
+  ano?: number;
 }
 
 export interface ModeloVan {

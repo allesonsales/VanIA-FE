@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { AlunoFinanceiro } from '../../../financeiro/components/tabela/tabela.component';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
+import { AlunoFinanceiro } from '../../../../../types/Aluno';
 
 type Filtro = 'escola' | 'status' | 'vencimento';
 
@@ -88,7 +88,7 @@ export class ComunicacaoComponent {
     }
 
     this.alunosFiltrados = this.alunos.filter((a) =>
-      a.aluno.toLowerCase().includes(valor)
+      a.aluno.toLowerCase().includes(valor),
     );
 
     this.mostrarResultados = true;
@@ -96,7 +96,7 @@ export class ComunicacaoComponent {
 
   selecionarAluno(aluno: any) {
     const jaSelecionado = this.alunosSelecionados.some(
-      (a: any) => a.id === aluno.id
+      (a: any) => a.id === aluno.id,
     );
 
     if (!jaSelecionado) {

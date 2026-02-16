@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<main>
+  <section id="escola">
+    <header class="cabecalho">
+      <img src="/icones/escola.png" alt="Ícone de escola" />
+
+      <div class="titulo">
+        <h1 id="titulo-escola">{{ escola?.nome }}</h1>
+        <p class="endereco">
+          {{ escola?.endereco?.rua }} - {{ escola?.endereco?.bairro }}
+        </p>
+      </div>
+    </header>
+
+    <section class="dados-container">
+      <ul>
+        <li class="horario">
+          <small>Telefone:</small> <span>{{ escola?.telefone }}</span>
+        </li>
+        <li class="horario">
+          <small>Total de alunos:</small> {{ totalAlunos }}
+        </li>
+        <li class="horario"><small>Total de rotas:</small> {{ totalRotas }}</li>
+      </ul>
+    </section>
+
+    <footer class="acoes-container" aria-label="Ações da escola">
+      <button type="button" aria-label="Ligar para escola" (click)="ligar()">
+        <ion-icon name="call"></ion-icon>
+      </button>
+
+      <button type="button" aria-label="Editar escola" (click)="editarModal()">
+        <ion-icon name="pencil"></ion-icon>
+      </button>
+
+      <button
+        type="button"
+        aria-label="Excluir escola"
+        (click)="perguntarDeletar()"
+      >
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </footer>
+  </section>
+</main>
+
+<app-modal-delete
+  [abrirModal]="abrirDeletar"
+  (fechar)="fecharModalDeletar()"
+  (confirmar)="deletarEscola()"
+  textoEntrada="Caso essa escola tenha rotas ativas, essas rotas também serão excluídas, deseja continuar?"
+></app-modal-delete>
+
+<app-editar-escola
+  [abrirModal]="abrirModalEdicao"
+  (fecharModal)="fecharModalEdicao()"
+  [escola]="escola"
+>
+</app-editar-escola>

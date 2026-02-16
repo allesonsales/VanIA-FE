@@ -1,0 +1,23 @@
+<app-header></app-header>
+<main>
+  <app-accordion
+    titulo="Como cadastrar uma rota?"
+    texto="Antes de cadastrar uma rota é importante que você já tenha cadastrado: motorista, van e escola. Acesse o menu lateral e em seguida clique em cadastrar rota."
+    [abrirAcordion]="abrirItemVan"
+  ></app-accordion>
+  <app-accordion
+    titulo="Como cadastrar uma van?"
+    texto="Acesse o menu lateral, em seguida clique em cadastrar van, preencha os dados da van e clique em enviar."
+    [abrirAcordion]="abrirItemVan"
+  ></app-accordion>
+  <app-accordion
+    titulo="Como cadastrar uma escola?"
+    texto="Acesse o menu lateral, em seguida clique em cadastrar van, preencha os dados da van e clique em enviar."
+    [abrirAcordion]="abrirItemVan"
+  ></app-accordion>
+  <app-accordion
+    titulo="Como cadastrar uma aluno?"
+    texto="Antes de cadastrar um aluno, é importante você já ter cadastrado: motorista, van, escola e rota. Acesse o menu lateral, em seguida clique em cadastrar aluno, preencha os dados da van e clique em enviar."
+    [abrirAcordion]="abrirItemVan"
+  ></app-accordion>
+</main>

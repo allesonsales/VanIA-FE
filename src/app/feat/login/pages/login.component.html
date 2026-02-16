@@ -90,10 +90,17 @@
         <span>Entrar</span>
       </button>
     </div>
+    <span id="primeiro-acesso" (click)="abrirModalPrimeiroAcesso()"
+      >Primeiro acesso?</span
+    >
   </form>
   <div class="carro-container">
     <img id="rua" src="rua.png" alt="" />
     <img id="van" src="van.png" alt="" />
   </div>
 </main>
+<app-modal-primeiro-acesso
+  [abrirModal]="modalPrimeiroAcesso"
+  (fechar)="modalPrimeiroAcesso = false"
+></app-modal-primeiro-acesso>
 <app-loading [loading]="loading"></app-loading>

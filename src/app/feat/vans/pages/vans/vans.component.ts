@@ -3,14 +3,12 @@ import { HeaderComponent } from '../../../../shared/components/header/header.com
 import { TabelaComponent } from '../../components/tabela/tabela.component';
 import { VanService } from '../../../../service/van.service';
 import { Van } from '../../../../../types/Van';
-import {
-  FlashMessage,
-  FlashMessageService,
-} from '../../../../service/flash-message.service';
+import { FlashMessageService } from '../../../../service/flash-message.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-vans',
-  imports: [HeaderComponent, TabelaComponent],
+  imports: [HeaderComponent, TabelaComponent, CommonModule],
   templateUrl: './vans.component.html',
   styleUrl: './vans.component.css',
 })
@@ -31,5 +29,7 @@ export class VansComponent implements OnInit {
         this.flashMessage.show(err.error.message, err.error.status);
       },
     });
+
+    document.title = 'VanIA | Vans';
   }
 }

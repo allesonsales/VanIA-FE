@@ -5,11 +5,12 @@ import { Rota } from '../../../../../types/Rotas';
 import { Van } from '../../../../../types/Van';
 import { Router } from '@angular/router';
 import { VanService } from '../../../../service/van.service';
+import { PlacaPipe } from '../../../../../types/pipes/Placa-pipe';
 
 @Component({
   selector: 'app-tabela',
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, PlacaPipe],
   templateUrl: './tabela.component.html',
   styleUrl: './tabela.component.css',
 })
@@ -46,7 +47,7 @@ export class TabelaComponent implements OnChanges {
     );
   }
 
-  verVan(vanId: number) {
+  consultarVan(vanId: number) {
     this.router.navigate([`/vans/${vanId}`]);
   }
 

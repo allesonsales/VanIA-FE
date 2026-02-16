@@ -1,0 +1,13 @@
+#formAluno {
+  position: relative;
+  padding: 3rem;
+}
+
+ion-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--azul-marinho);
+  font-size: 2rem;
+  cursor: pointer;
+}

@@ -1,8 +1,16 @@
 <app-header></app-header>
 <main>
-  <app-calendario label="Selecionar Mês"> </app-calendario>
+  <app-calendario
+    label="Selecionar Mês"
+    (valueChange)="onCalendarioChange($event)"
+  >
+  </app-calendario>
   <div class="topo-container">
-    <app-card-valor></app-card-valor>
+    <app-card-valor
+      [estimativa]="estimativa"
+      [recebido]="recebido"
+      [atrasado]="atrasado"
+    ></app-card-valor>
     <div class="button-container">
       <app-button
         tipoIcone="ion"
@@ -21,5 +29,6 @@
       ></app-button>
     </div>
   </div>
-  <app-tabela></app-tabela>
+  <app-tabela [pagamentos]="pagamentos"></app-tabela>
 </main>
+<app-loading [loading]="loading"></app-loading>

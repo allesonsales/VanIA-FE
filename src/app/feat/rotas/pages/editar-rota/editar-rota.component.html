@@ -1,0 +1,96 @@
+<div class="modal-background" *ngIf="abrirModal">
+  <form [formGroup]="formRota" id="formRota">
+    <ion-icon
+      name="close-circle-outline"
+      (click)="fecharModalEdicao()"
+    ></ion-icon>
+
+    <div class="form-container">
+      <div class="input-container">
+        <label for="cep">CEP endereço de partida</label>
+        <input type="text" formControlName="cep" (blur)="validarEndereco()" />
+      </div>
+      <div class="input-container">
+        <label for="rua">Rua de partida:</label>
+        <input type="text" formControlName="rua" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="numero">Número</label>
+        <input type="number" formControlName="numero" />
+      </div>
+      <div class="input-container">
+        <label for="numero">Bairro</label>
+        <input type="text" formControlName="bairro" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="cidade">Cidade</label>
+        <input type="text" formControlName="cidade" />
+      </div>
+      <div class="input-container">
+        <label for="cidade">Estado</label>
+        <input type="text" formControlName="estado" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="vanId">Van</label>
+        <select formControlName="vanId">
+          <option *ngFor="let van of vans" [value]="van.id">
+            {{ van.numero }} - {{ van.modelo_van?.modelo }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="motoristaId">Motorista</label>
+        <select formControlName="motoristaId">
+          <option *ngFor="let motorista of motoristas" [value]="motorista.id">
+            {{ motorista.nome }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="escolaId">Escola</label>
+        <select formControlName="escolaId">
+          <option *ngFor="let escola of escolas" [value]="escola.id">
+            {{ escola.nome }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="input-container">
+        <label for="horaInicioIda">Horário inical da ida:</label>
+        <input type="datetime" formControlName="horaInicioIda" id="" />
+      </div>
+      <div class="input-container">
+        <label for="horaFimIda">Horário final da ida:</label>
+        <input type="datetime" formControlName="horaFimIda" id="" />
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="input-container">
+        <label for="horaInicioIda">Horário inical da volta:</label>
+        <input type="datetime" formControlName="horaInicioIda" id="" />
+      </div>
+      <div class="input-container">
+        <label for="horaFimIda">Horário final da volta:</label>
+        <input type="datetime" formControlName="horaFimIda" id="" />
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="botao-enviar-cadastro" (click)="confirmarEdicao()">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
+<app-loading [loading]="loading"></app-loading>

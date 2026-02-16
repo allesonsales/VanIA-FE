@@ -38,6 +38,14 @@ export class VanService {
     );
   }
 
+  atualizarVan(payload: any, vanId: number) {
+    return this.httpClient.put(
+      `${environment.apiUrl}${this.endPoint}/${vanId}`,
+      payload,
+      { withCredentials: true },
+    );
+  }
+
   buscarModelos(marcaId: number) {
     return this.httpClient.get(
       `${environment.apiUrl}${this.endPoint}/marcas/${marcaId}`,
@@ -45,7 +53,7 @@ export class VanService {
     );
   }
 
-  deletarVan(vanId: number) {
+  deletarVan(vanId: any) {
     return this.httpClient.delete(
       `${environment.apiUrl}${this.endPoint}/${vanId}`,
       { withCredentials: true },

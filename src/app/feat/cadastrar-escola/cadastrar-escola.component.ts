@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
 import { FlashMessageService } from '../../service/flash-message.service';
 import { NgxMaskDirective } from 'ngx-mask';
 import { LoadingComponent } from '../../shared/components/loading/loading.component';
+import buscarCep from '../../shared/utils/buscarCep';
+import { EnderecoViaCep } from '../../../types/EnderecoViaCep';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-escola',
@@ -30,14 +33,16 @@ export class CadastrarEscolaComponent implements OnInit {
     private fb: FormBuilder,
     private escolaService: EscolaService,
     private flashMessage: FlashMessageService,
+    private router: Router,
   ) {}
 
   formEscola!: FormGroup;
   tiposEscola: TipoEscola[] = [];
+  endereco: EnderecoViaCep | null = null;
   loading = false;
 
   ngOnInit(): void {
-    document.title = 'Cadastrar escola';
+    document.title = 'VanIA | Cadastrar escola';
 
     this.formEscola = this.fb.group({
       nome: ['', Validators.required],
@@ -63,23 +68,24 @@ export class CadastrarEscolaComponent implements OnInit {
   }
 
   async buscarCep() {
-    const cep = this.formEscola.get('cep')?.value;
-
-    if (cep.split('').length < 8) return;
-
     this.loading = true;
 
-    fetch(`http://viacep.com.br/ws/${cep}/json/`)
-      .then((res) => res.json())
-      .then((data) => {
-        this.loading = false;
-        console.log(data);
-        this.formEscola.get('rua')?.setValue(data.logradouro);
-        this.formEscola.get('bairro')?.setValue(data.bairro);
-        this.formEscola.get('cidade')?.setValue(data.localidade);
-        this.formEscola.get('estado')?.setValue(data.uf);
-      })
-      .catch((error) => console.log(error));
+    const cepDigitado = this.formEscola.get('cep')?.value;
+
+    this.endereco = await buscarCep(cepDigitado);
+
+    if (this.endereco == null) {
+      this.loading = false;
+      return;
+    }
+
+    if (this.endereco) {
+      this.loading = false;
+      this.formEscola.get('rua')?.setValue(this.endereco.logradouro);
+      this.formEscola.get('bairro')?.setValue(this.endereco.bairro);
+      this.formEscola.get('cidade')?.setValue(this.endereco.localidade);
+      this.formEscola.get('estado')?.setValue(this.endereco.uf);
+    }
   }
 
   validarFormulario() {
@@ -97,6 +103,7 @@ export class CadastrarEscolaComponent implements OnInit {
         this.loading = false;
         this.flashMessage.show(res.message, res.status);
         this.formEscola.reset();
+        this.router.navigate(['/escolas']);
       },
       error: (err) => {
         console.log(err);

@@ -26,4 +26,27 @@ export class MotoristaService {
       withCredentials: true,
     });
   }
+
+  buscarMotorista(id: number) {
+    return this.httpClient.get(`${environment.apiUrl}${this.endPoint}/${id}`, {
+      withCredentials: true,
+    });
+  }
+
+  excluirMotorista(id: number) {
+    return this.httpClient.delete(
+      `${environment.apiUrl}${this.endPoint}/${id}`,
+      {
+        withCredentials: true,
+      },
+    );
+  }
+
+  atualizarMotorista(id: number, payload: any) {
+    return this.httpClient.put(
+      `${environment.apiUrl}${this.endPoint}/${id}`,
+      payload,
+      { withCredentials: true },
+    );
+  }
 }

@@ -1,0 +1,11 @@
+<section id="accordion" (click)="abrir()">
+  <div class="titulo-container">
+    <h3>{{ titulo }}</h3>
+    <ion-icon
+      [name]="abrirAcordion ? 'caret-down-outline' : 'caret-up-outline'"
+    ></ion-icon>
+  </div>
+  <div class="texto" *ngIf="abrirAcordion">
+    <span>{{ texto }}</span>
+  </div>
+</section>
