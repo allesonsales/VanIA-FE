@@ -66,6 +66,16 @@ export class ModalPrimeiroAcessoComponent {
   enviarSenhaCadastro() {
     const email = this.primeiroAcesso.get('email')?.value;
     const senha = this.primeiroAcesso.get('senha')?.value;
+    const confirmarSenha = this.primeiroAcesso.get('confirmarSenha')?.value;
+
+    if (senha != confirmarSenha) {
+      this.flashmessage.show(
+        'A senha e a sena de confirmação estão diferentes!',
+        'error',
+      );
+
+      return;
+    }
 
     const payload = {
       email,
