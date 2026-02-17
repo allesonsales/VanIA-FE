@@ -40,4 +40,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-.envg
+.env
+node_modules
+dist
+.angular
