@@ -206,6 +206,8 @@ select {
 }
 
 .row {
+  width: 100%;
+  display: flex;
   border-radius: 15px;
   padding: 1rem;
   gap: 1rem;
