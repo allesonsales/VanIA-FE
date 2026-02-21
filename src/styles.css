@@ -205,7 +205,7 @@ select {
   color: var(--azul-marinho);
 }
 
-ion-row {
+.row {
   border-radius: 15px;
   padding: 1rem;
   gap: 1rem;
@@ -220,7 +220,7 @@ ion-row {
   background-color: var(--amarelo-transparente);
 }
 
-ion-col {
+.col {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
