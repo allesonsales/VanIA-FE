@@ -15,8 +15,12 @@ section {
   background-color: var(--amarelo);
   min-height: 100vh;
   min-width: 25%;
-
+  max-width: 50%;
   padding: 4rem 2rem;
+}
+
+#form-cadastro {
+  min-width: 100%;
 }
 
 section .fechar {
@@ -42,7 +46,7 @@ form {
   flex-direction: column;
   gap: 1.5rem;
   min-width: 25%;
-  max-width: 35%;
+  max-width: 55%;
   background-color: transparent;
 }
 
@@ -125,12 +129,6 @@ input {
 
   100% {
     transform: translateX(150px) translateY(-40px);
-  }
-}
-
-@media (min-width: 1281px) {
-  form {
-    width: 15%;
   }
 }
 

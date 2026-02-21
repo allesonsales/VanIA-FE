@@ -5,7 +5,11 @@
       (click)="fechar()"
       name="close-circle-outline"
     ></ion-icon>
-    <form [formGroup]="formUsuario" (submit)="validarFormulario()">
+    <form
+      [formGroup]="formUsuario"
+      id="form-cadastro"
+      (submit)="validarFormulario()"
+    >
       <div class="input-container-login">
         <input type="text" placeholder="Nome" formControlName="nome" />
       </div>
