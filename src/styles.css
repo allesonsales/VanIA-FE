@@ -193,7 +193,7 @@ select {
   color: var(--azul-marinho);
 }
 
-ion-grid {
+.grid {
   background-color: #ffffff;
   border-radius: 25px;
   min-width: 80vw;

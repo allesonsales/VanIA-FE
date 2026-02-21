@@ -1,12 +1,12 @@
-<ion-grid>
-  <ion-row>
+<div class="grid">
+  <div class="row">
     <ion-searchbar
       placeholder="Pesquisar aluno..."
       (ionInput)="pesquisarAluno($event)"
     ></ion-searchbar>
-  </ion-row>
-  <ion-row class="filtros">
-    <ion-col>
+  </div>
+  <div class="row filtros">
+    <div class="col">
       <ion-select
         aria-label="filtro"
         placeholder="Filtrar por..."
@@ -15,8 +15,8 @@
         <ion-select-option value="Escola">Escola</ion-select-option>
         <ion-select-option value="Status">Status</ion-select-option>
       </ion-select>
-    </ion-col>
-    <ion-col>
+    </div>
+    <div class="col">
       <ion-select
         aria-label="fruit"
         placeholder="Filtrar por..."
@@ -28,63 +28,64 @@
           [value]="valor"
           >{{ valor }}</ion-select-option
         >
-      </ion-select></ion-col
-    >
-  </ion-row>
-  <ion-row>
+      </ion-select>
+    </div>
+  </div>
+  <div class="row">
     <ion-col>
       <ion-checkbox class="col-check"></ion-checkbox>
     </ion-col>
-    <ion-col class="titulo-tabela">Aluno</ion-col>
-    <ion-col class="titulo-tabela">Responsável</ion-col>
-    <ion-col class="titulo-tabela">Escola</ion-col>
-    <ion-col class="titulo-tabela">Vencimento</ion-col>
-    <ion-col class="titulo-tabela">Valor</ion-col>
-    <ion-col class="titulo-tabela">Status</ion-col>
-  </ion-row>
+    <div class="col titulo-tabela">Aluno</div>
+    <div class="col titulo-tabela">Responsável</div>
+    <div class="col titulo-tabela">Escola</div>
+    <div class="col titulo-tabela">Vencimento</div>
+    <div class="col titulo-tabela">Valor</div>
+    <div class="col titulo-tabela">Status</div>
+  </div>
   <div></div>
   <div *ngIf="pagamentosFiltrados.length > 0">
-    <ion-row
+    <div
+      class="row"
       *ngFor="let pagamento of pagamentosFiltrados"
       id="ativas"
       (click)="consultarPagamento(pagamento.responsavel.id)"
     >
-      <ion-col>
+      <div class="col">
         <ion-checkbox class="col-check"></ion-checkbox>
-      </ion-col>
-      <ion-col>
+      </div>
+      <div class="col">
         <span class="etc">
           {{ pagamento.aluno.nome }}
         </span>
-      </ion-col>
-      <ion-col>
+      </div>
+      <div class="col">
         <span class="etc">
           {{ pagamento.responsavel.nome }}
         </span>
-      </ion-col>
-      <ion-col>
+      </div>
+      <div class="col">
         <span class="etc">
           {{ pagamento.aluno.escola.nome }}
         </span>
-      </ion-col>
-      <ion-col>
+      </div>
+      <div class="col">
         <span class="etc">
           {{ pagamento.vencimento | date: "dd/MM/yy" }}
         </span>
-      </ion-col>
-      <ion-col>{{
-        pagamento.valor | currency: "BRL" : "symbol" : "1.2-2"
-      }}</ion-col>
-      <ion-col>
+      </div>
+      <div class="col">
+        {{ pagamento.valor | currency: "BRL" : "symbol" : "1.2-2" }}
+      </div>
+      <div class="col">
         <div [ngClass]="pagamento.statusLabel.classe">
           {{ pagamento.statusLabel.label }}
-        </div></ion-col
-      >
-    </ion-row>
+        </div>
+      </div>
+    </div>
   </div>
   <div *ngIf="pagamentosFiltrados.length < 1">
-    <ion-row id="lista-vazia">
+    <div class="row" id="lista-vazia">
       <strong>Nenhum pagamento cadastrado...</strong>
-    </ion-row>
+    </div>
   </div>
-</ion-grid>
+</div>

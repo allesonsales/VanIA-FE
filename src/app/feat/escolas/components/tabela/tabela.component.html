@@ -1,13 +1,13 @@
 <main>
-  <ion-grid>
-    <ion-row>
+  <div class="grid">
+    <div class="row">
       <ion-searchbar
         placeholder="Pesquisar escola..."
         (ionInput)="pesquisarEscola($event)"
       ></ion-searchbar>
-    </ion-row>
-    <ion-row>
-      <ion-col size="2" class="filtros">
+    </div>
+    <div class="row">
+      <div class="col" size="2" class="filtros">
         <select (change)="filtrar($event)">
           <option selected disabled>Filtrar por...</option>
           <option value="1">Creche</option>
@@ -17,41 +17,41 @@
           <option value="5">Faculdade</option>
         </select>
         <ion-icon name="trash-outline" (click)="limparFiltros()"></ion-icon>
-      </ion-col>
-    </ion-row>
-    <ion-row class="titulo-tabela">
-      <ion-col>Escola</ion-col>
-      <ion-col>Telefone</ion-col>
-      <ion-col>Tipo</ion-col>
-      <ion-col>Endereço</ion-col>
-    </ion-row>
+      </div>
+    </div>
+    <div class="row titulo-tabela">
+      <div class="col">Escola</div>
+      <div class="col">Telefone</div>
+      <div class="col">Tipo</div>
+      <div class="col">Endereço</div>
+    </div>
     <div *ngIf="escolasFiltradas.length > 0">
-      <ion-row
+      <div
+        class="row linha-rota ion-align-items-center"
         *ngFor="let escola of escolasFiltradas"
-        class="linha-rota ion-align-items-center"
         (click)="buscarEscola(escola.id)"
         id="ativas"
       >
-        <ion-col>
+        <div class="col">
           <strong>{{ escola.nome }}</strong>
-        </ion-col>
-        <ion-col>
+        </div>
+        <div class="col">
           <span>
             {{ escola.telefone | telefone }}
           </span>
-        </ion-col>
-        <ion-col>
+        </div>
+        <div class="col">
           {{ escola.statusLabel }}
-        </ion-col>
-        <ion-col>
+        </div>
+        <div class="col">
           {{ escola.endereco?.rua }} - {{ escola.endereco?.bairro }}
-        </ion-col>
-      </ion-row>
+        </div>
+      </div>
     </div>
     <div>
-      <ion-row *ngIf="escolasFiltradas.length < 1" id="lista-vazia">
+      <div class="row" *ngIf="escolasFiltradas.length < 1" id="lista-vazia">
         <strong>Nenhuma escola encontrada...</strong>
-      </ion-row>
+      </div>
     </div>
-  </ion-grid>
+  </div>
 </main>

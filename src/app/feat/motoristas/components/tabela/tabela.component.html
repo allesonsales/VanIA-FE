@@ -1,41 +1,41 @@
 <main>
-  <ion-grid>
-    <ion-row class="titulo-tabela">
-      <ion-col>Nome</ion-col>
-      <ion-col>Data de nascimento</ion-col>
-      <ion-col>Data de validade da CNH</ion-col>
-      <ion-col>Telefone</ion-col>
-    </ion-row>
+  <div class="grid">
+    <div class="row titulo-tabela">
+      <div class="col">Nome</div>
+      <div class="col">Data de nascimento</div>
+      <div class="col">Data de validade da CNH</div>
+      <div class="col">Telefone</div>
+    </div>
     <div *ngIf="motoristasFiltrados.length > 0">
-      <ion-row
+      <div
         *ngFor="let motorista of motoristasFiltrados"
-        class="linha-rota ion-align-items-center"
+        class="row linha-rota ion-align-items-center"
         id="ativas"
         (click)="consultarMotorista(motorista.id)"
       >
-        <ion-col>
+        <div class="col">
           <strong>{{ motorista.nome }}</strong>
-        </ion-col>
-        <ion-col>
+        </div>
+        <div class="col">
           <span class="etc">
             {{ motorista.data_nascimento | date: "dd/MM/yy" }}
           </span>
-        </ion-col>
-        <ion-col>
+        </div>
+        <div class="col">
           <span>{{ motorista.data_validade_cnh | date: "dd/MM/yy" }}</span>
-        </ion-col>
-        <ion-col>
+        </div>
+        <div class="col">
           <span>{{ motorista.telefone | telefone }}</span>
-        </ion-col>
-      </ion-row>
+        </div>
+      </div>
     </div>
     <div *ngIf="motoristasFiltrados.length < 1">
-      <ion-row id="lista-vazia">
+      <div class="row" id="lista-vazia">
         <strong>Nenhum motorista cadastrado...</strong>
-      </ion-row>
-      <ion-row id="lista-vazia">
+      </div>
+      <div class="row" id="lista-vazia">
         <a href="cadastrar-motorista">Cadastrar motorista</a>
-      </ion-row>
+      </div>
     </div>
-  </ion-grid>
+  </div>
 </main>
