@@ -41,36 +41,44 @@
     <ion-col>Van</ion-col>
     <ion-col>Status</ion-col>
   </ion-row>
-  <ion-row
-    *ngFor="let aluno of alunosFiltrados"
-    (click)="consultarAluno(aluno.id)"
-    id="ativas"
-  >
-    <ion-col>
-      <span class="etc">
-        {{ aluno?.nome }}
-      </span>
-    </ion-col>
-    <ion-col>
-      <span class="etc">
-        {{ aluno?.responsavel?.nome }}
-      </span>
-    </ion-col>
-    <ion-col>
-      <span class="etc">
-        {{ aluno?.escola?.nome }}
-      </span>
-    </ion-col>
-    <ion-col>
-      <span class="etc">
-        {{ aluno?.endereco?.rua }} - {{ aluno?.endereco?.bairro }}
-      </span>
-    </ion-col>
-    <ion-col>{{ aluno?.van?.numero }} - {{ aluno?.van?.modelo }}</ion-col>
-    <ion-col>
-      <div [class]="aluno.status === 1 ? 'ativo' : 'inativo'">
-        {{ aluno?.statusLabel?.label }}
-      </div></ion-col
+  <div *ngIf="alunos.length > 0">
+    <ion-row
+      *ngFor="let aluno of alunosFiltrados"
+      (click)="consultarAluno(aluno.id)"
+      id="ativas"
     >
+      <ion-col>
+        <span class="etc">
+          {{ aluno?.nome }}
+        </span>
+      </ion-col>
+      <ion-col>
+        <span class="etc">
+          {{ aluno?.responsavel?.nome }}
+        </span>
+      </ion-col>
+      <ion-col>
+        <span class="etc" [title]="aluno.escola.nome">
+          {{ aluno?.escola?.nome }}
+        </span>
+      </ion-col>
+      <ion-col>
+        <span class="etc" [title]="aluno.endereco.rua">
+          {{ aluno?.endereco?.rua }} - {{ aluno?.endereco?.bairro }}
+        </span>
+      </ion-col>
+      <ion-col>{{ aluno?.van?.numero }} - {{ aluno?.van?.modelo }}</ion-col>
+      <ion-col>
+        <div [class]="aluno.status === 1 ? 'ativo' : 'inativo'">
+          {{ aluno?.statusLabel?.label }}
+        </div></ion-col
+      >
+    </ion-row>
+  </div>
+  <ion-row *ngIf="alunos.length < 1" id="lista-vazia">
+    <strong>Nenhum aluno cadastrado...</strong>
+  </ion-row>
+  <ion-row *ngIf="alunos.length < 1" id="lista-vazia">
+    <a href="cadastrar-aluno">Cadastrar aluno</a>
   </ion-row>
 </ion-grid>

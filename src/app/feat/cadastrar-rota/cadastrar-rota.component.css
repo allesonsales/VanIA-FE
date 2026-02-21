@@ -1,0 +1,17 @@
+.form-array {
+  width: 100%;
+}
+
+#adicionar-escola {
+  padding: 0.8rem;
+  background-color: var(--amarelo);
+  border: none;
+  color: var(--azul-marinho);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.botao-desativado {
+  opacity: 0.2;
+  cursor: default;
+}

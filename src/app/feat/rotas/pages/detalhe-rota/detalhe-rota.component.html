@@ -14,7 +14,7 @@
       <ul class="horario">
         <li>
           <small>Escola</small>
-          <span>{{ rota?.escola?.nome }}</span>
+          <span *ngFor="let escola of rota?.escolas"> {{ escola.nome }}</span>
         </li>
       </ul>
 

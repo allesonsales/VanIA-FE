@@ -343,3 +343,12 @@ ion-select {
   cursor: pointer;
   font-size: 2rem;
 }
+
+#lista-vazia a {
+  text-decoration: none;
+  color: var(--texto-tabela);
+}
+#lista-vazia a:hover {
+  text-decoration: none;
+  color: var(--azul-marinho);
+}

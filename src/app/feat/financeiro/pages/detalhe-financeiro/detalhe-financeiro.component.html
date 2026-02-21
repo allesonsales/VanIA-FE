@@ -8,7 +8,7 @@
         <h1 class="titulo">
           {{ aluno.nome }}
         </h1>
-        <small>{{ aluno.escola }}</small>
+        <small>{{ aluno.escola.nome }}</small>
       </div>
       <div class="calendario">
         <app-calendario
@@ -111,13 +111,6 @@
             (click)="mensagemResponsavel()"
           >
             <ion-icon name="chatbubbles"></ion-icon>
-          </button>
-          <button
-            type="button"
-            aria-label="Excluir motorista"
-            (click)="abrirModalDeletar()"
-          >
-            <ion-icon name="trash"></ion-icon>
           </button>
         </div>
       </footer>

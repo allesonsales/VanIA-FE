@@ -29,6 +29,7 @@ export class ModalPrimeiroAcessoComponent {
     this.primeiroAcesso = this.fb.group({
       email: ['', Validators.required],
       senha: ['', Validators.required],
+      confirmarSenha: ['', Validators.required],
     });
   }
   verSenha: boolean = false;
@@ -67,6 +68,8 @@ export class ModalPrimeiroAcessoComponent {
     const email = this.primeiroAcesso.get('email')?.value;
     const senha = this.primeiroAcesso.get('senha')?.value;
     const confirmarSenha = this.primeiroAcesso.get('confirmarSenha')?.value;
+
+    console.log(senha, confirmarSenha);
 
     if (senha != confirmarSenha) {
       this.flashmessage.show(

@@ -1,4 +1,6 @@
-function transformarData(dataIso: string) {
+function transformarData(dataIso: string | null) {
+  if (!dataIso) return null;
+
   const data = new Date(dataIso);
 
   const ano = data.getFullYear();

@@ -20,7 +20,6 @@
       <ion-col>Horário Saída</ion-col>
       <ion-col>Van</ion-col>
       <ion-col>Motorista</ion-col>
-      <ion-col>Status</ion-col>
     </ion-row>
     <div *ngIf="rotasFiltradas.length > 0">
       <ion-row
@@ -33,8 +32,8 @@
           <strong>{{ rota.nome }}</strong>
         </ion-col>
         <ion-col>
-          <span class="etc">
-            {{ rota.escola.nome }}
+          <span class="etc" [title]="getNomesEscolasString(rota)">
+            {{ getNomesEscolasString(rota) }}
           </span>
         </ion-col>
         <ion-col>
@@ -51,16 +50,14 @@
         <ion-col>
           {{ rota.motorista.nome }}
         </ion-col>
-        <ion-col>
-          <ion-badge [ngClass]="rota.status ? 'ativa' : 'inativa'">
-            {{ rota.status ? "Ativa" : "Inativa" }}
-          </ion-badge>
-        </ion-col>
       </ion-row>
     </div>
     <div *ngIf="rotasFiltradas.length < 1">
       <ion-row id="lista-vazia">
         <strong>Nenhuma rota cadastrada...</strong>
+      </ion-row>
+      <ion-row id="lista-vazia">
+        <a href="cadastrar-rota"> Cadastrar rota </a>
       </ion-row>
     </div>
   </ion-grid>

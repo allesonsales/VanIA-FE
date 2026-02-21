@@ -59,17 +59,43 @@
         </option>
       </select>
     </div>
-    <div class="form-container">
-      <div class="input-container">
-        <label for="escola">Escola:</label>
-        <select formControlName="escolaId">
-          <option disabled selected>Selecione uma escola</option>
-          <option *ngFor="let escola of escolas" [value]="escola.id">
-            {{ escola.nome }}
-          </option>
-        </select>
+    <div class="form-array" formArrayName="escolas">
+      <div
+        class="form-container"
+        *ngFor="let grupo of escolasFormArray.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="input-container">
+          <label for="escola">Escola:</label>
+          <select formControlName="id">
+            <option disabled selected>Selecione uma escola</option>
+            <option
+              *ngFor="let escola of escolas"
+              [value]="escola.id"
+              [disabled]="
+                escolasSelecionadasIds.includes(escola.id) &&
+                grupo.get('id')?.value !== escola.id
+              "
+            >
+              {{ escola.nome }}
+            </option>
+          </select>
+        </div>
+        <div class="input-container">
+          <label for="horarioPrevisao">Previsão de chegada:</label>
+          <input type="time" formControlName="horaPrevisao" />
+        </div>
       </div>
     </div>
+    <button
+      id="adicionar-escola"
+      (click)="adicionarEscola()"
+      type="button"
+      [disabled]="todasSelecionadas"
+      [class.botao-desativado]="todasSelecionadas"
+    >
+      Adicionar escola
+    </button>
     <div class="form-container">
       <div class="input-container">
         <label for="horaInicioIda">Horário inical da ida:</label>

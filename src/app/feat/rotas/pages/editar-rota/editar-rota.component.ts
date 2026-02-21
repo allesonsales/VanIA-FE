@@ -72,7 +72,6 @@ export class EditarRotaComponent implements OnInit, OnChanges {
       cidade: ['', Validators.required],
       estado: ['', Validators.required],
       vanId: ['', Validators.required],
-      escolaId: ['', Validators.required],
       motoristaId: ['', Validators.required],
       horaInicioIda: ['', Validators.required],
       horaFimIda: ['', Validators.required],
@@ -132,8 +131,8 @@ export class EditarRotaComponent implements OnInit, OnChanges {
     if (!this.vans.length || !this.escolas.length || !this.motoristas.length)
       return;
 
-    const { endereco, van, motorista, escola } = this.rota;
-    if (!endereco || !van || !motorista || !escola) return;
+    const { endereco, van, motorista, escolas } = this.rota;
+    if (!endereco || !van || !motorista || !escolas) return;
 
     this.formRota.patchValue({
       cep: endereco.cep,
@@ -143,8 +142,7 @@ export class EditarRotaComponent implements OnInit, OnChanges {
       cidade: endereco.cidade,
       estado: endereco.estado,
       vanId: van.id,
-      motoristaId: this.rota.id,
-      escolaId: escola.id,
+      motoristaId: this.rota.motorista.id,
       horaFimIda: this.rota.hora_fim_ida,
       horaInicioIda: this.rota.hora_inicio_ida,
       horaFimVolta: this.rota.hora_fim_volta,

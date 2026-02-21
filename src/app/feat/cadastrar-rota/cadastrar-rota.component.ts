@@ -56,8 +56,8 @@ export class CadastrarRotaComponent implements OnInit {
   ngOnInit(): void {
     this.formRota = this.fb.group({
       vanId: ['', Validators.required],
-      motoristaId: ['', Validators.required],
-      escolaId: ['', Validators.required],
+      motoristaId: [null, Validators.required],
+      escolas: this.fb.array([]),
       horaInicioIda: ['', Validators.required],
       horaInicioVolta: ['', Validators.required],
       horaFimIda: ['', Validators.required],
@@ -69,6 +69,8 @@ export class CadastrarRotaComponent implements OnInit {
       cidade: ['', Validators.required],
       estado: ['', Validators.required],
     });
+
+    this.adicionarEscola();
 
     document.title = 'VanIA | Cadastrar rota';
 
@@ -101,6 +103,31 @@ export class CadastrarRotaComponent implements OnInit {
         console.log(err);
       },
     });
+
+    this.escolasFormArray.valueChanges.subscribe(() => {});
+  }
+
+  get escolasFormArray() {
+    return this.formRota.get('escolas') as any;
+  }
+
+  get escolasSelecionadasIds(): number[] {
+    return this.escolasFormArray.controls
+      .map((g: any) => Number(g.get('id')?.value))
+      .filter((v: any) => v);
+  }
+
+  get todasSelecionadas() {
+    return this.escolas.length === this.escolasSelecionadasIds.length;
+  }
+
+  adicionarEscola() {
+    this.escolasFormArray.push(
+      this.fb.group({
+        id: ['', Validators.required],
+        horaPrevisao: ['', Validators.required],
+      }),
+    );
   }
 
   async buscarEndereco() {
@@ -122,8 +149,56 @@ export class CadastrarRotaComponent implements OnInit {
     }
   }
 
+  verificarCampos() {
+    const motorista = this.formRota.get('motoristaId')?.value;
+
+    const {
+      horaInicioIda,
+      horaFimIda,
+      horaInicioVolta,
+      horaFimVolta,
+      cep,
+      rua,
+      bairro,
+      vanId,
+      cidade,
+      estado,
+    } = this.formRota.value;
+
+    if (!cep || !rua || !bairro || !cidade || !estado) {
+      this.flashMessage.show('Preencha todos os campos do endereço!', 'error');
+      return false;
+    }
+
+    if (!vanId) {
+      this.flashMessage.show('Selecione uma van!', 'error');
+      return false;
+    }
+
+    if (!motorista || motorista == null) {
+      this.flashMessage.show('Selecione um motorista', 'error');
+      return false;
+    }
+
+    if (this.escolasSelecionadasIds.length == 0) {
+      this.flashMessage.show(
+        'A rota precisa pelo menos de uma escola cadastrada',
+        'error',
+      );
+      return false;
+    }
+
+    if (!horaInicioIda || !horaFimIda || !horaInicioVolta || !horaFimVolta) {
+      this.flashMessage.show('Preencha todos os horários!', 'error');
+      return false;
+    }
+
+    return true;
+  }
+
   async validarFormulario() {
     this.loading = true;
+    const motorista = this.formRota.get('motoristaId')?.value;
     const horaInicioIda = this.formRota.get('horaInicioIda')?.value;
     const horaFimIda = this.formRota.get('horaFimIda')?.value;
     const horaInicioVolta = this.formRota.get('horaInicioVolta')?.value;
@@ -134,11 +209,7 @@ export class CadastrarRotaComponent implements OnInit {
     const cidade = this.formRota.get('cidade')?.value;
     const estado = this.formRota.get('estado')?.value;
 
-    if (this.formRota.invalid) {
-      this.loading = false;
-      this.flashMessage.show('Preencha todos os campos!', 'error');
-      return;
-    }
+    this.verificarCampos();
 
     const validarHorarioIda = await validarHorarioIdaOuVolta(
       horaInicioIda,

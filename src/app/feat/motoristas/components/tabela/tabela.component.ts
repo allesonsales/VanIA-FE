@@ -4,11 +4,12 @@ import { IonicModule } from '@ionic/angular';
 import { Rota } from '../../../../../types/Rotas';
 import { Router } from '@angular/router';
 import { Motorista } from '../../../../../types/Motorista';
+import { TelefonePipe } from '../../../../../types/pipes/Telefone-Pipe';
 
 @Component({
   selector: 'app-tabela',
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, TelefonePipe],
   templateUrl: './tabela.component.html',
   styleUrl: './tabela.component.css',
 })

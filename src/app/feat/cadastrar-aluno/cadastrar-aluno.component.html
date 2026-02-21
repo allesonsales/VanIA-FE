@@ -65,7 +65,7 @@
     <div class="form-container">
       <div class="input-container">
         <label for="escolaId">Escola:</label>
-        <select formControlName="escolaId">
+        <select formControlName="escolaId" (change)="selecionarNome()">
           <option disabled>Selecione a escola do aluno</option>
           <option *ngFor="let escola of escolas" [value]="escola.id">
             {{ escola.nome }}

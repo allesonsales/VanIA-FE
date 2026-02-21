@@ -15,6 +15,7 @@ section {
   background-color: var(--amarelo);
   min-height: 100vh;
   min-width: 25%;
+
   padding: 4rem 2rem;
 }
 
@@ -40,7 +41,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 55%;
+  min-width: 25%;
+  max-width: 35%;
   background-color: transparent;
 }
 
@@ -106,6 +108,16 @@ input {
   color: var(--azul-marinho);
 }
 
+#cadastrar {
+  background-color: var(--azul-marinho);
+  padding: 0.8rem;
+  color: var(--amarelo);
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 @keyframes slide {
   0% {
     transform: translateX(-350px) translateY(120px);
@@ -119,5 +131,11 @@ input {
 @media (min-width: 1281px) {
   form {
     width: 15%;
+  }
+}
+
+@media (max-width: 500px) {
+  form {
+    min-width: 70%;
   }
 }

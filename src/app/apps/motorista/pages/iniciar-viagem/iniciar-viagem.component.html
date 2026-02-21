@@ -2,8 +2,11 @@
 <main>
   <section id="viagem">
     <div class="cabecalho">
-      <img src="/icones/viagens.png" alt="" />
-      <h3>{{ viagem?.nome_rota }}</h3>
+      <div class="top">
+        <img src="/icones/viagens.png" alt="" />
+        <h3>{{ viagem?.nome_rota }}</h3>
+      </div>
+      <h3 *ngFor="let escola of viagem?.escolas">{{ escola.nome }}</h3>
     </div>
     <div class="timer" *ngIf="iniciar">
       <ion-icon name="stopwatch-outline"></ion-icon>
@@ -12,48 +15,53 @@
         <span>{{ tempoFormatado }}</span>
       </div>
     </div>
-    <div *ngIf="!viagem?.alunos?.length" class="nenhum-aluno">
+    <div *ngIf="!viagem?.escolas?.length" class="nenhum-aluno">
       <span>Nenhum aluno cadastrado para esta rota...</span>
     </div>
     <div
       class="alunos-container"
-      *ngIf="viagem?.alunos?.length"
+      *ngIf="viagem?.escolas?.length"
       [ngClass]="iniciar ? '' : 'bloqueado'"
     >
-      <div class="topo">
-        <span>Nome</span>
-        <div class="radio-container">
-          <span>Falta</span>
-          <span>Presente</span>
+      <div *ngFor="let escola of viagem?.escolas" class="escola">
+        <div class="topo">
+          <span>Nome</span>
+          <div class="radio-container">
+            <span>Falta</span>
+            <span>Presente</span>
+          </div>
         </div>
-      </div>
-      <div class="alunos">
-        <ul>
-          <li *ngFor="let aluno of viagem?.alunos">
-            <span>{{ aluno.nome }}</span>
-            <div class="radio-container">
-              <label>
-                <input
-                  type="radio"
-                  [name]="'presenca-' + aluno.id"
-                  (change)="marcarPresenca(aluno, false)"
-                />
-              </label>
+        <div class="alunos">
+          <div class="escola">
+            <h3>{{ escola.nome }}</h3>
+          </div>
+          <ul>
+            <li *ngFor="let aluno of escola?.alunos">
+              <span>{{ aluno.nome }}</span>
+              <div class="radio-container">
+                <label>
+                  <input
+                    type="radio"
+                    [name]="'presenca-' + aluno.id"
+                    (change)="marcarPresenca(aluno, false)"
+                  />
+                </label>
 
-              <label>
-                <input
-                  type="radio"
-                  [name]="'presenca-' + aluno.id"
-                  (change)="marcarPresenca(aluno, true)"
-                />
-              </label>
-            </div>
-          </li>
-        </ul>
+                <label>
+                  <input
+                    type="radio"
+                    [name]="'presenca-' + aluno.id"
+                    (change)="marcarPresenca(aluno, true)"
+                  />
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <ion-button
-      *ngIf="!iniciar && viagem?.alunos?.length"
+      *ngIf="!iniciar && viagem?.escolas?.length"
       fill="clear"
       (click)="iniciarViagem()"
       >Iniciar Viagem</ion-button

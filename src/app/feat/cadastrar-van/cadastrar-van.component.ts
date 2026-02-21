@@ -67,7 +67,7 @@ export class CadastrarVanComponent implements OnInit {
 
     this.formVan = this.fb.group({
       numero: ['', Validators.required],
-      renavam: ['', Validators.required],
+      renavam: [''],
       placa: ['', Validators.required],
       modelo: ['', Validators.required],
       lugares: ['', Validators.required],

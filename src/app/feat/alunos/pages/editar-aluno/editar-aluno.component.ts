@@ -140,6 +140,7 @@ export class EditarAlunoComponent implements OnInit, OnChanges {
       next: (res: any) => {
         this.loading = false;
         this.flashMessage.show(res.message, res.status);
+        this.fechar();
       },
       error: (err) => {
         this.loading = false;

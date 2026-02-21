@@ -31,6 +31,10 @@ export class TabelaComponent implements OnChanges {
     console.log('filtrou', valor);
   }
 
+  getNomesEscolasString(rota: Rota): string {
+    return rota.escolas.map((e) => e.nome).join(', ');
+  }
+
   filtrar(event: any) {
     if (!this.filtroAtivo) return;
 

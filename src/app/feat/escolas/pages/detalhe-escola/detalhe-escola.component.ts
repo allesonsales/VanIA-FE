@@ -72,8 +72,6 @@ export class DetalheEscolaComponent implements OnInit {
     this.abrirDeletar = true;
   }
 
-  abrirModalDeletar() {}
-
   fecharModalDeletar() {
     this.abrirDeletar = false;
   }

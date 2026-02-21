@@ -8,7 +8,7 @@ export interface Rota {
   nome: string;
   status: number;
   endereco: Endereco;
-  escola: Escola;
+  escolas: Escola[];
   van: Van;
   motorista: Motorista;
   hora_inicio_ida: string;

@@ -21,11 +21,13 @@ export interface ViagemInicio {
   hora_fim_ida: string;
   hora_inicio_volta: string;
   hora_fim_volta: string;
-  alunos: [
-    {
+  escolas: {
+    id: number;
+    nome: string;
+    alunos: {
       id: number;
       nome: string;
-      presenca: boolean | null;
-    },
-  ];
+      presenca: boolean;
+    }[];
+  }[];
 }

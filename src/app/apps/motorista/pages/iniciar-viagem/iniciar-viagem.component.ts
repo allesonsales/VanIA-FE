@@ -105,11 +105,13 @@ export class IniciarViagemComponent implements OnInit {
   }
 
   get todosPreenchidos() {
-    if (!this.viagem || !this.viagem.alunos?.length) {
+    if (!this.viagem || !this.viagem.escolas?.length) {
       return false;
     }
-    return this.viagem.alunos.every(
-      (aluno) => aluno.presenca === true || aluno.presenca === false,
+    return this.viagem.escolas.every((escola) =>
+      escola.alunos.every(
+        (aluno) => aluno.presenca === true || aluno.presenca === false,
+      ),
     );
   }
 
@@ -127,10 +129,14 @@ export class IniciarViagemComponent implements OnInit {
 
   finalizarViagem() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    const alunos =
+      this.viagem?.escolas.flatMap((escola) => escola.alunos) || [];
+
     const dados = {
       viagemId: this.viagemId,
       rotaId: this.rotaId,
-      alunos: this.viagem?.alunos.map((aluno) => aluno),
+      alunos: alunos,
     };
 
     console.log(dados);

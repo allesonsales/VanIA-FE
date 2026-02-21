@@ -20,7 +20,6 @@
       <ion-col>Placa</ion-col>
       <ion-col>Renavam</ion-col>
       <ion-col>Lugares</ion-col>
-      <ion-col>Status</ion-col>
     </ion-row>
     <div *ngIf="vanFiltradas.length > 0">
       <ion-row
@@ -46,17 +45,15 @@
         <ion-col>
           {{ van.lugares }}
         </ion-col>
-        <ion-col>
-          <ion-badge [ngClass]="van.status ? 'ativa' : 'inativa'">
-            {{ van.status ? "Ativa" : "Inativa" }}
-          </ion-badge>
-        </ion-col>
       </ion-row>
     </div>
     <div *ngIf="vanFiltradas.length < 1">
       <ion-row id="lista-vazia">
         <strong>Nenhuma van encontrada...</strong></ion-row
       >
+      <ion-row id="lista-vazia">
+        <a href="cadastrar-van"> Cadastrar van </a>
+      </ion-row>
     </div>
   </ion-grid>
 </main>

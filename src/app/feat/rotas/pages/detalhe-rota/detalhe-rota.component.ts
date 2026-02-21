@@ -14,6 +14,7 @@ import { IonicModule } from '@ionic/angular';
 import { ModalDeleteComponent } from '../../../../shared/components/modal-delete/modal-delete.component';
 import { EditarRotaComponent } from '../editar-rota/editar-rota.component';
 import { FlashMessageService } from '../../../../service/flash-message.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-detalhe-rota',
@@ -23,6 +24,7 @@ import { FlashMessageService } from '../../../../service/flash-message.service';
     IonicModule,
     ModalDeleteComponent,
     EditarRotaComponent,
+    CommonModule,
   ],
   templateUrl: './detalhe-rota.component.html',
   styleUrl: './detalhe-rota.component.css',
@@ -48,7 +50,7 @@ export class DetalheRotaComponent implements OnInit {
 
     this.rotaService.buscarRota(id).subscribe({
       next: (res: any) => {
-        console.log(res);
+        console.log('rota', res);
         this.rota = res;
         this.loading = false;
       },

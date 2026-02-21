@@ -64,8 +64,8 @@ export class EditarMotoristaComponent implements OnChanges, OnInit {
       telefone: ['', Validators.required],
       dataNascimento: ['', Validators.required],
       cpf: ['', Validators.required],
-      cnh: ['', Validators.required],
-      dataValidadeCnh: ['', Validators.required],
+      cnh: [null, Validators.required],
+      dataValidadeCnh: [null, Validators.required],
       tipoSanguineo: ['', Validators.required],
       email: ['', Validators.required],
     });
@@ -81,8 +81,10 @@ export class EditarMotoristaComponent implements OnChanges, OnInit {
         telefone: this.motorista.telefone,
         cpf: this.motorista.cpf,
         cnh: this.motorista.cnh,
-        dataValidadeCnh: transformarData(this.motorista.data_validade_cnh),
-        dataNascimento: transformarData(this.motorista.data_nascimento),
+        dataValidadeCnh: transformarData(
+          this.motorista.data_validade_cnh ?? null,
+        ),
+        dataNascimento: transformarData(this.motorista.data_nascimento ?? null),
         tipoSanguineo: this.motorista.tipo_sanguineo,
       });
     }

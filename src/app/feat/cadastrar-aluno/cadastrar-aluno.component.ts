@@ -42,6 +42,7 @@ export class CadastrarAlunoComponent implements OnInit {
   ) {}
 
   escolas: Escola[] = [];
+  escolaNome: string = '';
   rotas: Rota[] = [];
   formAluno!: FormGroup;
   loading = false;
@@ -81,6 +82,16 @@ export class CadastrarAlunoComponent implements OnInit {
         this.flashMessage.show(err.error.message, err.error.status);
       },
     });
+  }
+
+  selecionarNome() {
+    const escolaId = Number(this.formAluno.get('escolaId')?.value);
+
+    const escolaSelecionada = this.escolas.find((e) => e.id === escolaId);
+
+    if (escolaSelecionada) {
+      this.escolaNome = escolaSelecionada.nome;
+    }
   }
 
   async validarEndereco() {
@@ -137,7 +148,10 @@ export class CadastrarAlunoComponent implements OnInit {
   }
 
   validarFormulario() {
-    const payload = this.formAluno.value;
+    const payload = {
+      ...this.formAluno.value,
+      escolaNome: this.escolaNome,
+    };
     console.log(payload);
     this.loading = true;
     const dataAtual = new Date();

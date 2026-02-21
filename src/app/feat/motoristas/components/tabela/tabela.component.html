@@ -25,13 +25,16 @@
           <span>{{ motorista.data_validade_cnh | date: "dd/MM/yy" }}</span>
         </ion-col>
         <ion-col>
-          <span>{{ motorista.telefone }}</span>
+          <span>{{ motorista.telefone | telefone }}</span>
         </ion-col>
       </ion-row>
     </div>
     <div *ngIf="motoristasFiltrados.length < 1">
       <ion-row id="lista-vazia">
         <strong>Nenhum motorista cadastrado...</strong>
+      </ion-row>
+      <ion-row id="lista-vazia">
+        <a href="cadastrar-motorista">Cadastrar motorista</a>
       </ion-row>
     </div>
   </ion-grid>

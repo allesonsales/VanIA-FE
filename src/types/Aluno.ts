@@ -29,5 +29,5 @@ export interface AlunoStatus {
 export interface AlunoFinanceiro {
   id: number;
   nome: string;
-  escola: string;
+  escola: Escola;
 }

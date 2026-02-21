@@ -47,8 +47,12 @@ export class UsuarioService {
   }
 
   sair() {
-    return this.http.get(`${environment.apiUrl}${this.endPoint}/logout`, {
-      withCredentials: true,
-    });
+    return this.http.post(
+      `${environment.apiUrl}${this.endPoint}/logout`,
+      {},
+      {
+        withCredentials: true,
+      },
+    );
   }
 }

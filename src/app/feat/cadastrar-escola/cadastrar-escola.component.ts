@@ -46,7 +46,7 @@ export class CadastrarEscolaComponent implements OnInit {
 
     this.formEscola = this.fb.group({
       nome: ['', Validators.required],
-      telefone: ['', Validators.required],
+      telefone: [''],
       tipo: ['', Validators.required],
       cep: ['', Validators.required],
       numero: ['', Validators.required],
@@ -103,7 +103,6 @@ export class CadastrarEscolaComponent implements OnInit {
         this.loading = false;
         this.flashMessage.show(res.message, res.status);
         this.formEscola.reset();
-        this.router.navigate(['/escolas']);
       },
       error: (err) => {
         console.log(err);

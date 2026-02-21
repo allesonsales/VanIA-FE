@@ -46,14 +46,49 @@ export class CadastrarMotoristaComponent implements OnInit {
 
     this.formMotorista = this.fb.group({
       nome: ['', Validators.required],
-      cnh: ['', Validators.required],
+      cnh: [''],
       cpf: ['', Validators.required],
       dataNascimento: ['', Validators.required],
-      dataValidadeCnh: ['', Validators.required],
+      dataValidadeCnh: [''],
       tipoSanguineo: [''],
       telefone: ['', Validators.required],
       email: ['', Validators.required],
     });
+  }
+
+  validarCampos() {
+    const { nome, cpf, dataNascimento, telefone, email } =
+      this.formMotorista.value;
+
+    if (!nome) {
+      this.flashMessage.show('Preencha o nome do motorista!', 'error');
+      this.loading = false;
+      return false;
+    }
+    if (!cpf) {
+      this.flashMessage.show('Preencha o CPF do motorista!', 'error');
+      this.loading = false;
+
+      return false;
+    }
+    if (!dataNascimento) {
+      this.loading = false;
+
+      this.flashMessage.show(
+        'Preencha a data de nascimento do motorista!',
+        'error',
+      );
+      return false;
+    }
+
+    if (!telefone) {
+      this.loading = false;
+
+      this.flashMessage.show('Preencha a telefone do motorista!', 'error');
+      return false;
+    }
+
+    return true;
   }
 
   async validarFormulario() {
@@ -64,14 +99,7 @@ export class CadastrarMotoristaComponent implements OnInit {
 
     console.log('Payload', payload);
 
-    if (!dataNascimento || dataNascimento == null) {
-      this.flashMessage.show(
-        'Por favor preencha a data de nascimento do motorista!',
-        'error',
-      );
-      this.loading = false;
-      return;
-    }
+    this.validarCampos();
 
     const idade = await verificarIdade(dataNascimento);
 
@@ -85,12 +113,6 @@ export class CadastrarMotoristaComponent implements OnInit {
 
     if (vencida) {
       this.flashMessage.show('A carteira do motorista está vencida!', 'error');
-      this.loading = false;
-      return;
-    }
-
-    if (this.formMotorista.invalid) {
-      this.flashMessage.show(`Preencha todos os campos obrigatórios!`, 'error');
       this.loading = false;
       return;
     }
