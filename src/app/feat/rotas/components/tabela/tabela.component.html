@@ -14,12 +14,12 @@
       </ion-col>
     </ion-row>
     <ion-row class="titulo-tabela">
-      <ion-col>Rota</ion-col>
-      <ion-col>Escola</ion-col>
-      <ion-col>Horário Entrada</ion-col>
-      <ion-col>Horário Saída</ion-col>
-      <ion-col>Van</ion-col>
-      <ion-col>Motorista</ion-col>
+      <ion-col size="2">Rota</ion-col>
+      <ion-col size="2">Escola</ion-col>
+      <ion-col size="2">Horário Entrada</ion-col>
+      <ion-col size="2">Horário Saída</ion-col>
+      <ion-col size="2">Van</ion-col>
+      <ion-col size="2">Motorista</ion-col>
     </ion-row>
     <div *ngIf="rotasFiltradas.length > 0">
       <ion-row
@@ -28,26 +28,26 @@
         id="ativas"
         (click)="consultarRota(rota.id)"
       >
-        <ion-col>
+        <ion-col size="2">
           <strong class="etc" [title]="rota.nome">{{ rota.nome }}</strong>
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           <span class="etc" [title]="getNomesEscolasString(rota)">
             {{ getNomesEscolasString(rota) }}
           </span>
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           <span>{{ rota.hora_inicio_ida }} - {{ rota.hora_fim_ida }}</span>
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           <span>{{ rota.hora_inicio_volta }} - {{ rota.hora_fim_volta }}</span>
         </ion-col>
 
-        <ion-col>
+        <ion-col size="2">
           {{ rota.van.numero }}
           {{ rota.van.modelo }}
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           {{ rota.motorista.nome }}
         </ion-col>
       </ion-row>

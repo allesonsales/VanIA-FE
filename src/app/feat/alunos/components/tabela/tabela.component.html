@@ -34,12 +34,12 @@
     </ion-col>
   </ion-row>
   <ion-row class="titulo-tabela">
-    <ion-col>Aluno</ion-col>
-    <ion-col>Responsável</ion-col>
-    <ion-col>Escola</ion-col>
-    <ion-col>Endereço</ion-col>
-    <ion-col>Van</ion-col>
-    <ion-col>Status</ion-col>
+    <ion-col size="2">Aluno</ion-col>
+    <ion-col size="2">Responsável</ion-col>
+    <ion-col size="2">Escola</ion-col>
+    <ion-col size="3">Endereço</ion-col>
+    <ion-col size="2">Van</ion-col>
+    <ion-col size="1">Status</ion-col>
   </ion-row>
   <div *ngIf="alunos.length > 0">
     <ion-row
@@ -47,28 +47,30 @@
       (click)="consultarAluno(aluno.id)"
       id="ativas"
     >
-      <ion-col>
+      <ion-col size="2">
         <span class="etc">
           {{ aluno?.nome }}
         </span>
       </ion-col>
-      <ion-col>
+      <ion-col size="2">
         <span class="etc">
           {{ aluno?.responsavel?.nome }}
         </span>
       </ion-col>
-      <ion-col>
+      <ion-col size="2">
         <span class="etc" [title]="aluno.escola.nome">
           {{ aluno?.escola?.nome }}
         </span>
       </ion-col>
-      <ion-col>
+      <ion-col size="3">
         <span class="etc" [title]="aluno.endereco.rua">
           {{ aluno?.endereco?.rua }} - {{ aluno?.endereco?.bairro }}
         </span>
       </ion-col>
-      <ion-col>{{ aluno?.van?.numero }} - {{ aluno?.van?.modelo }}</ion-col>
-      <ion-col>
+      <ion-col size="2"
+        >{{ aluno?.van?.numero }} - {{ aluno?.van?.modelo }}</ion-col
+      >
+      <ion-col size="1">
         <div [class]="aluno.status === 1 ? 'ativo' : 'inativo'">
           {{ aluno?.statusLabel?.label }}
         </div>

@@ -47,21 +47,25 @@
     <section class="dados-container">
       <ion-grid class="pagamentos">
         <ion-row class="titulo-tabela">
-          <ion-col>Data vencimento</ion-col>
-          <ion-col>Valor</ion-col>
-          <ion-col>Status</ion-col>
-          <ion-col>Pago em</ion-col>
-          <ion-col>Ações</ion-col>
+          <ion-col size="2">Data vencimento</ion-col>
+          <ion-col size="2">Valor</ion-col>
+          <ion-col size="2">Status</ion-col>
+          <ion-col size="2">Pago em</ion-col>
+          <ion-col size="2">Ações</ion-col>
         </ion-row>
         <div class="pagamentos" *ngIf="pagamentos.length > 0">
           <ion-row id="ativas" *ngFor="let pagamento of pagamentos">
-            <ion-col>{{ pagamento.vencimento | date: "dd/MM/yy" }}</ion-col>
-            <ion-col>{{ pagamento.valor | currency: "BRL" }}</ion-col>
-            <ion-col [ngClass]="pagamento.statusLabel.classe">
+            <ion-col size="2">{{
+              pagamento.vencimento | date: "dd/MM/yy"
+            }}</ion-col>
+            <ion-col size="2">{{ pagamento.valor | currency: "BRL" }}</ion-col>
+            <ion-col size="2" [ngClass]="pagamento.statusLabel.classe">
               {{ pagamento.statusLabel.label }}
             </ion-col>
-            <ion-col>{{ pagamento.pago_em | date: "dd/MM/yy" }}</ion-col>
-            <ion-col>
+            <ion-col size="2">{{
+              pagamento.pago_em | date: "dd/MM/yy"
+            }}</ion-col>
+            <ion-col size="2">
               <div class="acoes-container">
                 <ion-icon
                   class="confirmar-pagamento"

@@ -1,10 +1,10 @@
 <main>
   <ion-grid>
     <ion-row class="titulo-tabela">
-      <ion-col>Nome</ion-col>
-      <ion-col>Data de nascimento</ion-col>
-      <ion-col>Data de validade da CNH</ion-col>
-      <ion-col>Telefone</ion-col>
+      <ion-col size="3">Nome</ion-col>
+      <ion-col size="3">Data de nascimento</ion-col>
+      <ion-col size="3">Data de validade da CNH</ion-col>
+      <ion-col size="3">Telefone</ion-col>
     </ion-row>
     <div *ngIf="motoristasFiltrados.length > 0">
       <ion-row
@@ -13,18 +13,18 @@
         id="ativas"
         (click)="consultarMotorista(motorista.id)"
       >
-        <ion-col>
+        <ion-col size="3">
           <strong>{{ motorista.nome }}</strong>
         </ion-col>
-        <ion-col>
+        <ion-col size="3">
           <span class="etc">
             {{ motorista.data_nascimento | date: "dd/MM/yy" }}
           </span>
         </ion-col>
-        <ion-col>
+        <ion-col size="3">
           <span>{{ motorista.data_validade_cnh | date: "dd/MM/yy" }}</span>
         </ion-col>
-        <ion-col>
+        <ion-col size="3">
           <span>{{ motorista.telefone | telefone }}</span>
         </ion-col>
       </ion-row>

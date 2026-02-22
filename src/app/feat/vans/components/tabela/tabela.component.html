@@ -15,11 +15,11 @@
       </div>
     </div> -->
     <ion-row class="row titulo-tabela">
-      <ion-col>Número - Alvará</ion-col>
-      <ion-col>Modelo</ion-col>
-      <ion-col>Placa</ion-col>
-      <ion-col>Renavam</ion-col>
-      <ion-col>Lugares</ion-col>
+      <ion-col size="2">Número - Alvará</ion-col>
+      <ion-col size="2">Modelo</ion-col>
+      <ion-col size="2">Placa</ion-col>
+      <ion-col size="2">Renavam</ion-col>
+      <ion-col size="2">Lugares</ion-col>
     </ion-row>
     <div *ngIf="vanFiltradas.length > 0">
       <ion-row
@@ -28,21 +28,21 @@
         (click)="consultarVan(van.id)"
         id="ativas"
       >
-        <ion-col>
+        <ion-col size="2">
           <strong>{{ van.numero }}</strong>
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           {{ van.modelo_van?.modelo }}
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           <span>
             {{ van.placa | placa }}
           </span>
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           {{ van.renavam }}
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           {{ van.lugares }}
         </ion-col>
       </ion-row>

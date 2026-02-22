@@ -18,12 +18,12 @@
       <ion-icon name="trash-outline" (click)="limparFiltros()"></ion-icon>
     </ion-row>
     <ion-row class="titulo-tabela">
-      <ion-col>Rota</ion-col>
-      <ion-col>Data</ion-col>
-      <ion-col>Van</ion-col>
-      <ion-col>Horário Inicio</ion-col>
-      <ion-col>Horário Término</ion-col>
-      <ion-col>Motorista</ion-col>
+      <ion-col size="2">Rota</ion-col>
+      <ion-col size="2">Data</ion-col>
+      <ion-col size="2">Van</ion-col>
+      <ion-col size="2">Horário Inicio</ion-col>
+      <ion-col size="2">Horário Término</ion-col>
+      <ion-col size="2">Motorista</ion-col>
     </ion-row>
     <div *ngIf="viagensFiltradas.length > 0">
       <div
@@ -33,27 +33,27 @@
         id="ativas"
         (click)="consultarViagem(viagem.id)"
       >
-        <ion-col>
+        <ion-col size="2">
           <span class="etc">
             {{ viagem.rota?.nome }}
           </span>
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           <span>{{ viagem.data | date: "dd/MM/yy" }}</span>
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           <span
             >{{ viagem?.rota?.van?.numero }} -
             {{ viagem?.rota?.van?.modelo }}</span
           >
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           <span>{{ viagem?.hora_inicio }}</span>
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           <span>{{ viagem?.hora_fim }}</span>
         </ion-col>
-        <ion-col>
+        <ion-col size="2">
           <span>{{ viagem?.rota?.motorista?.nome }}</span>
         </ion-col>
       </div>

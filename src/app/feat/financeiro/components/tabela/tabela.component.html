@@ -32,15 +32,15 @@
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col>
+    <ion-col size="1">
       <ion-checkbox class="col-check"></ion-checkbox>
     </ion-col>
-    <ion-col class="titulo-tabela">Aluno</ion-col>
-    <ion-col class="titulo-tabela">Responsável</ion-col>
-    <ion-col class="titulo-tabela">Escola</ion-col>
-    <ion-col class="titulo-tabela">Vencimento</ion-col>
-    <ion-col class="titulo-tabela">Valor</ion-col>
-    <ion-col class="titulo-tabela">Status</ion-col>
+    <ion-col class="titulo-tabela" size="2">Aluno</ion-col>
+    <ion-col class="titulo-tabela" size="2">Responsável</ion-col>
+    <ion-col class="titulo-tabela" size="2">Escola</ion-col>
+    <ion-col class="titulo-tabela" size="2">Vencimento</ion-col>
+    <ion-col class="titulo-tabela" size="2">Valor</ion-col>
+    <ion-col class="titulo-tabela" size="1">Status</ion-col>
   </ion-row>
   <div *ngIf="pagamentosFiltrados.length > 0">
     <ion-row
@@ -48,33 +48,33 @@
       id="ativas"
       (click)="consultarPagamento(pagamento.responsavel.id)"
     >
-      <ion-col>
+      <ion-col size="1">
         <ion-checkbox class="col-check"></ion-checkbox>
       </ion-col>
-      <ion-col>
+      <ion-col size="2">
         <span class="etc">
           {{ pagamento.aluno.nome }}
         </span>
       </ion-col>
-      <ion-col>
+      <ion-col size="2">
         <span class="etc">
           {{ pagamento.responsavel.nome }}
         </span>
       </ion-col>
-      <ion-col>
+      <ion-col size="2">
         <span class="etc">
           {{ pagamento.aluno.escola.nome }}
         </span>
       </ion-col>
-      <ion-col>
+      <ion-col size="2">
         <span class="etc">
           {{ pagamento.vencimento | date: "dd/MM/yy" }}
         </span>
       </ion-col>
-      <ion-col>
+      <ion-col size="2">
         {{ pagamento.valor | currency: "BRL" : "symbol" : "1.2-2" }}
       </ion-col>
-      <ion-col>
+      <ion-col size="1">
         <div [ngClass]="pagamento.statusLabel.classe">
           {{ pagamento.statusLabel.label }}
         </div>
