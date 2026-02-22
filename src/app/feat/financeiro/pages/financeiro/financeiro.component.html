@@ -1,34 +1,36 @@
 <app-header></app-header>
 <main>
-  <app-calendario
-    label="Selecionar Mês"
-    (valueChange)="onCalendarioChange($event)"
-  >
-  </app-calendario>
-  <div class="topo-container">
-    <app-card-valor
-      [estimativa]="estimativa"
-      [recebido]="recebido"
-      [atrasado]="atrasado"
-    ></app-card-valor>
-    <div class="button-container">
-      <app-button
-        tipoIcone="ion"
-        icone="checkmark-circle-outline"
-        texto="Confirmar pagamento"
-      ></app-button>
-      <app-button
-        tipoIcone="ion"
-        icone="chatbox-ellipses-outline"
-        texto="Notificar responsáveis selecionados"
-      ></app-button>
-      <app-button
-        tipoIcone="ion"
-        icone="calendar-number-outline"
-        texto="Notificar todos atrasados"
-      ></app-button>
+  <section>
+    <app-calendario
+      label="Selecionar Mês"
+      (valueChange)="onCalendarioChange($event)"
+    >
+    </app-calendario>
+    <div class="topo-container">
+      <app-card-valor
+        [estimativa]="estimativa"
+        [recebido]="recebido"
+        [atrasado]="atrasado"
+      ></app-card-valor>
+      <div class="button-container">
+        <app-button
+          tipoIcone="ion"
+          icone="checkmark-circle-outline"
+          texto="Confirmar pagamento"
+        ></app-button>
+        <app-button
+          tipoIcone="ion"
+          icone="chatbox-ellipses-outline"
+          texto="Notificar responsáveis selecionados"
+        ></app-button>
+        <app-button
+          tipoIcone="ion"
+          icone="calendar-number-outline"
+          texto="Notificar todos atrasados"
+        ></app-button>
+      </div>
     </div>
-  </div>
-  <app-tabela [pagamentos]="pagamentos"></app-tabela>
+    <app-tabela [pagamentos]="pagamentos"></app-tabela>
+  </section>
 </main>
 <app-loading [loading]="loading"></app-loading>

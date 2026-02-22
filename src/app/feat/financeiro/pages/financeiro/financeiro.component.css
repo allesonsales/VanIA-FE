@@ -3,7 +3,6 @@ main {
   flex-direction: column;
   gap: 1rem;
   overflow-x: hidden;
-  width: 80vw;
 }
 
 .topo-container {
