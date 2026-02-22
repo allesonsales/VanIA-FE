@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import buscarCep from '../../shared/utils/buscarCep';
-import { Endereco } from '../../../types/Endereco';
 import { NgxMaskDirective } from 'ngx-mask';
 import { EnderecoViaCep } from '../../../types/EnderecoViaCep';
 import { FlashMessageService } from '../../service/flash-message.service';
@@ -87,7 +86,7 @@ export class CadastrarRotaComponent implements OnInit {
     this.escolaService.buscarEscolas().subscribe({
       next: (res: any) => {
         this.escolas = res;
-        console.log(res);
+        console.log('escolas', res);
       },
       error: (err) => {
         console.log(err);
@@ -125,9 +124,22 @@ export class CadastrarRotaComponent implements OnInit {
     this.escolasFormArray.push(
       this.fb.group({
         id: ['', Validators.required],
+        nome: ['', Validators.required],
         horaPrevisao: ['', Validators.required],
       }),
     );
+  }
+
+  onEscolaChange(index: number) {
+    const grupo = this.escolasFormArray.at(index);
+
+    const idSelecionado = Number(grupo.get('id')?.value);
+
+    const escola = this.escolas.find((e) => e.id === idSelecionado);
+
+    if (escola) {
+      grupo.get('nome')?.setValue(escola.nome);
+    }
   }
 
   async buscarEndereco() {
@@ -198,16 +210,10 @@ export class CadastrarRotaComponent implements OnInit {
 
   async validarFormulario() {
     this.loading = true;
-    const motorista = this.formRota.get('motoristaId')?.value;
     const horaInicioIda = this.formRota.get('horaInicioIda')?.value;
     const horaFimIda = this.formRota.get('horaFimIda')?.value;
     const horaInicioVolta = this.formRota.get('horaInicioVolta')?.value;
     const horaFimVolta = this.formRota.get('horaFimVolta')?.value;
-    const cep = this.formRota.get('cep')?.value;
-    const rua = this.formRota.get('rua')?.value;
-    const bairro = this.formRota.get('bairro')?.value;
-    const cidade = this.formRota.get('cidade')?.value;
-    const estado = this.formRota.get('estado')?.value;
 
     this.verificarCampos();
 

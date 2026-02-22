@@ -29,7 +29,7 @@
         (click)="consultarRota(rota.id)"
       >
         <ion-col>
-          <strong>{{ rota.nome }}</strong>
+          <strong class="etc" [title]="rota.nome">{{ rota.nome }}</strong>
         </ion-col>
         <ion-col>
           <span class="etc" [title]="getNomesEscolasString(rota)">

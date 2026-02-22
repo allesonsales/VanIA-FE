@@ -1,11 +1,11 @@
 <ion-grid>
-  <div class="row">
+  <ion-row>
     <ion-searchbar
       placeholder="Pesquisar aluno..."
       (ionInput)="pesquisarAluno($event)"
     ></ion-searchbar>
-  </div>
-  <div class="row filtros">
+  </ion-row>
+  <ion-row class="filtros">
     <ion-col>
       <ion-select
         aria-label="filtro"
@@ -32,18 +32,17 @@
       </ion-select>
       <ion-icon name="trash-outline" (click)="limparFiltros()"></ion-icon>
     </ion-col>
-  </div>
-  <div class="row" class="titulo-tabela">
+  </ion-row>
+  <ion-row class="titulo-tabela">
     <ion-col>Aluno</ion-col>
     <ion-col>Responsável</ion-col>
     <ion-col>Escola</ion-col>
     <ion-col>Endereço</ion-col>
     <ion-col>Van</ion-col>
     <ion-col>Status</ion-col>
-  </div>
+  </ion-row>
   <div *ngIf="alunos.length > 0">
-    <div
-      class="row"
+    <ion-row
       *ngFor="let aluno of alunosFiltrados"
       (click)="consultarAluno(aluno.id)"
       id="ativas"
@@ -74,12 +73,12 @@
           {{ aluno?.statusLabel?.label }}
         </div>
       </ion-col>
-    </div>
+    </ion-row>
   </div>
-  <div class="row" *ngIf="alunos.length < 1" id="lista-vazia">
+  <ion-row *ngIf="alunos.length < 1" id="lista-vazia">
     <strong>Nenhum aluno cadastrado...</strong>
-  </div>
-  <div class="row" *ngIf="alunos.length < 1" id="lista-vazia">
+  </ion-row>
+  <ion-row *ngIf="alunos.length < 1" id="lista-vazia">
     <a href="cadastrar-aluno">Cadastrar aluno</a>
-  </div>
+  </ion-row>
 </ion-grid>

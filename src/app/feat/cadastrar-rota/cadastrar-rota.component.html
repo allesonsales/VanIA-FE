@@ -67,7 +67,7 @@
       >
         <div class="input-container">
           <label for="escola">Escola:</label>
-          <select formControlName="id">
+          <select formControlName="id" (change)="onEscolaChange(i)">
             <option disabled selected>Selecione uma escola</option>
             <option
               *ngFor="let escola of escolas"
