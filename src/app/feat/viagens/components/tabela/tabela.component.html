@@ -1,67 +1,67 @@
 <main>
-  <div class="grid">
-    <div class="row" class="filtros">
-      <div class="col">
+  <ion-grid>
+    <ion-row class="filtros">
+      <ion-col>
         <select (change)="trocarFiltroAtivo($event)">
           <option disabled selected>Filtrar por...</option>
           <option value="escola">Escola</option>
         </select>
-      </div>
-      <div class="col">
+      </ion-col>
+      <ion-col>
         <select (change)="filtrar($event)">
           <!-- valores -->
         </select>
-      </div>
-      <div class="col">
+      </ion-col>
+      <ion-col>
         <input type="date" name="dia" id="dia" />
-      </div>
+      </ion-col>
       <ion-icon name="trash-outline" (click)="limparFiltros()"></ion-icon>
-    </div>
-    <div class="row" class="titulo-tabela">
-      <div class="col">Rota</div>
-      <div class="col">Data</div>
-      <div class="col">Van</div>
-      <div class="col">Horário Inicio</div>
-      <div class="col">Horário Término</div>
-      <div class="col">Motorista</div>
-    </div>
+    </ion-row>
+    <ion-row class="titulo-tabela">
+      <ion-col>Rota</ion-col>
+      <ion-col>Data</ion-col>
+      <ion-col>Van</ion-col>
+      <ion-col>Horário Inicio</ion-col>
+      <ion-col>Horário Término</ion-col>
+      <ion-col>Motorista</ion-col>
+    </ion-row>
     <div *ngIf="viagensFiltradas.length > 0">
       <div
-        class="row"
+        ion-row
         *ngFor="let viagem of viagensFiltradas"
         class="linha-rota ion-align-items-center"
         id="ativas"
         (click)="consultarViagem(viagem.id)"
       >
-        <div class="col">
+        <ion-col>
           <span class="etc">
             {{ viagem.rota?.nome }}
           </span>
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           <span>{{ viagem.data | date: "dd/MM/yy" }}</span>
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           <span
             >{{ viagem?.rota?.van?.numero }} -
             {{ viagem?.rota?.van?.modelo }}</span
           >
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           <span>{{ viagem?.hora_inicio }}</span>
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           <span>{{ viagem?.hora_fim }}</span>
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           <span>{{ viagem?.rota?.motorista?.nome }}</span>
-        </div>
+        </ion-col>
       </div>
     </div>
     <div *ngIf="viagensFiltradas.length < 1">
-      <div class="row" id="lista-vazia">
+      <ion-row id="lista-vazia">
         <strong>Nenhuma viagem realizada...</strong>
-      </div>
+      </ion-row>
     </div>
-  </div>
+  </ion-grid>
 </main>

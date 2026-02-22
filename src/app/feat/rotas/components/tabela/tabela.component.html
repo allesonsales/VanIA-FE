@@ -1,65 +1,64 @@
 <main>
-  <div class="grid">
-    <div class="row">
-      <div class="col">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
         <select (change)="trocarFiltroAtivo($event)">
           <option disabled selected>Filtrar por...</option>
           <option value="escola">Escola</option>
         </select>
-      </div>
-      <div class="col">
+      </ion-col>
+      <ion-col>
         <select (change)="filtrar($event)">
           <!-- valores -->
         </select>
-      </div>
-    </div>
-    <div class="row titulo-tabela">
-      <div class="col">Rota</div>
-      <div class="col">Escola</div>
-      <div class="col">Horário Entrada</div>
-      <div class="col">Horário Saída</div>
-      <div class="col">Van</div>
-      <div class="col">Motorista</div>
-    </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="titulo-tabela">
+      <ion-col>Rota</ion-col>
+      <ion-col>Escola</ion-col>
+      <ion-col>Horário Entrada</ion-col>
+      <ion-col>Horário Saída</ion-col>
+      <ion-col>Van</ion-col>
+      <ion-col>Motorista</ion-col>
+    </ion-row>
     <div *ngIf="rotasFiltradas.length > 0">
-      <div
-        class="row"
+      <ion-row
         *ngFor="let rota of rotasFiltradas"
         class="linha-rota ion-align-items-center"
         id="ativas"
         (click)="consultarRota(rota.id)"
       >
-        <div class="col">
+        <ion-col>
           <strong>{{ rota.nome }}</strong>
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           <span class="etc" [title]="getNomesEscolasString(rota)">
             {{ getNomesEscolasString(rota) }}
           </span>
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           <span>{{ rota.hora_inicio_ida }} - {{ rota.hora_fim_ida }}</span>
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           <span>{{ rota.hora_inicio_volta }} - {{ rota.hora_fim_volta }}</span>
-        </div>
+        </ion-col>
 
-        <div class="col">
+        <ion-col>
           {{ rota.van.numero }}
           {{ rota.van.modelo }}
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           {{ rota.motorista.nome }}
-        </div>
-      </div>
+        </ion-col>
+      </ion-row>
     </div>
     <div *ngIf="rotasFiltradas.length < 1">
-      <div class="row" id="lista-vazia">
+      <ion-row id="lista-vazia">
         <strong>Nenhuma rota cadastrada...</strong>
-      </div>
-      <div class="row" id="lista-vazia">
+      </ion-row>
+      <ion-row id="lista-vazia">
         <a href="cadastrar-rota"> Cadastrar rota </a>
-      </div>
+      </ion-row>
     </div>
-  </div>
+  </ion-grid>
 </main>

@@ -1,5 +1,5 @@
 <main>
-  <div class="grid">
+  <ion-grid>
     <!-- <div class="row">
       <div class="col" size="2">
         <select (change)="filtrar($event)">
@@ -14,47 +14,46 @@
         </select>
       </div>
     </div> -->
-    <div class="row titulo-tabela">
-      <div class="col">Número - Alvará</div>
-      <div class="col">Modelo</div>
-      <div class="col">Placa</div>
-      <div class="col">Renavam</div>
-      <div class="col">Lugares</div>
-    </div>
+    <ion-row class="row titulo-tabela">
+      <ion-col>Número - Alvará</ion-col>
+      <ion-col>Modelo</ion-col>
+      <ion-col>Placa</ion-col>
+      <ion-col>Renavam</ion-col>
+      <ion-col>Lugares</ion-col>
+    </ion-row>
     <div *ngIf="vanFiltradas.length > 0">
-      <div
-        class="row"
+      <ion-row
         *ngFor="let van of vanFiltradas"
         class="linha-rota ion-align-items-center"
         (click)="consultarVan(van.id)"
         id="ativas"
       >
-        <div class="col">
+        <ion-col>
           <strong>{{ van.numero }}</strong>
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           {{ van.modelo_van?.modelo }}
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           <span>
             {{ van.placa | placa }}
           </span>
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           {{ van.renavam }}
-        </div>
-        <div class="col">
+        </ion-col>
+        <ion-col>
           {{ van.lugares }}
-        </div>
-      </div>
+        </ion-col>
+      </ion-row>
     </div>
     <div *ngIf="vanFiltradas.length < 1">
-      <div class="row" id="lista-vazia">
+      <ion-row id="lista-vazia">
         <strong>Nenhuma van encontrada...</strong>
-      </div>
-      <div class="row" id="lista-vazia">
+      </ion-row>
+      <ion-row id="lista-vazia">
         <a href="cadastrar-van"> Cadastrar van </a>
-      </div>
+      </ion-row>
     </div>
-  </div>
+  </ion-grid>
 </main>

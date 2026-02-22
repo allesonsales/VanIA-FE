@@ -45,23 +45,23 @@
     </div>
 
     <section class="dados-container">
-      <div class="grid pagamentos">
-        <div class="row titulo-tabela">
-          <div class="col">Data vencimento</div>
-          <div class="col">Valor</div>
-          <div class="col">Status</div>
-          <div class="col">Pago em</div>
-          <div class="col">Ações</div>
-        </div>
+      <ion-grid class="pagamentos">
+        <ion-row class="titulo-tabela">
+          <ion-col>Data vencimento</ion-col>
+          <ion-col>Valor</ion-col>
+          <ion-col>Status</ion-col>
+          <ion-col>Pago em</ion-col>
+          <ion-col>Ações</ion-col>
+        </ion-row>
         <div class="pagamentos" *ngIf="pagamentos.length > 0">
-          <div class="row" id="ativas" *ngFor="let pagamento of pagamentos">
-            <div class="col">{{ pagamento.vencimento | date: "dd/MM/yy" }}</div>
-            <div class="col">{{ pagamento.valor | currency: "BRL" }}</div>
-            <div class="col" [ngClass]="pagamento.statusLabel.classe">
+          <ion-row id="ativas" *ngFor="let pagamento of pagamentos">
+            <ion-col>{{ pagamento.vencimento | date: "dd/MM/yy" }}</ion-col>
+            <ion-col>{{ pagamento.valor | currency: "BRL" }}</ion-col>
+            <ion-col [ngClass]="pagamento.statusLabel.classe">
               {{ pagamento.statusLabel.label }}
-            </div>
-            <div class="col">{{ pagamento.pago_em | date: "dd/MM/yy" }}</div>
-            <div class="col">
+            </ion-col>
+            <ion-col>{{ pagamento.pago_em | date: "dd/MM/yy" }}</ion-col>
+            <ion-col>
               <div class="acoes-container">
                 <ion-icon
                   class="confirmar-pagamento"
@@ -76,12 +76,13 @@
                   (click)="removerPagamento(pagamento.id)"
                 ></ion-icon>
               </div>
-            </div>
-          </div>
+            </ion-col>
+          </ion-row>
         </div>
-        <div class="row" *ngIf="pagamentos.length < 1" id="lista-vazia"></div>
-        <span>Nenhum pagamento encontrado...</span>
-      </div>
+        <ion-row *ngIf="pagamentos.length < 1" id="lista-vazia">
+          <span>Nenhum pagamento encontrado...</span>
+        </ion-row>
+      </ion-grid>
 
       <footer>
         <div class="legenda-container">
