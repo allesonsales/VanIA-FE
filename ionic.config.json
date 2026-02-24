@@ -1,0 +1,8 @@
+{
+  "name": "frontend",
+  "type": "angular",
+  "integrations": {},
+  "angular": {
+    "project": "frontend"
+  }
+}
