@@ -7,15 +7,21 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UsuarioService } from '../../../service/usuario.service';
 import { FlashMessageService } from '../../../service/flash-message.service';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   standalone: true,
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [CommonModule, IonicModule, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

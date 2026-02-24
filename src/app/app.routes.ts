@@ -27,6 +27,7 @@ import { DetalheViagemComponent } from './feat/viagens/pages/detalhe-viagem/deta
 import { HomeComponent } from './apps/motorista/pages/home/home.component';
 import { ListaViagensComponent } from './apps/motorista/pages/lista-viagens/lista-viagens.component';
 import { IniciarViagemComponent } from './apps/motorista/pages/iniciar-viagem/iniciar-viagem.component';
+import { PerfilComponent } from './feat/perfil/perfil.component';
 
 export const routes: Routes = [
   {
@@ -63,6 +64,7 @@ export const routes: Routes = [
       { path: 'vans', component: VansComponent },
       { path: 'escolas', component: EscolasComponent },
       { path: 'ajuda', component: AjudaComponent },
+      { path: 'perfil', component: PerfilComponent },
       { path: 'viagens', component: ViagensComponent },
       { path: 'vans/:id', component: DetalheVanComponent },
       { path: 'escolas/:id', component: DetalheEscolaComponent },

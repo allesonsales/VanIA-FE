@@ -6,25 +6,25 @@
   <div class="menu" *ngIf="menuAberto">
     <ul>
       <li>
-        <a href="/dashboard"> Home </a>
+        <a routerLink="/dashboard"> Home </a>
       </li>
     </ul>
     <ul>
       <li class="titulo">Cadastro</li>
       <li>
-        <a href="/cadastrar-aluno">Cadastrar aluno</a>
+        <a routerLink="/cadastrar-aluno">Cadastrar aluno</a>
       </li>
       <li>
-        <a href="/cadastrar-escola">Cadastrar escola</a>
+        <a routerLink="/cadastrar-escola">Cadastrar escola</a>
       </li>
       <li>
-        <a href="/cadastrar-motorista">Cadastrar motorista</a>
+        <a routerLink="/cadastrar-motorista">Cadastrar motorista</a>
       </li>
       <li>
-        <a href="/cadastrar-van">Cadastrar van</a>
+        <a routerLink="/cadastrar-van">Cadastrar van</a>
       </li>
       <li>
-        <a href="/cadastrar-rota">Cadastrar rota</a>
+        <a routerLink="/cadastrar-rota">Cadastrar rota</a>
       </li>
     </ul>
     <ul>
@@ -34,35 +34,37 @@
     </ul>
     <ul>
       <li class="titulo">Configurações</li>
-      <li>Perfil</li>
+      <li>
+        <a routerLink="/perfil"> Perfil </a>
+      </li>
       <li>Alterar Senha</li>
       <li>Excluir conta</li>
     </ul>
     <ul>
       <li class="titulo">Sessão</li>
       <li>
-        <a href="/ajuda"> Ajuda </a>
+        <a routerLink="/ajuda"> Ajuda </a>
       </li>
       <li (click)="sair()">Sair</li>
     </ul>
   </div>
   <div class="icones-container" *ngIf="!isHome">
-    <a href="/alunos">
+    <a routerLink="/alunos">
       <img src="/icones/aluno.png" alt="" />
     </a>
-    <a href="/escolas">
+    <a routerLink="/escolas">
       <img src="/icones/escola.png" alt="" />
     </a>
-    <a href="/motoristas">
+    <a routerLink="/motoristas">
       <img src="/icones/motorista.png" alt="" />
     </a>
-    <a href="/vans">
+    <a routerLink="/vans">
       <img src="/icones/van.png" alt="" />
     </a>
-    <a href="/rotas">
+    <a routerLink="/rotas">
       <img src="/icones/rotas.png" alt="" />
     </a>
-    <a href="/financeiro">
+    <a routerLink="/financeiro">
       <img src="/icones/financeiro.png" alt="" />
     </a>
     <img src="/icones/comunicacao.png" alt="" />

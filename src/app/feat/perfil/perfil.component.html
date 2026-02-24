@@ -1,0 +1,56 @@
+<app-header></app-header>
+<main>
+  <section>
+    <form formControlName="usuario">
+      <div class="form-container">
+        <div class="input-container">
+          <input type="text" formControlName="nome" />
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="input-container">
+          <input type="text" formControlName="nomeFantasia" />
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="input-container">
+          <input type="text" formControlName="cpf" mask="000.000.000-00" />
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="input-container">
+          <input type="email" formControlName="email" />
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="input-container">
+          <input
+            type="text"
+            formControlName="telefone"
+            mask="(00) 0 0000-0000"
+          />
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="input-container">
+          <label for="totalAlunos">Alunos cadastrados:</label>
+          <input type="number" formControlName="totalAlunos" readonly />
+        </div>
+        <div class="input-container">
+          <label for="totalEscolas">Escolas cadastradas:</label>
+          <input type="number" formControlName="totalAlunos" readonly />
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="input-container">
+          <label for="totalVans">Vans cadastradas</label>
+          <input type="number" formControlName="totalVans" readonly />
+        </div>
+        <div class="input-container">
+          <label for="totalViagens">Vans cadastradas</label>
+          <input type="number" formControlName="totalVans" readonly />
+        </div>
+      </div>
+    </form>
+  </section>
+</main>

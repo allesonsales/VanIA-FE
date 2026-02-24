@@ -8,7 +8,7 @@ type Filtro = 'escola' | 'status' | 'vencimento';
 
 @Component({
   selector: 'app-comunicacao',
-  imports: [IonicModule, CommonModule, HeaderComponent],
+  imports: [IonicModule, CommonModule],
   templateUrl: './comunicacao.component.html',
   styleUrl: './comunicacao.component.css',
 })
