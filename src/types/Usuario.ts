@@ -6,4 +6,9 @@ export interface Usuario {
   nome: string;
   telefone: string;
   nomeFantasia: string;
+  total_alunos?: number;
+  total_rotas?: number;
+  total_vans?: number;
+  total_escolas?: number;
+  total_viagens?: number;
 }

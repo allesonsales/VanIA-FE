@@ -1,29 +1,38 @@
 <app-header></app-header>
 <main>
   <section>
-    <form formControlName="usuario">
+    <form [formGroup]="formUsuario">
       <div class="form-container">
         <div class="input-container">
+          <label for="nome">Nome</label>
           <input type="text" formControlName="nome" />
         </div>
       </div>
       <div class="form-container">
         <div class="input-container">
+          <label for="nomeFantasia">Nome fantasia</label>
           <input type="text" formControlName="nomeFantasia" />
         </div>
       </div>
       <div class="form-container">
         <div class="input-container">
+          <label for="cpf">CPF</label>
           <input type="text" formControlName="cpf" mask="000.000.000-00" />
+        </div>
+        <div class="input-container">
+          <label for="cpf">Data de nascimento</label>
+          <input type="date" formControlName="dataNascimento" />
         </div>
       </div>
       <div class="form-container">
         <div class="input-container">
+          <label for="email">E-mail</label>
           <input type="email" formControlName="email" />
         </div>
       </div>
       <div class="form-container">
         <div class="input-container">
+          <label for="telefone">Telefone</label>
           <input
             type="text"
             formControlName="telefone"
@@ -32,25 +41,33 @@
         </div>
       </div>
       <div class="form-container">
-        <div class="input-container">
-          <label for="totalAlunos">Alunos cadastrados:</label>
-          <input type="number" formControlName="totalAlunos" readonly />
+        <div class="card">
+          <img id="aluno-img" src="/icones/aluno.png" alt="" />
+          <span class="titulo">Total de alunos</span>
+          <span class="numero">{{ usuario?.total_alunos }}</span>
         </div>
-        <div class="input-container">
-          <label for="totalEscolas">Escolas cadastradas:</label>
-          <input type="number" formControlName="totalAlunos" readonly />
+        <div class="card">
+          <img src="/icones/escola.png" alt="" />
+          <span class="titulo">Total de escolas</span>
+          <span class="numero">{{ usuario?.total_escolas }}</span>
         </div>
       </div>
       <div class="form-container">
-        <div class="input-container">
-          <label for="totalVans">Vans cadastradas</label>
-          <input type="number" formControlName="totalVans" readonly />
+        <div class="card">
+          <img src="/icones/van.png" alt="" />
+          <span class="titulo">Total de vans</span>
+          <span class="numero">{{ usuario?.total_vans }}</span>
         </div>
-        <div class="input-container">
-          <label for="totalViagens">Vans cadastradas</label>
-          <input type="number" formControlName="totalVans" readonly />
+        <div class="card">
+          <img src="/icones/viagens.png" alt="" />
+          <span class="titulo">Total de viagens</span>
+          <span class="numero">5</span>
         </div>
       </div>
+      <button type="button" class="botao-enviar-cadastro" (click)="confirmar()">
+        Confirmar
+      </button>
     </form>
   </section>
 </main>
+<app-loading [loading]="loading"></app-loading>

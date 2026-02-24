@@ -28,6 +28,7 @@ import { HomeComponent } from './apps/motorista/pages/home/home.component';
 import { ListaViagensComponent } from './apps/motorista/pages/lista-viagens/lista-viagens.component';
 import { IniciarViagemComponent } from './apps/motorista/pages/iniciar-viagem/iniciar-viagem.component';
 import { PerfilComponent } from './feat/perfil/perfil.component';
+import { ExcluirContaComponent } from './feat/excluir-conta/excluir-conta.component';
 
 export const routes: Routes = [
   {
@@ -65,6 +66,7 @@ export const routes: Routes = [
       { path: 'escolas', component: EscolasComponent },
       { path: 'ajuda', component: AjudaComponent },
       { path: 'perfil', component: PerfilComponent },
+      { path: 'excluir-conta', component: ExcluirContaComponent },
       { path: 'viagens', component: ViagensComponent },
       { path: 'vans/:id', component: DetalheVanComponent },
       { path: 'escolas/:id', component: DetalheEscolaComponent },

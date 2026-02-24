@@ -46,6 +46,12 @@ export class UsuarioService {
     );
   }
 
+  atualizarUsuario(payload: any) {
+    return this.http.put(`${environment.apiUrl}${this.endPoint}`, payload, {
+      withCredentials: true,
+    });
+  }
+
   sair() {
     return this.http.post(
       `${environment.apiUrl}${this.endPoint}/logout`,

@@ -35,10 +35,12 @@
     <ul>
       <li class="titulo">Configurações</li>
       <li>
-        <a routerLink="/perfil"> Perfil </a>
+        <a [routerLink]="['/perfil']">Perfil</a>
       </li>
       <li>Alterar Senha</li>
-      <li>Excluir conta</li>
+      <li>
+        <a routerLink="/excluir-conta">Excluir conta</a>
+      </li>
     </ul>
     <ul>
       <li class="titulo">Sessão</li>
