@@ -21,6 +21,7 @@ import { IonicModule } from '@ionic/angular';
 })
 export class ModalPrimeiroAcessoComponent {
   primeiroAcesso: FormGroup;
+
   constructor(
     private flashmessage: FlashMessageService,
     private usuarioService: UsuarioService,
@@ -32,6 +33,7 @@ export class ModalPrimeiroAcessoComponent {
       confirmarSenha: ['', Validators.required],
     });
   }
+
   verSenha: boolean = false;
   verConfirmarSenha: boolean = false;
 
@@ -43,8 +45,7 @@ export class ModalPrimeiroAcessoComponent {
 
   verificarEmail() {
     const email = this.primeiroAcesso.get('email')?.value;
-    const payload = { email: email };
-    this.usuarioService.verificarEmailPrimeiroAcesso(payload).subscribe({
+    this.usuarioService.verificarEmail(email).subscribe({
       next: (res: any) => {
         this.flashmessage.show(res.message, res.status);
         if (res.status == 'success') {

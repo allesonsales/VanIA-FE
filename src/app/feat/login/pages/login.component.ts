@@ -21,6 +21,7 @@ import { NgxMaskDirective } from 'ngx-mask';
 import verificarIdade from '../../../shared/utils/verificarIdade';
 import { LoadingComponent } from '../../../shared/components/loading/loading.component';
 import { ModalPrimeiroAcessoComponent } from '../component/modal-primeiro-acesso/modal-primeiro-acesso.component';
+import { ModalEsqueciSenhaComponent } from '../component/modal-esqueci-senha/modal-esqueci-senha.component';
 
 @Component({
   standalone: true,
@@ -32,6 +33,7 @@ import { ModalPrimeiroAcessoComponent } from '../component/modal-primeiro-acesso
     NgxMaskDirective,
     LoadingComponent,
     ModalPrimeiroAcessoComponent,
+    ModalEsqueciSenhaComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
@@ -46,6 +48,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   modalPrimeiroAcesso = false;
+  modalEsqueciSenha = false;
 
   verSenha = false;
   verSenhaCadastro = false;
@@ -225,6 +228,10 @@ export class LoginComponent implements OnInit {
   abrirModalPrimeiroAcesso() {
     console.log('clicou');
     this.modalPrimeiroAcesso = true;
+  }
+
+  abrirModalEsqueciSenha() {
+    this.modalEsqueciSenha = true;
   }
 
   entrar() {

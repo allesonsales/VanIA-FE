@@ -42,4 +42,10 @@ export class FinanceiroService {
       { withCredentials: true },
     );
   }
+
+  contarVencidos() {
+    return this.httpClient.get(
+      `${environment.apiUrl}${this.endPoint}/contar-vencidos`,
+    );
+  }
 }

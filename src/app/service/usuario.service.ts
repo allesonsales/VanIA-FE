@@ -30,10 +30,10 @@ export class UsuarioService {
     return this.http.post(`${environment.apiUrl}${this.endPoint}`, payload);
   }
 
-  verificarEmailPrimeiroAcesso(payload: any) {
+  verificarEmail(email: string) {
     return this.http.post(
-      `${environment.apiUrl}${this.endPoint}/verificar-email-primeiro-acesso`,
-      payload,
+      `${environment.apiUrl}${this.endPoint}/verificar-email`,
+      { email },
       { withCredentials: true },
     );
   }
@@ -41,6 +41,14 @@ export class UsuarioService {
   cadastrarSenhaPrimeiroAcesso(payload: any) {
     return this.http.put(
       `${environment.apiUrl}${this.endPoint}/cadastrar-senha-primeiro-acesso`,
+      payload,
+      { withCredentials: true },
+    );
+  }
+
+  recuperarSenha(payload: any) {
+    return this.http.put(
+      `${environment.apiUrl}${this.endPoint}/recuperar-senha`,
       payload,
       { withCredentials: true },
     );
