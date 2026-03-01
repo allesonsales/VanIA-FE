@@ -4,10 +4,12 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { FinanceiroService } from '../../../../service/financeiro.service';
 import { FlashMessageService } from '../../../../service/flash-message.service';
 import { UsuarioService } from '../../../../service/usuario.service';
+import { CardNumerosComponent } from '../../components/card-numeros/card-numeros.component';
+import { NumerosDash } from '../../../../../types/NumerosDashboard';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [HeaderComponent, ButtonComponent],
+  imports: [HeaderComponent, ButtonComponent, CardNumerosComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
@@ -18,6 +20,13 @@ export class DashboardComponent implements OnInit {
     private usuarioService: UsuarioService,
   ) {}
 
+  dadosCard: NumerosDash = {
+    totalEscolas: 0,
+    totalVencidos: 0,
+    totalAlunos: 0,
+    totalVans: 0,
+  };
+
   totalVencidos: number | null = null;
   totalAlunos: number | null = null;
 
@@ -27,8 +36,12 @@ export class DashboardComponent implements OnInit {
     this.usuarioService.buscarUsuario().subscribe({
       next: (res: any) => {
         console.log(res);
-        this.totalVencidos = res.totalVencidos;
-        this.totalAlunos = res.totalAlunos;
+        this.dadosCard = {
+          totalEscolas: res.total_escolas,
+          totalVencidos: res.total_vencidos,
+          totalVans: res.total_vans,
+          totalAlunos: res.total_alunos,
+        };
       },
       error: (err) => {
         this.flashMessage.show(err.error.message, err.error.status);

@@ -1,11 +1,13 @@
 <app-header></app-header>
 <main>
   <section>
-    <app-calendario
-      label="Selecionar Mês"
-      (valueChange)="onCalendarioChange($event)"
-    >
-    </app-calendario>
+    <div class="calendario">
+      <app-calendario
+        label="Selecionar Mês"
+        (valueChange)="onCalendarioChange($event)"
+      >
+      </app-calendario>
+    </div>
     <div class="topo-container">
       <app-card-valor
         [estimativa]="estimativa"

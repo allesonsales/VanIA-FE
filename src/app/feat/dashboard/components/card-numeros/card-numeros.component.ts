@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NumerosDash } from '../../../../../types/NumerosDashboard';
 
 @Component({
   selector: 'app-card-numeros',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './card-numeros.component.html',
   styleUrl: './card-numeros.component.css',
 })
-export class CardNumerosComponent {}
+export class CardNumerosComponent {
+  @Input() dadosCard!: NumerosDash;
+}
