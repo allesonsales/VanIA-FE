@@ -26,8 +26,7 @@
       <ion-col size="2">Motorista</ion-col>
     </ion-row>
     <div *ngIf="viagensFiltradas.length > 0">
-      <div
-        ion-row
+      <ion-row
         *ngFor="let viagem of viagensFiltradas"
         class="linha-rota ion-align-items-center"
         id="ativas"
@@ -56,7 +55,7 @@
         <ion-col size="2">
           <span>{{ viagem?.rota?.motorista?.nome }}</span>
         </ion-col>
-      </div>
+      </ion-row>
     </div>
     <div *ngIf="viagensFiltradas.length < 1">
       <ion-row id="lista-vazia">
