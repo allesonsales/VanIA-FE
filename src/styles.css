@@ -218,6 +218,7 @@ ion-col {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  width: 100%;
 }
 
 #ativas {
