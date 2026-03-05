@@ -19,6 +19,7 @@
           tipoIcone="ion"
           icone="checkmark-circle-outline"
           texto="Confirmar pagamento"
+          (acao)="confirmarPagamentos()"
         ></app-button>
         <app-button
           tipoIcone="ion"
@@ -32,7 +33,10 @@
         ></app-button>
       </div>
     </div>
-    <app-tabela [pagamentos]="pagamentos"></app-tabela>
+    <app-tabela
+      [pagamentos]="pagamentos"
+      (pagamentoSelecionadoChange)="receberPagamentosSelecionados($event)"
+    ></app-tabela>
   </section>
 </main>
 <app-loading [loading]="loading"></app-loading>

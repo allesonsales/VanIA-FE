@@ -17,8 +17,7 @@ export class MotoristasComponent implements OnInit {
   ngOnInit(): void {
     document.title = 'VanIA | Motoristas';
     this.motoristaService.buscarMotoristas().subscribe({
-      next: (res: any) => {
-        console.log(res);
+      next: (res: Motorista[]) => {
         this.motoristas = res;
       },
       error: (err) => {

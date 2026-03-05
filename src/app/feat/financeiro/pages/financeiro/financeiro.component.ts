@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TabelaComponent } from '../../components/tabela/tabela.component';
 import { CardValorComponent } from '../../components/card-valor/card-valor.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
@@ -8,6 +8,7 @@ import { FinanceiroService } from '../../../../service/financeiro.service';
 import { Pagamento } from '../../../../../types/Pagamento';
 import { FlashMessageService } from '../../../../service/flash-message.service';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
+import { FlashMessage } from '../../../../../types/FlahMessage';
 
 @Component({
   selector: 'app-financeiro',
@@ -23,10 +24,15 @@ import { LoadingComponent } from '../../../../shared/components/loading/loading.
   styleUrl: './financeiro.component.css',
 })
 export class FinanceiroComponent implements OnInit {
+  @Input() pagamentosSelecionados: number[] = [];
+
   constructor(
     private financeiroService: FinanceiroService,
     private flashMessage: FlashMessageService,
   ) {}
+  dataAtual = new Date();
+  mesAtual = this.dataAtual.getMonth() + 1;
+  anoAtual = this.dataAtual.getFullYear();
   mesSelecionado = 0;
   anoSelecionado = 0;
   pagamentos: Pagamento[] = [];
@@ -57,6 +63,33 @@ export class FinanceiroComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  receberPagamentosSelecionados(ids: number[]) {
+    this.pagamentosSelecionados = ids;
+
+    console.log('financeiro', this.pagamentosSelecionados);
+  }
+
+  confirmarPagamentos() {
+    this.loading = true;
+    console.log('Confirmando pagamentos');
+    console.log('messelecionado', this.mesSelecionado);
+    this.financeiroService
+      .confirmarPagamentos(this.pagamentosSelecionados)
+      .subscribe({
+        next: (res: FlashMessage) => {
+          this.loading = false;
+          console.log(res);
+          this.flashMessage.show(res.message, res.status);
+
+          this.buscarPagamentoDoMes(this.mesAtual, this.anoAtual);
+        },
+        error: (err) => {
+          console.log(err);
+          this.flashMessage.show(err.error.message, err.error.status);
+        },
+      });
   }
 
   onCalendarioChange(data: { mes: number; ano: number }) {

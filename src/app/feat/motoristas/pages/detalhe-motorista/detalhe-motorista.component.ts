@@ -38,7 +38,7 @@ export class DetalheMotoristaComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.motoristaService.buscarMotorista(id).subscribe({
-      next: (res: any) => {
+      next: (res: Motorista) => {
         console.log(res);
         this.motorista = res;
       },

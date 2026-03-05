@@ -9,9 +9,12 @@ export const guestGuard = () => {
   const router = inject(Router);
 
   return authService.validarAuth().pipe(
-    map(() => {
-      router.navigate(['/dashboard']);
-      return false;
+    map((res: any) => {
+      if (res.usuario.tipo == 2) {
+        router.createUrlTree(['/motorista']);
+      }
+
+      return router.createUrlTree(['/dashboard']);
     }),
     catchError(() => of(true)),
   );

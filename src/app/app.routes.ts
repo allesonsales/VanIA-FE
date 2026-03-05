@@ -29,6 +29,7 @@ import { ListaViagensComponent } from './apps/motorista/pages/lista-viagens/list
 import { IniciarViagemComponent } from './apps/motorista/pages/iniciar-viagem/iniciar-viagem.component';
 import { PerfilComponent } from './feat/perfil/perfil.component';
 import { ExcluirContaComponent } from './feat/excluir-conta/excluir-conta.component';
+import { RoleLogin } from '../types/RoleLogin';
 
 export const routes: Routes = [
   {
@@ -44,13 +45,11 @@ export const routes: Routes = [
   {
     path: '',
     canActivate: [authGuard],
+    data: { role: RoleLogin.ADMIN },
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'motorista', component: HomeComponent },
-      { path: 'motorista/listar-viagens', component: ListaViagensComponent },
       {
-        path: 'motorista/iniciar/:id',
-        component: IniciarViagemComponent,
+        path: 'dashboard',
+        component: DashboardComponent,
       },
       { path: 'alunos', component: AlunosComponent },
       { path: 'financeiro', component: FinanceiroComponent },
@@ -70,11 +69,27 @@ export const routes: Routes = [
       { path: 'viagens', component: ViagensComponent },
       { path: 'vans/:id', component: DetalheVanComponent },
       { path: 'escolas/:id', component: DetalheEscolaComponent },
-      { path: 'motorista/:id', component: DetalheMotoristaComponent },
+      { path: 'motoristas/:id', component: DetalheMotoristaComponent },
       { path: 'rotas/:id', component: DetalheRotaComponent },
       { path: 'alunos/:id', component: DetalheAlunoComponent },
       { path: 'financeiro/:id', component: DetalheFinanceiroComponent },
       { path: 'viagem/:id', component: DetalheViagemComponent },
+    ],
+  },
+  {
+    path: 'motorista',
+    canActivate: [authGuard],
+    data: { role: RoleLogin.MOTORISTA },
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      { path: 'listar-viagens', component: ListaViagensComponent },
+      {
+        path: 'iniciar/:id',
+        component: IniciarViagemComponent,
+      },
     ],
   },
 ];

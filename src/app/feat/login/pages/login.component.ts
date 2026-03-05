@@ -196,7 +196,6 @@ export class LoginComponent implements OnInit {
       next: (res: any) => {
         this.loading = false;
         this.flashMessage.show(res.message, res.status);
-        this.router.navigate(['/dashboard']);
         this.verificarTipoUsuario();
       },
       error: (err) => {
@@ -208,6 +207,7 @@ export class LoginComponent implements OnInit {
   }
 
   verificarTipoUsuario() {
+    console.log('Verificando usuario');
     this.usuarioService.buscarUsuario().subscribe({
       next: (res: any) => {
         console.log(res);

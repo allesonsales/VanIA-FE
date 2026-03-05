@@ -1,10 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { Pagamento } from '../../../../../types/Pagamento';
 import { mapearPagamentoEnum } from '../../../../shared/utils/mapearEnumPagamento';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
 
 type Filtro = 'Escola' | 'Status';
 
@@ -18,11 +24,13 @@ type Filtro = 'Escola' | 'Status';
 export class TabelaComponent implements OnChanges {
   constructor(private router: Router) {}
   @Input() pagamentos!: Pagamento[];
+  @Output() pagamentoSelecionadoChange = new EventEmitter<number[]>();
 
   filtroAtivo: Filtro | '' = '';
   valoresFiltro: string[] = [];
   pagamentosBase: Pagamento[] = [];
   pagamentosFiltrados: Pagamento[] = [];
+  pagamentosSelecionados: number[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['pagamentos'] && this.pagamentos) {
@@ -32,6 +40,20 @@ export class TabelaComponent implements OnChanges {
       }));
       this.pagamentosFiltrados = [...this.pagamentosBase];
     }
+  }
+
+  selecionarPagamento(pagamentoId: number, event: any) {
+    if (event.detail.checked) {
+      this.pagamentosSelecionados.push(pagamentoId);
+    } else {
+      this.pagamentosSelecionados = this.pagamentosSelecionados.filter(
+        (id) => id !== pagamentoId,
+      );
+    }
+
+    this.pagamentoSelecionadoChange.emit(this.pagamentosSelecionados);
+
+    console.log(this.pagamentosSelecionados);
   }
 
   trocarFiltroAtivo(event: any) {

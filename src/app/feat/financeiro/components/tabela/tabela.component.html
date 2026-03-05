@@ -49,7 +49,11 @@
       (click)="consultarPagamento(pagamento.responsavel.id)"
     >
       <ion-col size="1">
-        <ion-checkbox class="col-check"></ion-checkbox>
+        <ion-checkbox
+          class="col-check"
+          (click)="$event.stopPropagation()"
+          (ionChange)="selecionarPagamento(pagamento.id, $event)"
+        ></ion-checkbox>
       </ion-col>
       <ion-col size="2">
         <span class="etc">

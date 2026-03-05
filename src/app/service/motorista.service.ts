@@ -22,15 +22,21 @@ export class MotoristaService {
   }
 
   buscarMotoristas() {
-    return this.httpClient.get(`${environment.apiUrl}${this.endPoint}`, {
-      withCredentials: true,
-    });
+    return this.httpClient.get<Motorista[]>(
+      `${environment.apiUrl}${this.endPoint}`,
+      {
+        withCredentials: true,
+      },
+    );
   }
 
   buscarMotorista(id: number) {
-    return this.httpClient.get(`${environment.apiUrl}${this.endPoint}/${id}`, {
-      withCredentials: true,
-    });
+    return this.httpClient.get<Motorista>(
+      `${environment.apiUrl}${this.endPoint}/${id}`,
+      {
+        withCredentials: true,
+      },
+    );
   }
 
   excluirMotorista(id: number) {

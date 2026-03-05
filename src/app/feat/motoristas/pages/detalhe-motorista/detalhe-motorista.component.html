@@ -11,11 +11,11 @@
 
     <section class="dados-container">
       <ul>
-        <li class="horario">
+        <li class="horario" *ngIf="motorista?.cnh">
           <small>CNH</small>
           <span>{{ motorista?.cnh }}</span>
         </li>
-        <li class="horario">
+        <li class="horario" *ngIf="motorista?.data_validade_cnh">
           <small>Data de validade da CNH</small>
           <span>{{ motorista?.data_validade_cnh | date: "dd/MM/yyyy" }}</span>
         </li>
@@ -27,7 +27,7 @@
           <small>Total de rotas que esse motorista participa:</small>
           <span>{{ motorista?.rotasAtivas }}</span>
         </li>
-        <li *ngIf="motorista?.tipo_sanguineo != null" class="horario">
+        <li *ngIf="motorista?.tipo_sanguineo" class="horario">
           <small>Tipo sanguineo:</small>
           <span>{{ motorista?.tipo_sanguineo }}</span>
         </li>

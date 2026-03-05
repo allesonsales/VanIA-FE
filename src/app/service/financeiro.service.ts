@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environment/environment';
+import { FlashMessage } from '../../types/FlahMessage';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +33,14 @@ export class FinanceiroService {
       {
         withCredentials: true,
       },
+    );
+  }
+
+  confirmarPagamentos(ids: number[]) {
+    return this.httpClient.patch<FlashMessage>(
+      `${environment.apiUrl}${this.endPoint}/confirmar-pagamentos`,
+      { pagamentosSelecionados: ids },
+      { withCredentials: true },
     );
   }
 

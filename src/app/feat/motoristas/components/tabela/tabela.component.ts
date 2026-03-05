@@ -43,6 +43,6 @@ export class TabelaComponent implements OnChanges {
   }
 
   consultarMotorista(id: number) {
-    this.router.navigate([`/motorista/${id}`]);
+    this.router.navigate([`/motoristas/${id}`]);
   }
 }
