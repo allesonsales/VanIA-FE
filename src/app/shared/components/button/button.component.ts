@@ -13,7 +13,7 @@ import { IonicModule } from '@ionic/angular';
 export class ButtonComponent {
   @Input() texto = '';
   @Input() icone = '';
-  @Input() rota = null;
+  @Input() rota: string | null = null;
   @Input() tipoIcone = '';
   @Output() acao = new EventEmitter();
 
