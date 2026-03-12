@@ -51,7 +51,7 @@
                   <input
                     type="radio"
                     [name]="'presenca-' + aluno.id"
-                    (change)="marcarPresenca(aluno, true)"
+                    [checked]="aluno.presenca === false"
                   />
                 </label>
               </div>
