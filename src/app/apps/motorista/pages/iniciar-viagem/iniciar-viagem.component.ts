@@ -133,6 +133,7 @@ export class IniciarViagemComponent implements OnInit {
   }
 
   finalizarViagem() {
+    console.log('finalizou');
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     const alunos =
