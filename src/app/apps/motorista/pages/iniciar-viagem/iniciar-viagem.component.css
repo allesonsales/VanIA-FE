@@ -96,10 +96,11 @@ h3 {
 
 button {
   width: 100%;
-  --background: var(--azul-marinho);
+  background-color: var(--azul-marinho);
+  min-height: 50px;
   color: #fff;
   border: none;
-  --border-radius: 15px;
+  border-radius: 15px;
 }
 
 .bloqueado {
