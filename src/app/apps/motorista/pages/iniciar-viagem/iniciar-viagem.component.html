@@ -60,19 +60,21 @@
         </div>
       </div>
     </div>
-    <ion-button
+    <button
       *ngIf="!iniciar && viagem?.escolas?.length"
       fill="clear"
       (click)="iniciarViagem()"
-      >Iniciar Viagem</ion-button
     >
-    <ion-button
+      Iniciar Viagem
+    </button>
+    <button
       *ngIf="iniciar"
       [disabled]="!todosPreenchidos"
       fill="clear"
       (click)="finalizarViagem()"
-      >Finalizar viagem</ion-button
     >
+      Finalizar viagem
+    </button>
   </section>
 </main>
 <app-loading [loading]="loading"></app-loading>

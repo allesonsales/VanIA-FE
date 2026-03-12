@@ -94,7 +94,7 @@ h3 {
   min-width: 25px;
 }
 
-ion-button {
+button {
   width: 100%;
   --background: var(--azul-marinho);
   color: #fff;
