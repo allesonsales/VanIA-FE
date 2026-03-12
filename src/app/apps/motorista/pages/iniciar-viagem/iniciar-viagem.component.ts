@@ -108,6 +108,11 @@ export class IniciarViagemComponent implements OnInit {
     if (!this.viagem || !this.viagem.escolas?.length) {
       return false;
     }
+
+    if (this.viagem.escolas.every((escola) => !escola.alunos.length)) {
+      return true;
+    }
+
     return this.viagem.escolas.every((escola) =>
       escola.alunos.every(
         (aluno) => aluno.presenca === true || aluno.presenca === false,
