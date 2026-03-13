@@ -28,6 +28,7 @@ main {
   align-items: center;
   gap: 1rem;
   color: var(--azul-marinho);
+  margin-top: 1rem;
 }
 
 .timer ion-icon {
