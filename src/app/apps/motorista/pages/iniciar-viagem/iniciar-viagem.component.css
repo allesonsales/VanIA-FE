@@ -119,3 +119,8 @@ button {
   justify-content: space-between;
   gap: 1rem;
 }
+
+.desativado {
+  background-color: #d3d3d3;
+  pointer-events: none;
+}

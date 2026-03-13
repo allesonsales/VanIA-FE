@@ -6,7 +6,6 @@
         <img src="/icones/viagens.png" alt="" />
         <h3>{{ viagem?.nome_rota }}</h3>
       </div>
-      <h3 *ngFor="let escola of viagem?.escolas">{{ escola.nome }}</h3>
     </div>
     <div class="timer" *ngIf="iniciar">
       <ion-icon name="stopwatch-outline"></ion-icon>
@@ -69,6 +68,7 @@
     </button>
     <button
       *ngIf="iniciar"
+      [ngClass]="todosPreenchidos ? '' : 'desativado'"
       [disabled]="!todosPreenchidos"
       fill="clear"
       (click)="finalizarViagem()"

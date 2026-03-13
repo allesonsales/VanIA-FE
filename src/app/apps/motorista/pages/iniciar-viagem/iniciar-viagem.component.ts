@@ -60,6 +60,8 @@ export class IniciarViagemComponent implements OnInit {
           this.horaInicio = hoje.getTime();
           this.iniciarTimer();
           this.viagem = res;
+
+          console.log('viagem ativa', res);
         }
       },
       error: (err) => {
