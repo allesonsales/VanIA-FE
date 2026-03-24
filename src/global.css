@@ -1,1 +1,10 @@
-
+:root {
+  --amarelo: #ffe74c;
+  --amarelo-transparente: #fcf3b8;
+  --azul-marinho: #174770;
+  --texto-tabela: #616261;
+  --texto-verde: #2d6d08;
+  --texto-vermelho: #ff6c6c;
+  --sucesso: #30db74;
+  --error: #db3030;
+}

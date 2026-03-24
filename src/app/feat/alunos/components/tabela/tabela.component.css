@@ -6,3 +6,9 @@
   cursor: pointer;
   font-size: 2rem;
 }
+
+.ativo {
+  background-color: var(--sucesso);
+  color: #fff;
+  border-radius: 10px;
+}
